@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.top-bar {
+  background-color: #6f7f72;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 40px;
+  font-size: 14px;
+}
+
+.top-right span {
+  margin-left: 20px;
+}
+
+.navbar {
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 600;
+  color: #4b2c5e;
+}
+
+.logo-icon {
+  background: #4b2c5e;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 6px;
+  margin-right: 8px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links li {
+  cursor: pointer;
+  position: relative;
+  font-weight: 500;
+  color: #333;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  background: #ffffff;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  list-style: none;
+  padding: 10px 0;
+  width: 150px;
+}
+
+.dropdown-menu li {
+  padding: 8px 15px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.appointment-btn {
+  background: transparent;
+  border: 2px solid #4b2c5e;
+  color: #4b2c5e;
+  padding: 10px 18px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.appointment-btn:hover {
+  background: #4b2c5e;
+  color: white;
+}
