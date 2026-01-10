@@ -3,8 +3,8 @@
    ============================================ */
 
 .app-footer {
-  background: linear-gradient(135deg, #1a1f3a 0%, #0f1419 100%);
-  color: #e5e7eb;
+  background: #602962;
+  color: #f9f7f2;
   position: relative;
   overflow: hidden;
 }

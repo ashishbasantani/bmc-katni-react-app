@@ -127,10 +127,10 @@ const Header: React.FC = () => {
           <nav className="nav-links">
             {[
               { label: "Home", sectionId: "home" },
+              { label: "Facilities", sectionId: "facilities" },
+              { label: "About Us", sectionId: "about-us" },
               { label: "Services", sectionId: "services" },
               { label: "Doctors", sectionId: "doctors" },
-              { label: "About Us", sectionId: "about-us" },
-              { label: "Free Camps", sectionId: "free-camps" },
             ].map((link, idx) => (
               <motion.div
                 key={link.label}
@@ -173,7 +173,7 @@ const Header: React.FC = () => {
                 animate={isDropdownOpen ? "visible" : "hidden"}
                 exit="exit"
               >
-                {["Gallery", "Careers", "Contact"].map((item, idx) => (
+                {["Gallery", "Contact"].map((item, idx) => (
                   <motion.a
                     key={item}
                     href="#"

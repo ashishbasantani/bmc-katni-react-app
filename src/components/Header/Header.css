@@ -256,11 +256,11 @@
 ========================= */
 
 .appointment-btn {
-  background: var(--primary-gradient);
-  border: none;
-  color: var(--bg-white);
-  padding: 12px 24px;
-  border-radius: var(--radius-full);
+  background: white;
+  border: 1px solid #232B63;
+  color: #232B63;
+  padding: 16px 24px;
+  border-radius: 20px;
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition-smooth);

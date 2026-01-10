@@ -3,20 +3,30 @@
   background: #ffffff;
 }
 
+.service-grid,
+.services .section-header,
+.services h2 {
+  text-align: left;
+}
+
 .services .section-tag {
   display: inline-block;
-  color: #5b6bff;
-  font-weight: 700;
-  letter-spacing: 1px;
-  font-size: 13px;
+  font-family: poppins;
+  color: #602962;
+  font-weight: 500;
+  letter-spacing: 15%;
+  font-size: 23.41px;
   margin-bottom: 12px;
+  text-align: left;
 }
 
 .services h2 {
-  font-size: 48px;
+  font-size: 48.02px;
+  font-family: poppins;
   margin: 6px 0 32px 0;
-  color: #111827;
-  font-weight: 800;
+  color: #2B2B2B;
+  font-weight: 600;
+  font-style: semibold;
 }
 
 .service-grid {
