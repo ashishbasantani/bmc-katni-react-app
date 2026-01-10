@@ -7,6 +7,7 @@ import About from "./components/About/About";
 import { Services } from "./components/Service/Services";
 import { Doctors } from "./components/Doctor/Doctors";
 import Footer from "./components/Footer/Footer";
+import Facilities from "./components/Facilities/Facilities";
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
         <Suspense fallback={<div>Loading...</div>}>
           <section id="home">
             <Hero />
+          </section>
+          <section id="facilities">
+            <Facilities />
           </section>
           <section id="about-us">
             <About />

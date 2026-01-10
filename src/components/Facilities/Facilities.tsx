@@ -1,10 +1,11 @@
 import React from "react";
-import "./About.css";
+import "./Facilities.css";
 import hospitalbuilding from "../../assets/building.jpg";
 import Patientroom from "../../assets/room.jpg";
 import medicalequipment from "../../assets/equipment.jpg";
+import RotatingCircularText from "./RotatingCircularText";
 
-const About: React.FC = () => {
+const Facilities: React.FC = () => {
   const scrollToNextSection = () => {
     // Try explicit next section by id (if you add one later), otherwise use sibling
     const nextById = document.getElementById('services') || document.getElementById('contact');
@@ -69,6 +70,8 @@ const About: React.FC = () => {
         className="gallery-image"
       />
     </div>
+    {/* SVG for rotating circular text */}
+    <RotatingCircularText />
 
     {/* Right Stacked Images */}
     <div className="gallery-side">
@@ -87,16 +90,8 @@ const About: React.FC = () => {
 </div>
 
       </div>
-      {/* SCROLL BUTTON */}
-      <button
-        className="scroll-indicator about-scroll"
-        aria-label="Scroll to next section"
-        onClick={scrollToNextSection}
-      >
-        <span>↓</span>
-      </button>
     </section>
   );
 };
 
-export default About;
+export default Facilities;

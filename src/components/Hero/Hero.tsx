@@ -40,14 +40,6 @@ const HeroSection: React.FC = () => {
         </div>
       </div>
 
-      {/* SCROLL BUTTON */}
-      <button
-        className="scroll-indicator"
-        aria-label="Scroll to next section"
-        onClick={scrollToNextSection}
-      >
-        <span>↓</span>
-      </button>
 
     </section>
   );

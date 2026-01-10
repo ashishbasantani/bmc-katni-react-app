@@ -93,9 +93,9 @@ const Header: React.FC = () => {
             Katni, Madhya Pradesh 483504
           </motion.a>
 
-          <motion.a className="top-item" variants={itemVariants} href="mailto:support@BMC.com">
+          <motion.a className="top-item" variants={itemVariants} href="mailto:bmckatni@gmail.com">
             <img src={mailIcon} alt="Email" className="top-icon" />
-            support@BMC.com
+            bmckatni@gmail.com
           </motion.a>
 
           <motion.a className="top-item" variants={itemVariants} href="tel:+917622220620">
