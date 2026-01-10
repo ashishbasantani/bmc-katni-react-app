@@ -1,17 +1,23 @@
 {
   "files": {
-    "main.css": "/bmc-katni-react-app/static/css/main.e77e3753.css",
-    "main.js": "/bmc-katni-react-app/static/js/main.dd1a42a6.js",
+    "main.css": "/bmc-katni-react-app/static/css/main.32215383.css",
+    "main.js": "/bmc-katni-react-app/static/js/main.ec7a6a35.js",
     "static/js/453.6b8c8b92.chunk.js": "/bmc-katni-react-app/static/js/453.6b8c8b92.chunk.js",
-    "static/media/doctor.png": "/bmc-katni-react-app/static/media/doctor.80682fa1b6bafed9d9a3.png",
+    "static/media/equipment.jpg": "/bmc-katni-react-app/static/media/equipment.71f785f1481ac7058532.jpg",
+    "static/media/room.jpg": "/bmc-katni-react-app/static/media/room.488a1e735c227e8d81d2.jpg",
+    "static/media/DR.R.HARCHANDANI _ surgical specialist.png": "/bmc-katni-react-app/static/media/DR.R.HARCHANDANI _ surgical specialist.77ef2e2d9cea81faedfe.png",
+    "static/media/Dr.Meenakshi  Pandey _ obstetrics and gynaecology.png": "/bmc-katni-react-app/static/media/Dr.Meenakshi  Pandey _ obstetrics and gynaecology.d30ffb78bec0c246f24d.png",
+    "static/media/Dr.Dharmendra Bagri _ medicine.png": "/bmc-katni-react-app/static/media/Dr.Dharmendra Bagri _ medicine.61b8edfd4fd07e87195c.png",
+    "static/media/dr.mayank shrotriye _ orthopaedics.png": "/bmc-katni-react-app/static/media/dr.mayank shrotriye _ orthopaedics.43244d66a41bbacfda1f.png",
+    "static/media/Dr.Pooja Hinduja _ paediatrician, child specialist.png": "/bmc-katni-react-app/static/media/Dr.Pooja Hinduja _ paediatrician, child specialist.a170e2d22f3d381e6843.png",
     "static/media/building.jpg": "/bmc-katni-react-app/static/media/building.33b064af2f8dfee9c2ee.jpg",
     "index.html": "/bmc-katni-react-app/index.html",
-    "main.e77e3753.css.map": "/bmc-katni-react-app/static/css/main.e77e3753.css.map",
-    "main.dd1a42a6.js.map": "/bmc-katni-react-app/static/js/main.dd1a42a6.js.map",
+    "main.32215383.css.map": "/bmc-katni-react-app/static/css/main.32215383.css.map",
+    "main.ec7a6a35.js.map": "/bmc-katni-react-app/static/js/main.ec7a6a35.js.map",
     "453.6b8c8b92.chunk.js.map": "/bmc-katni-react-app/static/js/453.6b8c8b92.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e77e3753.css",
-    "static/js/main.dd1a42a6.js"
+    "static/css/main.32215383.css",
+    "static/js/main.ec7a6a35.js"
   ]
 }
