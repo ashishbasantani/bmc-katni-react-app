@@ -4,7 +4,9 @@ import "./styles/variables.css";
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
 import About from "./components/About/About";
-import Services from "./components/Service/Services";
+import { Services } from "./components/Service/Services";
+import { Doctors } from "./components/Doctor/Doctors";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -21,6 +23,10 @@ function App() {
           <section id="services">
             <Services />
           </section>
+          <section id="doctors">
+            <Doctors />
+          </section>
+          <Footer />
         </Suspense>
       </main>
     </div>
