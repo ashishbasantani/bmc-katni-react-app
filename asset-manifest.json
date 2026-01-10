@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/bmckatni/static/css/main.e77e3753.css",
-    "main.js": "/bmckatni/static/js/main.4c50bce6.js",
-    "static/js/453.6b8c8b92.chunk.js": "/bmckatni/static/js/453.6b8c8b92.chunk.js",
-    "static/media/doctor.png": "/bmckatni/static/media/doctor.80682fa1b6bafed9d9a3.png",
-    "static/media/building.jpg": "/bmckatni/static/media/building.33b064af2f8dfee9c2ee.jpg",
-    "index.html": "/bmckatni/index.html",
-    "main.e77e3753.css.map": "/bmckatni/static/css/main.e77e3753.css.map",
-    "main.4c50bce6.js.map": "/bmckatni/static/js/main.4c50bce6.js.map",
-    "453.6b8c8b92.chunk.js.map": "/bmckatni/static/js/453.6b8c8b92.chunk.js.map"
+    "main.css": "/bmc-katni-react-app/static/css/main.e77e3753.css",
+    "main.js": "/bmc-katni-react-app/static/js/main.dd1a42a6.js",
+    "static/js/453.6b8c8b92.chunk.js": "/bmc-katni-react-app/static/js/453.6b8c8b92.chunk.js",
+    "static/media/doctor.png": "/bmc-katni-react-app/static/media/doctor.80682fa1b6bafed9d9a3.png",
+    "static/media/building.jpg": "/bmc-katni-react-app/static/media/building.33b064af2f8dfee9c2ee.jpg",
+    "index.html": "/bmc-katni-react-app/index.html",
+    "main.e77e3753.css.map": "/bmc-katni-react-app/static/css/main.e77e3753.css.map",
+    "main.dd1a42a6.js.map": "/bmc-katni-react-app/static/js/main.dd1a42a6.js.map",
+    "453.6b8c8b92.chunk.js.map": "/bmc-katni-react-app/static/js/453.6b8c8b92.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e77e3753.css",
-    "static/js/main.4c50bce6.js"
+    "static/js/main.dd1a42a6.js"
   ]
 }
