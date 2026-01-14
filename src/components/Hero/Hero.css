@@ -1,0 +1,291 @@
+/* ================= HERO ================= */
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  background: #cfe9da;
+  color: #355f4e;
+
+  padding: 6px 12px;
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.hero-section {
+  /* center the overall page container while keeping left-column content left-aligned */
+  min-height: 20vh;
+  background: #ffffff;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 28px 20px;
+}
+
+.hero-inner {
+  width: 100%;
+  max-width: 1400px;
+  display: grid;
+  grid-template-columns: 1fr 640px;
+  gap: 48px;
+  align-items: center;
+  margin: 0 auto;
+}
+
+/* ensure left column content is flush-left inside the centered container */
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* ================= LEFT ================= */
+
+.hero-tagline h1 {
+  font-size: 82px;
+  line-height: 0.95;
+  margin: 0;
+  font-weight: 700;
+  color: #1e1e1e;
+}
+
+.hero-desc {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #555;
+  max-width: 620px;
+}
+
+.hero-ctas {
+  margin-top: 28px;
+  display: flex;
+  gap: 16px;
+}
+
+.cta {
+  padding: 14px 22px;
+  border-radius: 28px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.cta.primary {
+  background: linear-gradient(135deg, #7b2fa3, #b96bd9);
+  color: #fff;
+  box-shadow: 0 10px 22px rgba(123,47,163,0.25);
+}
+
+.cta.secondary {
+  background: #fff;
+  border: 1px solid #e6e6e6;
+}
+
+/* ================= RIGHT IMAGE ================= */
+
+.hero-right {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* OUTER SOFT CONTAINER (EXPECTED DESIGN) */
+/* .image-shell {
+  position: relative;
+  background: #f5f6f7;
+  border-radius: 42px;
+  padding: 26px;
+  box-shadow: 0 40px 90px rgba(0,0,0,0.12);
+} */
+
+/* INNER IMAGE WRAP */
+.image-shell {
+  position: relative;
+  width: 560px;
+  height: 500px;
+
+  background: #f5f6f7;
+  border-radius: 0 0 0 48px;
+  padding: 24px;
+
+  box-shadow: 0 40px 90px rgba(0,0,0,0.12);
+}
+
+
+.image-mask {
+  width: 100%;
+  height: 100%;
+
+  background: #fff;
+  border-radius: 0 0 0 36px;
+
+  overflow: hidden;
+  /* position: relative; */
+}
+
+
+
+
+/* IMAGE ONLY */
+.hero-img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  display: block;
+
+  /* ONLY bottom-left rounded */
+  border-radius: 0 0 0 36px;
+}
+
+
+/* ================= 24/7 CARD ================= */
+
+/* Anchored, NOT centered */
+/* ================= 24/7 CARD ================= */
+
+.info-card {
+  position: absolute;
+  top: 110px;
+  left: -56px;
+
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 14px 18px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+  z-index: 5;
+}
+
+
+
+
+.info-title {
+  font-weight: 700;
+}
+
+.info-sub {
+  font-size: 13px;
+  color: #6b6b6b;
+}
+
+/* ================= BOOKING CARD ================= */
+
+.booking-card {
+  position: absolute;
+  right: -28px;
+  bottom: -28px;
+
+  background: #1f1f1f;
+  color: #ffffff;
+
+  border-radius: 18px;
+  padding: 16px 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  min-width: 260px;
+  box-shadow: 0 28px 60px rgba(0,0,0,0.35);
+}
+
+
+.booking-title {
+  font-weight: 700;
+}
+
+.booking-sub {
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1100px) {
+  .hero-inner {
+    grid-template-columns: 1fr 520px;
+  }
+
+  .hero-img {
+    width: 460px;
+  }
+
+  /* .info-card {
+    top: 32%;
+    left: 30%;
+  } */
+}
+
+@media (max-width: 900px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-right {
+    justify-content: center;
+    margin-top: 32px;
+  }
+
+  .hero-img {
+    width: 100%;
+    max-width: 520px;
+  }
+
+  /* .info-card {
+    top: 30%;
+    left: 24%;
+  } */
+
+  .booking-card {
+    right: 8px;
+    bottom: -14px;
+  }
+
+  .hero-tagline h1 {
+    font-size: 44px;
+  }
+}
+
+/* ================= FIX BROKEN STATS ================= */
+
+.hero-stats {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+  margin-top: 32px;
+}
+
+.hero-stats > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-num {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0b1b2b;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #5b6b75;
+  margin-top: 4px;
+}
+
+/* Prevent vertical stacking on small changes */
+@media (max-width: 900px) {
+  .hero-stats {
+    gap: 32px;
+  }
+}
+

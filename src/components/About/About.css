@@ -1,0 +1,224 @@
+/* ------------------------------------ */
+/* About Section Container */
+.about-section {
+  padding: 50px 24px;
+  background: #fff;
+  box-sizing: border-box;
+  font-family:inter;
+}
+
+.about-container {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* left media + right content */
+  gap: 20px; /* reduce gap to bring media closer to edge */
+  align-items: center;
+  position: relative;
+}
+
+/* ------------------------------------ */
+/* Media Column */
+.about-media {
+  display: flex;
+  flex-direction: row; /* horizontal layout */
+  gap: 40px; /* space between left and right card */
+  align-items: flex-start; /* align top edges */
+}
+
+/* Large left card */
+.media-large {
+  width: 380px;
+  height: 520px;
+  background: #d1d1d1;
+  border-radius: 24px;
+  box-shadow: 0 24px 48px rgba(15, 23, 42, 0.08);
+  flex-shrink: 0;
+}
+
+/* Right video card */
+.media-card--video {
+  width: 380px;
+  height: 520px;
+  background: #7a7a7a;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.12);
+  flex-shrink: 0;
+  overflow: hidden;
+  margin-top: 40px; /* optional: shift down a bit for visual balance */
+}
+
+/* Play button styling */
+.play-btn {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  transition: transform 220ms ease;
+}
+
+.play-btn:hover {
+  transform: translateY(-4px);
+}
+
+.play-btn svg {
+  display: block;
+}
+
+/* ------------------------------------ */
+/* Content Column */
+.about-content {
+  padding-left: 12px;
+  text-align: left;
+}
+
+/* Label above title */
+.about-label {
+  display: inline-block;
+  color: #4f6df5;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+/* Main title */
+.about-title {
+  margin: 6px 0 18px 0;
+  color: #0f1724;
+  font-size: 44px;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+/* Description text */
+.about-description {
+  color: #6b7280;
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+.about-description--muted {
+  opacity: 0.95;
+}
+
+/* ------------------------------------ */
+/* Features Section */
+.about-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  margin-top: 22px;
+  align-items: start;
+}
+
+.about-feature {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+/* Feature icon */
+.feature-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(79, 70, 229, 0.08);
+  color: #3740ff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  box-shadow: 0 10px 28px rgba(59, 130, 246, 0.06);
+  flex-shrink: 0;
+}
+
+.feature-body h4 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  color: #0f1724;
+}
+
+.feature-body p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ------------------------------------ */
+/* Responsive */
+@media (max-width: 980px) {
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 0 20px;
+  }
+
+  .about-media {
+    margin: 0 auto;
+    transform: scale(0.9);
+    height: 480px;
+  }
+
+  .media-large {
+    width: 320px;
+    height: 480px;
+  }
+
+  .media-card--video {
+    width: 300px;
+    height: 400px;
+    left: 160px;
+    top: 60px;
+  }
+
+  .about-title {
+    font-size: 36px;
+  }
+
+  .about-features {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+@media (max-width: 560px) {
+  .about-media {
+    transform: scale(0.75);
+    height: 360px;
+  }
+
+  .media-large {
+    display: none;
+  }
+
+  .media-card--video {
+    width: 100%;
+    max-width: 360px;
+    height: 220px;
+    left: 0;
+    top: 0;
+    border-radius: 12px;
+  }
+
+  .about-title {
+    font-size: 26px;
+  }
+
+  .about-section {
+    padding: 28px 12px;
+  }
+}
