@@ -1,0 +1,97 @@
+.service-card {
+  position: relative;
+  padding: 36px 32px;
+  border-radius: 28px;
+  min-height: 300px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+}
+
+/* Decorative circle (bottom-right) */
+.service-card::after {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  right: -48px;
+  bottom: -48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+/* Icon badge */
+.icon-wrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: #2b4bd6;
+}
+
+.icon-wrapper svg {
+  width: 28px;
+  height: 28px;
+}
+
+.service-card h3 {
+  font-size: 30px;
+  margin: 6px 0 14px 0;
+  color: #2b2b36;
+  font-weight: 700;
+}
+
+.service-card p {
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 22px;
+  color: #6b7280;
+}
+
+.learn-more {
+  font-size: 16px;
+  color: #7c3aed;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Theme variants (alternate pastel gradients like the design) */
+.theme-0 {
+  background: linear-gradient(135deg, #eaf6ff 0%, #eef6ff 100%);
+  color: #23396f;
+}
+.theme-0 .icon-wrapper { background: rgba(59,130,246,0.12); color: #2563eb; }
+
+.theme-1 {
+  background: linear-gradient(135deg, #f3eaff 0%, #f6eaff 100%);
+  color: #4b2563;
+}
+.theme-1 .icon-wrapper { background: rgba(139,92,246,0.12); color: #8b5cf6; }
+
+.theme-2 {
+  background: linear-gradient(135deg, #eaf7ff 0%, #eef8ff 100%);
+  color: #2b4bd6;
+}
+.theme-2 .icon-wrapper { background: rgba(59,130,246,0.12); color: #2563eb; }
+
+.theme-3 {
+  background: linear-gradient(135deg, #f6eaff 0%, #fbf0ff 100%);
+  color: #6f2b8a;
+}
+.theme-3 .icon-wrapper { background: rgba(139,92,246,0.12); color: #8b5cf6; }
+
+@media (max-width: 640px) {
+  .service-card { padding: 24px; min-height: 220px; }
+  .service-card h3 { font-size: 22px; }
+}
