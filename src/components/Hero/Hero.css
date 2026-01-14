@@ -125,7 +125,7 @@
   border-radius: 0 0 0 36px;
 
   overflow: hidden;
-  position: relative;
+  /* position: relative; */
 }
 
 
@@ -288,4 +288,3 @@
     gap: 32px;
   }
 }
-

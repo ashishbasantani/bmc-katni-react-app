@@ -1,5 +1,6 @@
 import React from "react";
 import "./ServiceCard.css";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   index: number;
@@ -14,6 +15,7 @@ export const ServiceCard: React.FC<Props> = ({
   description,
   icon,
 }) => {
+  const navigate = useNavigate();
   return (
     <div className={`service-card theme-${index % 4}`}>
       <div className="icon-wrapper" aria-hidden>
@@ -28,8 +30,11 @@ export const ServiceCard: React.FC<Props> = ({
 
       <p>{description}</p>
 
-      <span className="learn-more">
-        Learn more <span>→</span>
+      <span
+        className="learn-more"
+        onClick={() => navigate("/learn-more")}
+      >
+        Learn more →
       </span>
     </div>
   );

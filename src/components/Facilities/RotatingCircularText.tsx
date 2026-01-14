@@ -1,4 +1,5 @@
 import React from "react";
+// import "./RotatingCircularText.css";
 
 const RotatingCircularText: React.FC = () => {
   return (
@@ -29,8 +30,8 @@ const RotatingCircularText: React.FC = () => {
           textAnchor="start"
         >
           <textPath href="#circlePath" startOffset="0%">
-            BMC, Katni, Since 1995 • BMC, Katni, Since 1995 • BMC, Katni, Since
-            1995 • BMC, Katni, Since 1995 •
+            BMC, Katni, Since 1985 • BMC, Katni, Since 1985 • BMC, Katni, Since
+            1985 • BMC, Katni, Since 1985 •
           </textPath>
         </text>
 

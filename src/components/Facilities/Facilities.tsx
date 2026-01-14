@@ -1,6 +1,6 @@
 import React from "react";
 import "./Facilities.css";
-import hospitalbuilding from "../../assets/building.jpg";
+import checkup from "../../assets/building.jpg";
 import Patientroom from "../../assets/room.jpg";
 import medicalequipment from "../../assets/equipment.jpg";
 import RotatingCircularText from "./RotatingCircularText";
@@ -92,20 +92,20 @@ const Facilities: React.FC = () => {
             {/* Left Tall Image */}
             <div className="gallery-main">
               <img
-                src={hospitalbuilding}
-                alt="Hospital Building"
+                src={Patientroom}
+                alt="Patient Room"
                 className="gallery-image"
               />
             </div>
-
+            <div className="rotating-text-container">
             {/* SVG for rotating circular text */}
             <RotatingCircularText />
-
+            </div>
             {/* Right Stacked Images */}
             <div className="gallery-side">
               <img
-                src={Patientroom}
-                alt="Patient Room"
+                src={checkup}
+                alt="Checkup"
                 className="gallery-image-medium"
               />
               <img

@@ -10,7 +10,7 @@ const HeroSection: React.FC = () => {
         {/* LEFT */}
         <div className="hero-left">
           <div className="hero-badge">
-            ⭐ Trusted Healthcare Provider Since 1995
+            ⭐ Trusted Healthcare Provider Since 1985
           </div>
 
           <div className="hero-tagline">
