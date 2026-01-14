@@ -82,27 +82,26 @@ const Header: React.FC = () => {
         </div>
 
         <motion.div className="top-bar-right" variants={containerVariants} initial="hidden" animate="visible">
-          <motion.a
-            className="top-item"
-            variants={itemVariants}
-            href="https://www.google.com/maps/search/?api=1&query=Baba%20Madhav%20Shah%20Chikitsalay%2C%20Baba%20madhavshah%20chikitsalaya%2C%20Hospital%20Line%2C%20Madhav%20Nagar%2C%20Chanehata%2C%20Katni%2C%20Madhya%20Pradesh%20483504"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src={locationIcon} alt="Location" className="top-icon" />
-            Katni, Madhya Pradesh 483504
-          </motion.a>
+  <motion.a className="top-item" variants={itemVariants} href="https://www.google.com/maps/search/?api=1&query=Baba%20Madhav%20Shah%20Chikitsalay%2C%20Baba%20madhavshah%20chikitsalaya%2C%20Hospital%20Line%2C%20Madhav%20Nagar%2C%20Chanehata%2C%20Katni%2C%20Madhya%20Pradesh%20483504" target="_blank">
+    <img src={locationIcon} alt="Location" className="top-icon" />
+    Katni, Madhya Pradesh 483504
+  </motion.a>
 
-          <motion.a className="top-item" variants={itemVariants} href="mailto:bmckatni@gmail.com">
-            <img src={mailIcon} alt="Email" className="top-icon" />
-            bmckatni@gmail.com
-          </motion.a>
+  <span className="top-separator">|</span>
 
-          <motion.a className="top-item" variants={itemVariants} href="tel:+917622220620">
-            <img src={phoneIcon} alt="Phone" className="top-icon" />
-            +91 7622220620
-          </motion.a>
+  <motion.a className="top-item" variants={itemVariants} href="mailto:bmckatni@gmail.com">
+    <img src={mailIcon} alt="Email" className="top-icon" />
+    bmckatni@gmail.com
+  </motion.a>
+
+  <span className="top-separator">|</span>
+
+  <motion.a className="top-item" variants={itemVariants} href="tel:+917622220620">
+    <img src={phoneIcon} alt="Phone" className="top-icon" />
+    +91 7622220620
+  </motion.a>
         </motion.div>
+
       </motion.div>
 
       {/* Main Navbar */}
