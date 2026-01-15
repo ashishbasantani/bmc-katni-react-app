@@ -1,37 +1,23 @@
 import React from "react";
 import { motion } from "framer-motion";
 import "./About.css";
+import sampleVideo from "../../assets/videos/about.mp4"; // make sure path is correct
 
 const About: React.FC = () => {
   return (
     <section id="about-us" className="about-section">
       <div className="about-container">
         <div className="about-media">
-          <div className="media-large" aria-hidden>
-            {/* large rounded card */}
-          </div>
-
-          <div className="media-stack">
-            <div className="media-card media-card--video">
-              <button
-                className="play-btn"
-                aria-label="Play video"
-                onClick={() => {
-                  // placeholder behavior — open modal or play video if attached later
-                  const el = document.querySelector(".play-btn");
-                  el?.classList.toggle("played");
-                }}
-              >
-                <svg viewBox="0 0 64 64" width="34" height="34" aria-hidden>
-                  <circle cx="32" cy="32" r="30" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.9)" strokeWidth="2" />
-                  <polygon points="26,20 26,44 46,32" fill="rgba(255,255,255,0.95)" />
-                </svg>
-              </button>
-            </div>
-
-            <div className="media-card media-card--small" aria-hidden>
-              {/* small rounded card */}
-            </div>
+          <div className="media-video-wrapper">
+            <video
+              src={sampleVideo}
+              autoPlay
+              muted
+              loop
+              className="about-video"
+            >
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
 
@@ -45,7 +31,7 @@ const About: React.FC = () => {
           <h2 className="about-title">Know about Us</h2>
 
           <p className="about-description">
-            With over three decades of healthcare service, BMC Hospital stands as a trusted multispecialty hospital in Katni. As a modern healthcare institution, we are committed to ethical, patient-focused, and high-quality medical care.
+            With over four decades of healthcare service, BMC Hospital stands as a trusted multispecialty hospital in Katni. As a modern healthcare institution, we are committed to ethical, patient-focused, and high-quality medical care.
           </p>
 
           <p className="about-description about-description--muted">

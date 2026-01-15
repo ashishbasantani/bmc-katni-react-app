@@ -15,13 +15,13 @@ export const Doctors = () => {
 
       <div className="doctor-grid">
         <DoctorCard name="Dr. Dharmendra Bagri" role="Medicine" image={doctor1} />
-        <DoctorCard name="Dr. Mayank Shrotriye" role="Orthopaedics" image={doctor2} />
+        <DoctorCard name="Dr. Mayank Shrotriye" role="Orthopedics" image={doctor2} />
         <DoctorCard name="Dr. Meenakshi Pandey" role="Obstetrics and Gynaecology" image={doctor3} />
         <DoctorCard name="Dr. Pooja Hinduja" role="Paediatrician, Child Specialist" image={doctor4} />
         <DoctorCard name="Dr. R.Harchandani" role="Surgical Specialist" image={doctor5} />
       </div>
 
-      <button className="outline-btn">View more Experts</button>
+      {/* <button className="outline-btn">View more Experts</button> */}
     </section>
   );
 };

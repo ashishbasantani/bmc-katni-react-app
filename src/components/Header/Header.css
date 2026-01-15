@@ -66,6 +66,53 @@
   font-weight: 500;
 }
 
+/* =========================
+   LANGUAGE TOGGLE BUTTON
+========================= */
+
+/* =========================
+   LANGUAGE TOGGLE BUTTON
+========================= */
+
+.lang-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* space between icon and text */
+  background: rgba(255, 255, 255, 0.15); /* subtle glassy background */
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 999px; /* fully rounded */
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px); /* glass effect */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.lang-toggle-btn:hover {
+  background: #fff;
+  color: #007bff;
+  border-color: #007bff;
+  transform: scale(1.05);
+}
+
+/* optional: small flag icon inside button */
+.lang-toggle-btn img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  flex-shrink: 0;
+  border-radius: 50%; /* optional: rounded icon */
+  transition: transform 0.3s ease;
+}
+
+.lang-toggle-btn:hover img {
+  transform: scale(1.1);
+}
+
+
 
 /* =========================
    NAVBAR
@@ -100,6 +147,7 @@
 }
 
 .logo-image {
+  /* image-rendering:optimizeQuality; */
   height: 48px;
   width: auto;
   object-fit: contain;

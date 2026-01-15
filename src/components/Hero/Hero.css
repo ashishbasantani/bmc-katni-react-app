@@ -4,20 +4,16 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-
   background: #cfe9da;
   color: #355f4e;
-
   padding: 6px 12px;
   border-radius: 999px;
-
   font-size: 12px;
   font-weight: 600;
   margin-bottom: 18px;
 }
 
 .hero-section {
-  /* center the overall page container while keeping left-column content left-aligned */
   min-height: 20vh;
   background: #ffffff;
   display: flex;
@@ -30,13 +26,12 @@
   width: 100%;
   max-width: 1400px;
   display: grid;
-  grid-template-columns: 1fr 640px;
+  grid-template-columns: 1fr minmax(300px, 640px); /* FIX */
   gap: 48px;
   align-items: center;
   margin: 0 auto;
 }
 
-/* ensure left column content is flush-left inside the centered container */
 .hero-left {
   display: flex;
   flex-direction: column;
@@ -47,8 +42,8 @@
 /* ================= LEFT ================= */
 
 .hero-tagline h1 {
-  font-size: 82px;
-  line-height: 0.95;
+  font-size: clamp(32px, 6vw, 82px); /* FIX */
+  line-height: 1;
   margin: 0;
   font-weight: 700;
   color: #1e1e1e;
@@ -94,80 +89,47 @@
   justify-content: flex-end;
 }
 
-/* OUTER SOFT CONTAINER (EXPECTED DESIGN) */
-/* .image-shell {
-  position: relative;
-  background: #f5f6f7;
-  border-radius: 42px;
-  padding: 26px;
-  box-shadow: 0 40px 90px rgba(0,0,0,0.12);
-} */
-
-/* INNER IMAGE WRAP */
 .image-shell {
   position: relative;
-  width: 560px;
-  height: 500px;
-
+  width: 100%;                 /* FIX */
+  max-width: 560px;           /* FIX */
+  aspect-ratio: 56 / 50;      /* FIX */
   background: #f5f6f7;
   border-radius: 0 0 0 48px;
   padding: 24px;
-
-  box-shadow: 0 40px 90px rgba(0,0,0,0.12);
 }
-
 
 .image-mask {
   width: 100%;
   height: 100%;
-
   background: #fff;
   border-radius: 0 0 0 36px;
-
   overflow: hidden;
-  /* position: relative; */
 }
 
-
-
-
-/* IMAGE ONLY */
 .hero-img {
   width: 100%;
   height: 100%;
-
   object-fit: cover;
   display: block;
-
-  /* ONLY bottom-left rounded */
   border-radius: 0 0 0 36px;
 }
 
-
-/* ================= 24/7 CARD ================= */
-
-/* Anchored, NOT centered */
 /* ================= 24/7 CARD ================= */
 
 .info-card {
   position: absolute;
-  top: 110px;
+  top: 60px;
   left: -56px;
-
   background: #ffffff;
   border-radius: 16px;
   padding: 14px 18px;
-
   display: flex;
   align-items: center;
   gap: 12px;
-
   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
   z-index: 5;
 }
-
-
-
 
 .info-title {
   font-weight: 700;
@@ -184,21 +146,16 @@
   position: absolute;
   right: -28px;
   bottom: -28px;
-
   background: #1f1f1f;
   color: #ffffff;
-
   border-radius: 18px;
   padding: 16px 20px;
-
   display: flex;
   align-items: center;
   gap: 14px;
-
   min-width: 260px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  box-shadow: 0 0px 60px rgba(0,0,0,0.35);
 }
-
 
 .booking-title {
   font-weight: 700;
@@ -211,21 +168,6 @@
 
 /* ================= RESPONSIVE ================= */
 
-@media (max-width: 1100px) {
-  .hero-inner {
-    grid-template-columns: 1fr 520px;
-  }
-
-  .hero-img {
-    width: 460px;
-  }
-
-  /* .info-card {
-    top: 32%;
-    left: 30%;
-  } */
-}
-
 @media (max-width: 900px) {
   .hero-inner {
     grid-template-columns: 1fr;
@@ -233,26 +175,19 @@
 
   .hero-right {
     justify-content: center;
-    margin-top: 32px;
+    margin-top: 24px;
   }
 
-  .hero-img {
-    width: 100%;
-    max-width: 520px;
+  .info-card {
+    top: 5px;        /* FIX */
+    left: -22px;       /* FIX */
+    transform: scale(0.9);
   }
-
-  /* .info-card {
-    top: 30%;
-    left: 24%;
-  } */
 
   .booking-card {
-    right: 8px;
-    bottom: -14px;
-  }
-
-  .hero-tagline h1 {
-    font-size: 44px;
+    right: 12px;      /* FIX */
+    bottom: 12px;     /* FIX */
+    transform: scale(0.9);
   }
 }
 
@@ -282,7 +217,6 @@
   margin-top: 4px;
 }
 
-/* Prevent vertical stacking on small changes */
 @media (max-width: 900px) {
   .hero-stats {
     gap: 32px;

@@ -1,8 +1,12 @@
 import React from "react";
-import heroImage from "../../assets/building.jpg";
+import heroImage from "../../assets/Bmc_home_page.png";
 import "./Hero.css";
+import { href, useNavigate } from "react-router-dom";
+
 
 const HeroSection: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="hero-section">
       <div className="hero-inner">
@@ -24,8 +28,8 @@ const HeroSection: React.FC = () => {
           </p>
 
           <div className="hero-ctas">
-            <button className="cta primary">Enquiry →</button>
-            <button className="cta secondary">📞 Emergency Call</button>
+            <button className="cta primary" onClick={() => navigate("/enquiry")}>Enquiry →</button>
+            <button className="cta secondary" onClick={() => window.location.href = "tel: +91 7622220620"}>📞 Emergency Call</button>
           </div>
 
           <hr className="hero-divider" />

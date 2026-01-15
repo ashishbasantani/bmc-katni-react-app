@@ -1,0 +1,277 @@
+/* =========================
+   BASE
+========================= */
+
+.ortho-service-details {
+  width: 100%;
+  font-family: "Inter", sans-serif;
+  color: #222;
+}
+
+/* Container stays centered */
+.ortho-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.ortho-service-hero {
+  position: relative;
+  min-height: 300px;
+  display: flex;
+  align-items: flex-start;
+  background-image:
+    linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.92) 0%,
+      rgba(245, 249, 255, 0.75) 59%,
+      rgba(245, 249, 255, 0.35) 70%,
+      rgba(245, 249, 255, 0.1) 100%
+    ),
+    url("../../assets/orthopedic-hero-banner.jpg"); /* change to ortho banner if needed */
+  background-size: cover;
+  background-position: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+/* Hero content */
+.ortho-service-hero-content {
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding-top: 56px;
+  color: #000;
+}
+
+/* Badge */
+.ortho-badge {
+  width: fit-content;
+  background-color: rgb(239, 246, 255);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  margin-bottom: 14px;
+  color: rgb(21, 93, 252);
+}
+
+/* Headings */
+.ortho-service-hero-content h1 {
+  font-size: 50px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.ortho-service-hero-content h3 {
+  font-size: 21px;
+  font-weight: 500;
+  color: #59168b;
+  margin-bottom: 16px;
+}
+
+/* Text */
+.ortho-service-hero-content p {
+  font-size: 16px;
+  line-height: 1.65;
+  max-width: 520px;
+  margin-bottom: 24px;
+}
+
+/* Buttons */
+.ortho-hero-actions {
+  display: flex;
+  gap: 18px;
+}
+
+.ortho-primary-btn {
+  background: #602962;
+  color: #fff;
+  padding: 14px 34px;
+  border-radius: 10px;
+  border: none;
+}
+
+.ortho-outline-btn {
+  background: transparent;
+  color: #602962;
+  padding: 14px 34px;
+  border-radius: 10px;
+  border: 2px solid #602962;
+}
+
+/* =========================
+   WHY CHOOSE US
+========================= */
+
+.ortho-why-choose {
+  padding: 90px 0;
+  background: #ffffff;
+}
+
+.ortho-why-choose .ortho-container {
+  text-align: center;
+}
+
+.ortho-why-choose h2 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.ortho-subtitle {
+  font-size: 16px;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto 48px;
+}
+
+/* Cards */
+.ortho-choose-grid {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+}
+
+.ortho-choose-card {
+  background: #ffffff;
+  width: 280px;
+  padding: 32px 26px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  text-align: left;
+}
+
+/* =========================
+   CONDITIONS
+========================= */
+
+.ortho-conditions-section {
+  background: #ffffff;
+}
+
+.ortho-conditions-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 540px;
+  align-items: center;
+  column-gap: 72px;
+}
+
+.ortho-conditions-left {
+  padding-left: 40px;
+}
+
+.ortho-conditions-left h2 {
+  font-size: 42px;
+  font-weight: 700;
+}
+
+.ortho-conditions-list {
+  list-style: none;
+  margin-left: 111px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px 32px;
+  text-align: left;
+}
+
+.ortho-conditions-list li {
+  position: relative;
+  padding-left: 38px;
+}
+
+.ortho-conditions-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #2563eb;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ortho-conditions-right img {
+  width: 540px;
+  border-radius: 24px;
+  box-shadow: 0 18px 48px rgba(15, 23, 42, 0.08);
+}
+
+/* =========================
+   FAQ
+========================= */
+
+.ortho-faq-section {
+  padding: 80px 0;
+  background: #fafafa;
+}
+
+.ortho-faq-title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.ortho-faq-list {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.ortho-faq-item {
+  background: #fff;
+  border-radius: 14px;
+  margin-bottom: 18px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.06);
+}
+
+.ortho-faq-question {
+  width: 100%;
+  padding: 22px;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  font-weight: bold;
+}
+
+.ortho-faq-icon {
+  width: 10px;
+  height: 10px;
+  border-right: 3px solid #2563eb;
+  border-bottom: 3px solid #2563eb;
+  transform: rotate(45deg);
+}
+
+.ortho-faq-item.active .ortho-faq-icon {
+  transform: rotate(-135deg);
+}
+.ortho-faq-item {
+  overflow: hidden;
+}
+
+.ortho-faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.ortho-faq-answer p {
+  padding: 0 22px 22px;
+  font-size: 16px;
+  color: #555;
+  line-height: 1.7;
+}
+
+.ortho-faq-item.active .ortho-faq-answer {
+  max-height: 200px; /* increase if answer is longer */
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import "./Facilities.css";
-import checkup from "../../assets/building.jpg";
-import Patientroom from "../../assets/room.jpg";
+import checkup from "../../assets/checkup.jpg";
+import Patientroom from "../../assets/room.png";
 import medicalequipment from "../../assets/equipment.jpg";
 import RotatingCircularText from "./RotatingCircularText";
 
@@ -42,7 +42,7 @@ const Facilities: React.FC = () => {
           </div>
 
           <p className="about-description">
-            At BMC hospital, we are committed to delivering world-class healthcare
+            At BMC, we are committed to delivering world-class healthcare
             supported by modern infrastructure, advanced medical technology, and
             patient-focused services. We ensure comfort, safety, and high
             standards of medical care. Our 24/7 Emergency and Trauma Care unit is
@@ -105,7 +105,7 @@ const Facilities: React.FC = () => {
             <div className="gallery-side">
               <img
                 src={checkup}
-                alt="Checkup"
+                alt="machine"
                 className="gallery-image-medium"
               />
               <img
