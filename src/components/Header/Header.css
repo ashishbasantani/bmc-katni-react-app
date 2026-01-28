@@ -24,7 +24,7 @@
 }
 
 .top-bar-left span {
-  color: #FEE8FF;
+  color: #fee8ff;
   font-weight: 600;
 }
 
@@ -32,87 +32,21 @@
   display: flex;
   align-items: center;
   gap: 24px;
-  flex-wrap: nowrap;
 }
 
-/* Icon + text container */
 .top-item {
   display: flex;
   align-items: center;
   gap: 8px;
-  white-space: nowrap;
-  transition: var(--transition-smooth);
-  padding: 4px 12px;
-  border-radius: var(--radius-full);
-  color: var(--bg-white); /* ensure link text is white */
+  color: var(--bg-white);
+  text-decoration: none;
 }
 
-.top-item:hover {
-  background: rgba(255, 255, 255, 0.08);
-}
-
-/* Icons */
 .top-icon {
   width: 16px;
   height: 16px;
-  object-fit: contain;
-  flex-shrink: 0;
   filter: brightness(0) invert(1);
 }
-
-.top-separator {
-  margin: 0 10px;
-  color: rgba(255, 255, 255, 0.6);
-  font-weight: 500;
-}
-
-/* =========================
-   LANGUAGE TOGGLE BUTTON
-========================= */
-
-/* =========================
-   LANGUAGE TOGGLE BUTTON
-========================= */
-
-.lang-toggle-btn {
-  display: flex;
-  align-items: center;
-  gap: 6px; /* space between icon and text */
-  background: rgba(255, 255, 255, 0.15); /* subtle glassy background */
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  color: #fff;
-  padding: 6px 14px;
-  border-radius: 999px; /* fully rounded */
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(6px); /* glass effect */
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-}
-
-.lang-toggle-btn:hover {
-  background: #fff;
-  color: #007bff;
-  border-color: #007bff;
-  transform: scale(1.05);
-}
-
-/* optional: small flag icon inside button */
-.lang-toggle-btn img {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-  flex-shrink: 0;
-  border-radius: 50%; /* optional: rounded icon */
-  transition: transform 0.3s ease;
-}
-
-.lang-toggle-btn:hover img {
-  transform: scale(1.1);
-}
-
-
 
 /* =========================
    NAVBAR
@@ -123,8 +57,7 @@
   box-shadow: var(--shadow-lg);
   position: sticky;
   top: 0;
-  z-index: var(--z-sticky);
-  backdrop-filter: var(--glass-backdrop);
+  z-index: 999;
 }
 
 .navbar-container {
@@ -141,26 +74,17 @@
 ========================= */
 
 .logo {
+  cursor: pointer;
   display: flex;
   align-items: center;
-  cursor: pointer;
 }
 
 .logo-image {
-  /* image-rendering:optimizeQuality; */
   height: 48px;
-  width: auto;
-  object-fit: contain;
-  transition: var(--transition-smooth);
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-}
-
-.logo:hover .logo-image {
-  transform: scale(1.05);
 }
 
 /* =========================
-   NAVIGATION LINKS
+   DESKTOP NAV LINKS
 ========================= */
 
 .nav-links {
@@ -169,56 +93,17 @@
   gap: 26px;
 }
 
-.nav-links a,
-.dropdown-trigger {
-  text-decoration: none;
-  color: var(--text-primary);
-  font-weight: 500;
-  cursor: pointer;
-  transition: var(--transition-smooth);
-  padding: 8px 4px;
-  border-bottom: 2px solid transparent;
-  position: relative;
+.nav-link {
   background: none;
   border: none;
-  font-size: 15px;
+  cursor: pointer;
 }
 
 .nav-link-text {
-  text-decoration: none;
-  color: var(--text-primary);
-  font-weight: 500;
-  cursor: pointer;
-  transition: var(--transition-smooth);
-  padding: 8px 4px;
-  border-bottom: 2px solid transparent;
-  position: relative;
-  background: none;
-  border: none;
   font-size: 15px;
-  display: inline-block;
-}
-
-.nav-links a::after,
-.dropdown-trigger::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -6px;
-  left: 0;
-  background: var(--primary-gradient);
-  transition: width var(--transition-smooth);
-}
-
-.nav-links a:hover::after,
-.dropdown-trigger:hover::after {
-  width: 100%;
-}
-
-.nav-links a:hover,
-.dropdown-trigger:hover {
-  color: var(--primary-blue);
+  font-weight: 500;
+  color: var(--text-primary);
+  position: relative;
 }
 
 .nav-link-text::after {
@@ -229,145 +114,201 @@
   bottom: -6px;
   left: 0;
   background: var(--primary-gradient);
-  transition: width var(--transition-smooth);
+  transition: width 0.3s ease;
 }
 
 .nav-link-text:hover::after {
   width: 100%;
 }
 
-.nav-link-text:hover {
-  color: var(--primary-blue);
-}
-
 /* =========================
-   DROPDOWN
-========================= */
-
-.dropdown {
-  position: relative;
-}
-
-.dropdown-trigger {
-  padding: 8px 12px;
-  border-radius: 6px;
-  transition: var(--transition-smooth);
-}
-
-.dropdown-trigger:hover {
-  background: rgba(102, 126, 234, 0.1);
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: 40px;
-  left: 0;
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-backdrop);
-  border: var(--glass-border);
-  box-shadow: var(--shadow-xl);
-  border-radius: var(--radius-lg);
-  padding: 12px 0;
-  min-width: 160px;
-  z-index: var(--z-dropdown);
-  overflow: hidden;
-}
-
-.dropdown-menu a {
-  display: block;
-  padding: 12px 16px;
-  color: var(--text-primary);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  transition: var(--transition-smooth);
-  position: relative;
-}
-
-.dropdown-menu a::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 0;
-  height: 100%;
-  background: var(--primary-gradient);
-  opacity: 0.1;
-  transition: width var(--transition-smooth);
-  z-index: -1;
-}
-
-.dropdown-menu a:hover::before {
-  width: 100%;
-}
-
-.dropdown-menu a:hover {
-  color: var(--primary-blue);
-  padding-left: 20px;
-}
-
-/* =========================
-   APPOINTMENT BUTTON
+   DESKTOP APPOINTMENT BUTTON
 ========================= */
 
 .appointment-btn {
   background: white;
-  border: 1px solid #232B63;
-  color: #232B63;
-  padding: 16px 24px;
+  border: 1px solid #232b63;
+  color: #232b63;
+  padding: 14px 22px;
   border-radius: 20px;
   font-weight: 600;
   cursor: pointer;
-  transition: var(--transition-smooth);
-  white-space: nowrap;
-  font-size: 14px;
   box-shadow: var(--shadow-md);
-  position: relative;
-  overflow: hidden;
-}
-
-.appointment-btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s;
+  transition: all 0.3s ease;
 }
 
 .appointment-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  background: #232b63;
+  color: #fff;
 }
 
-.appointment-btn:hover::before {
-  left: 100%;
+/* =========================
+   HAMBURGER
+========================= */
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
 }
 
-.appointment-btn:active {
-  transform: translateY(0);
+.hamburger span {
+  width: 26px;
+  height: 3px;
+  background: #000000;
+  border-radius: 4px;
+  transition: all 0.3s ease;
 }
+
+/* =========================
+   MOBILE MENU (POLISHED)
+========================= */
+
+.mobile-menu {
+  position: fixed;
+  left: 0;
+  top: 70px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  box-shadow: var(--shadow-xl);
+  animation: slideDown 0.35s ease;
+  z-index: 998;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-menu button {
+  width: 100%;
+  padding: 16px 0;
+  border: none;
+  background: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: #232b63;
+  cursor: pointer;
+  text-align: center; /* YOU ASKED FOR CENTER */
+  transition: background 0.25s ease;
+}
+
+.mobile-menu button:hover {
+  background: rgba(35, 43, 99, 0.08);
+}
+/* =========================
+   FLOATING APPOINTMENT BADGE
+========================= */
+
+.appointment-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 120px;
+  height: 140px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 999;
+  transition: transform 0.3s ease;
+}
+
+.appointment-float:hover {
+  transform: scale(1.05);
+}
+
+/* Circular text */
+.circular-text {
+  position: absolute;
+  top: -10px;
+  width: 140px;
+  height: 140px;
+}
+
+.circular-text text {
+  font-size: 12px;
+  font-weight: 600;
+  fill: #1f3a8a;
+  letter-spacing: 2px;
+}
+
+/* Center icon */
+.appointment-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #1f3a8a;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  z-index: 2;
+}
+
+/* Bottom label */
+.appointment-label {
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1f3a8a;
+  text-align: center;
+}
+
+/* Hide on desktop if needed */
+@media (min-width: 769px) {
+  .AppointmentBadge {
+    display: none;
+  }
+}
+
+/* Box below appointment SVG (like reference image) */
+.appointment-text-box {
+  margin-top: 6px;
+  background: #ffffff;
+  padding: 6px 12px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Text inside the box */
+.appointment-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: #000000;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+
 
 /* =========================
    RESPONSIVE
 ========================= */
 
-@media (max-width: 1024px) {
-  .nav-links {
-    gap: 16px;
-    font-size: 14px;
-  }
-
-  .appointment-btn {
-    padding: 10px 20px;
-    font-size: 12px;
-  }
-}
-
 @media (max-width: 768px) {
+
   .top-bar {
+    display: none;
     flex-direction: column;
     gap: 8px;
     text-align: center;
@@ -388,36 +329,50 @@
     padding: 12px 20px;
   }
 
-  .nav-links {
-    gap: 12px;
-    display: none;
-  }
-
+  .nav-links,
   .appointment-btn {
-    padding: 8px 16px;
-  }
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 1024px) {
-  .nav-links {
     display: none;
   }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* =========================
+   MOBILE 3D SVG APPOINTMENT BUTTON
+========================= */
+@media (max-width: 768px) {
+
+  /* 3D space for SVG */
+  .AppointmentBadge {
+    perspective: 1000px;
+  }
+
+  /* SVG as real button */
+  .AppointmentBadge svg {
+    transform-style: preserve-3d;
+    transition:
+      transform 0.25s ease,
+      filter 0.25s ease;
+    filter:
+      drop-shadow(0 6px 10px rgba(0, 0, 0, 0.25))
+      drop-shadow(0 14px 30px rgba(0, 0, 0, 0.35));
+  }
+
+  /* Hover / touch highlight */
+  .AppointmentBadge:hover svg {
+    transform: translateZ(25px) rotateX(10deg) rotateY(-10deg);
+    filter:
+      drop-shadow(0 10px 18px rgba(0, 0, 0, 0.35))
+      drop-shadow(0 22px 45px rgba(0, 0, 0, 0.5));
+  }
+
+  /* Tap / press-down effect */
+  .AppointmentBadge:active svg {
+    transform: translateZ(6px) scale(0.96);
+    filter:
+      drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35));
+  }
 }
 
-@media (max-width: 768px) {
-  .top-bar {
-    flex-direction: column;
-    gap: 6px;
-    text-align: center;
-  }
-
-  .top-bar-right {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-  }
 }
