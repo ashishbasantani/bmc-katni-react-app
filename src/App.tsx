@@ -1,7 +1,5 @@
-import React, { Suspense, useEffect } from "react";
+import React, { Suspense, lazy, ReactNode, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import "./App.css";
-import "./styles/variables.css";
 
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
@@ -10,57 +8,100 @@ import { Services } from "./components/Service/Services";
 import { Doctors } from "./components/Doctor/Doctors";
 import Footer from "./components/Footer/Footer";
 import Facilities from "./components/Facilities/Facilities";
+import Breadcrumbs from "./components/Breadcrumbs/Breadcrumbs";
 
-import SurgeryLearnMore from "./components/Service/SurgeryLearnMore";
-import OrthopedicsLearnMore from "./components/Service/OrthopedicsLearnMore";
-import MedicineLearnMore from "./components/Service/MedicineLearnMore";
-import DentalCareLearnMore from "./components/Service/DentalCareLearnMore";
+const SurgeryLearnMore = lazy(() => import("./components/Service/SurgeryLearnMore"));
+const OrthopedicsLearnMore = lazy(() => import("./components/Service/OrthopedicsLearnMore"));
+const MedicineLearnMore = lazy(() => import("./components/Service/MedicineLearnMore"));
+const DentalCareLearnMore = lazy(() => import("./components/Service/DentalCareLearnMore"));
 
+interface SectionProps {
+  id: string;
+  children: ReactNode;
+}
 
+const Section: React.FC<SectionProps> = ({ id, children }) => (
+  <section id={id} className="w-full">
+    {children}
+  </section>
+);
 
-function App() {
+const HomePage: React.FC = () => {
   const location = useLocation();
 
-  // Scroll to section when coming from other pages
   useEffect(() => {
-  if (location.hash) {
-    const id = location.hash.replace("#", "");
-    setTimeout(() => {
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    }, 200);
-  } else {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-}, [location.pathname, location.hash]);
+    const scrollToId = location.state?.scrollTo;
+
+    if (scrollToId) {
+      setTimeout(() => {
+        const el = document.getElementById(scrollToId);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  }, [location]);
 
   return (
-    <div className="App">
-      <Header />
+    <>
+      <Section id="home">
+        <Hero />
+      </Section>
 
-      <main>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Routes location={location} key={location.pathname}>
-          <Route
-            path="/"
-            element={
-              <>
-                <section id="home"><Hero /></section>
-                <section id="facilities"><Facilities /></section>
-                <section id="about-us"><About /></section>
-                <section id="services"><Services /></section>
-                <section id="doctors"><Doctors /></section>
-              </>
-            }
-          />
-          <Route path="/services/dentalCare" element={<DentalCareLearnMore />}/>
-          <Route path="/services/orthopedics" element={<OrthopedicsLearnMore />} />
-          <Route path="/services/medicine" element={<MedicineLearnMore />} />
-          <Route path="/services/surgery" element={<SurgeryLearnMore />} />
-        </Routes>
-        <Footer />
+      <Section id="facilities">
+        <Facilities />
+      </Section>
+
+      <Section id="about-us">
+        <About />
+      </Section>
+
+      <Section id="services">
+        <Services />
+      </Section>
+
+      <Section id="doctors">
+        <Doctors />
+      </Section>
+    </>
+  );
+};
+
+function App() {
+  return (
+    <div
+      className="App font-sans w-full min-h-screen"
+      style={{
+        color: "var(--text-primary)",
+        backgroundColor: "var(--bg-page)",
+      }}
+    >
+      <Header />
+      <Breadcrumbs />
+
+      <main className="flex flex-col w-full">
+        <Suspense
+          fallback={
+            <div className="flex justify-center py-[var(--spacing-3xl)]">
+              <div
+                className="w-10 h-10 border-4 rounded-full animate-spin"
+                style={{
+                  borderColor: "var(--border-light)",
+                  borderTopColor: "var(--accent-blue)",
+                }}
+              />
+            </div>
+          }
+        >
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/services/dentalCare" element={<DentalCareLearnMore />} />
+            <Route path="/services/orthopedics" element={<OrthopedicsLearnMore />} />
+            <Route path="/services/medicine" element={<MedicineLearnMore />} />
+            <Route path="/services/surgery" element={<SurgeryLearnMore />} />
+          </Routes>
         </Suspense>
       </main>
+
+      <Footer />
     </div>
   );
 }

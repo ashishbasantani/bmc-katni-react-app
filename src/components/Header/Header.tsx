@@ -1,173 +1,138 @@
-import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useNavigate } from "react-router-dom";
-import "./Header.css";
-import { useNavigation } from "../../hooks/useNavigation";
+import React, { useState, useCallback } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { Phone, Mail, Facebook, Instagram } from "lucide-react";
 import LanguageToggle from "../LanguageToggle";
-import AppointmentBadge from "./AppointmentBadge";
 
-import phoneIcon from "../../assets/icons/phone.png";
-import mailIcon from "../../assets/icons/mail.png";
-import locationIcon from "../../assets/icons/location.png";
-
-const Header: React.FC = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { handleNavLinkClick } = useNavigation();
+const Header = () => {
+  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
-  const menuRef = useRef<HTMLDivElement | null>(null);
+  const location = useLocation();
 
   const navLinks = [
-    { label: "Home", sectionId: "home" },
-    { label: "Facilities", sectionId: "facilities" },
-    { label: "About Us", sectionId: "about-us" },
-    { label: "Services", sectionId: "services" },
-    { label: "Doctors", sectionId: "doctors" },
+    { label: "Home", id: "home" },
+    { label: "Facilities", id: "facilities" },
+    { label: "About Us", id: "about-us" },
+    { label: "Services", id: "services" },
+    { label: "Doctors", id: "doctors" },
   ];
 
-  // ✅ Close mobile menu on scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      if (isMobileMenuOpen) {
-        setIsMobileMenuOpen(false);
+  const goTo = useCallback(
+    (id: string) => {
+      if (location.pathname !== "/") {
+        navigate("/", { state: { scrollTo: id } });
+      } else {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
       }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [isMobileMenuOpen]);
-
-  // ✅ Reset scroll when menu opens
-  useEffect(() => {
-    if (isMobileMenuOpen && menuRef.current) {
-      menuRef.current.scrollTop = 0;
-    }
-  }, [isMobileMenuOpen]);
-
-  const handleNavClick = (sectionId: string, label: string) => {
-    navigate(`/#${sectionId}`);
-    handleNavLinkClick(label);
-    setIsMobileMenuOpen(false);
-  };
+      setOpen(false);
+    },
+    [navigate, location.pathname]
+  );
 
   return (
     <>
-      {/* ================= TOP BAR ================= */}
-      <div className="top-bar">
-        <div className="top-bar-left">
-          <span>Every life is Invaluable</span>
-        </div>
+      {/* Top Bar */}
+      <div
+        className="hidden md:block py-[var(--spacing-sm)] text-[var(--text-inverse)] text-xs"
+        style={{ backgroundColor: "var(--primary-purple)" }}
+      >
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+          <div className="flex items-center gap-6">
+            <span className="flex items-center gap-2">
+              <Mail className="w-[14px] h-[14px]" />
+              bmchospital@gmail.com
+            </span>
+            <span className="flex items-center gap-2">
+              <Phone className="w-[14px] h-[14px]" />
+              +91 7012344405
+            </span>
+          </div>
 
-        <div className="top-bar-right">
-          <a
-            className="top-item"
-            href="https://www.google.com/maps/search/?api=1&query=Baba%20Madhav%20Shah%20Chikitsalay%2C%20Katni"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src={locationIcon} className="top-icon" alt="Location" />
-            Katni, MP
-          </a>
+          <div className="flex items-center gap-3">
+            <span>Follow us:</span>
 
-          <a className="top-item" href="mailto:bmckatni@gmail.com">
-            <img src={mailIcon} className="top-icon" alt="Email" />
-            bmckatni@gmail.com
-          </a>
+            <a
+              href="https://www.facebook.com/share/17mCcZWUG4/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              className="hover:opacity-80"
+            >
+              <Facebook className="w-[14px] h-[14px]" />
+            </a>
 
-          <a className="top-item" href="tel:+917622220620">
-            <img src={phoneIcon} className="top-icon" alt="Phone" />
-            +91 7622220620
-          </a>
+            <a
+              href="https://www.instagram.com/bmc_katni/?hl=en"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="hover:opacity-80"
+            >
+              <Instagram className="w-[14px] h-[14px]" />
+            </a>
 
-          <LanguageToggle />
+            <LanguageToggle />
+          </div>
         </div>
       </div>
 
-      {/* ================= NAVBAR ================= */}
-      <header className="navbar">
-        <div className="navbar-container">
-          {/* LOGO */}
-          <div className="logo" onClick={() => navigate("/")}>
-            <img
-              src={process.env.PUBLIC_URL + "/BMC.png"}
-              className="logo-image"
-              alt="BMC Logo"
-            />
-          </div>
+      {/* Header */}
+      <header
+        className="sticky top-0 z-[var(--z-header)] border-b"
+        style={{
+          backgroundColor: "var(--bg-white)",
+          borderColor: "var(--border-light)",
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-6 h-[72px] flex items-center justify-between">
+          <img
+            src="/BMC.png"
+            alt="BMC"
+            onClick={() => navigate("/")}
+            className="h-10 cursor-pointer translate-y-[1px]"
+          />
 
-          {/* HAMBURGER (MOBILE) */}
-          <div
-            className={`hamburger ${isMobileMenuOpen ? "open" : ""}`}
-            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-          >
-            <span />
-            <span />
-            <span />
-          </div>
-
-          {/* DESKTOP NAV */}
-          <nav className="nav-links">
-            {navLinks.map((link) => (
+          <nav className="hidden md:flex items-center gap-8">
+            {navLinks.map(({ label, id }) => (
               <button
-                key={link.label}
-                className="nav-link"
-                onClick={() => handleNavClick(link.sectionId, link.label)}
+                key={id}
+                onClick={() => goTo(id)}
+                className="text-sm font-medium transition-colors"
+                style={{
+                  color: "var(--text-secondary)",
+                }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.color = "var(--primary-purple)")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.color = "var(--text-secondary)")
+                }
               >
-                <span className="nav-link-text">{link.label}</span>
+                {label}
               </button>
             ))}
           </nav>
 
-          {/* DESKTOP CTA */}
           <button
-            className="appointment-btn"
-            onClick={() => {
-              const phone = "919300220620";
-              window.open(`https://wa.me/${phone}`, "_blank");
+            onClick={() =>
+              window.open("https://wa.me/917012344405", "_blank", "noopener")
+            }
+            className="flex items-center justify-center font-['Inter'] font-medium text-sm px-[var(--spacing-lg)] py-[var(--spacing-md)] rounded-[var(--radius-lg)] transition-colors duration-[var(--transition-base)]"
+            style={{
+              backgroundColor: "var(--primary-purple)",
+              color: "var(--text-inverse)",
             }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.backgroundColor = "var(--primary-purple-light)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.backgroundColor = "var(--primary-purple)")
+            }
           >
             Book Appointment
           </button>
         </div>
-
-        {/* ================= MOBILE MENU ================= */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              ref={menuRef}
-              className="mobile-menu"
-              initial={{ height: 0, opacity: 0}}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-            >
-              {navLinks.map((link) => (
-                <button
-                  key={link.label}
-                  onClick={() => handleNavClick(link.sectionId, link.label)}
-                >
-                  {link.label}
-                </button>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
       </header>
-
-      {/* FLOATING APPOINTMENT BUTTON (MOBILE) */}
-      <div
-        className="AppointmentBadge"
-        style={{
-          position: "fixed",
-          bottom: 20,
-          right: 5,
-          zIndex: 999,
-        }}
-      >
-        <AppointmentBadge
-          onClick={() => {
-            window.open("https://wa.me/919300220620", "_blank");
-          }}
-        />
-      </div>
     </>
   );
 };
