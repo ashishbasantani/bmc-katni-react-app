@@ -1,0 +1,67 @@
+/* ==============================
+   APPOINTMENT PAGE HEADER
+   ============================== */
+
+/* Reuses .navbar & .navbar-container from Header.css */
+
+.navbar-appointment-header {
+  background: var(--bg-white);
+  box-shadow: var(--shadow-lg);
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.navbar-appointment-container {
+  max-width: 1300px;
+  margin: auto;
+  padding: 10px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+/* ==============================
+   APPOINTMENT HERO HEADER
+   ============================== */
+
+.appointment-hero {
+  width: 100%;
+  /* padding: 36px 20px; */
+  text-align: center;
+  color: #000;
+}
+
+/* Main title */
+.appointment-hero h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Subtitle */
+.appointment-hero p {
+  margin-top: 6px;
+  font-size: 15px;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+/* ==============================
+   MOBILE PERFECT
+   ============================== */
+@media (max-width: 768px) {
+  .appointment-hero {
+    padding: 28px 16px;
+  }
+
+  .appointment-hero h1 {
+    font-size: 22px;
+  }
+
+  .appointment-hero p {
+    font-size: 14px;
+  }
+}
+

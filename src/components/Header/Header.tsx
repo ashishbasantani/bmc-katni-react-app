@@ -1,14 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./Header.css";
 import { useNavigation } from "../../hooks/useNavigation";
-import LanguageToggle from "../LanguageToggle";
 import AppointmentBadge from "./AppointmentBadge";
-
-import phoneIcon from "../../assets/icons/phone.png";
-import mailIcon from "../../assets/icons/mail.png";
-import locationIcon from "../../assets/icons/location.png";
 
 const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -48,39 +43,23 @@ const Header: React.FC = () => {
     setIsMobileMenuOpen(false);
   };
 
+  const location = useLocation();
+
+  const breadcrumbs = location.pathname
+    .split("/")
+    .filter(Boolean);
+
+  const handleBreadcrumbClick = (crumb: string) => {
+    if (crumb === "services") {
+      navigate("/#services");
+    } else {
+      navigate(`/${crumb}`);
+    }
+  };
+
+
   return (
     <>
-      {/* ================= TOP BAR ================= */}
-      <div className="top-bar">
-        <div className="top-bar-left">
-          <span>Every life is Invaluable</span>
-        </div>
-
-        <div className="top-bar-right">
-          <a
-            className="top-item"
-            href="https://www.google.com/maps/search/?api=1&query=Baba%20Madhav%20Shah%20Chikitsalay%2C%20Katni"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src={locationIcon} className="top-icon" alt="Location" />
-            Katni, MP
-          </a>
-
-          <a className="top-item" href="mailto:bmckatni@gmail.com">
-            <img src={mailIcon} className="top-icon" alt="Email" />
-            bmckatni@gmail.com
-          </a>
-
-          <a className="top-item" href="tel:+917622220620">
-            <img src={phoneIcon} className="top-icon" alt="Phone" />
-            +91 7622220620
-          </a>
-
-          <LanguageToggle />
-        </div>
-      </div>
-
       {/* ================= NAVBAR ================= */}
       <header className="navbar">
         <div className="navbar-container">
@@ -94,14 +73,30 @@ const Header: React.FC = () => {
           </div>
 
           {/* HAMBURGER (MOBILE) */}
-          <div
+          {/* <div
             className={`hamburger ${isMobileMenuOpen ? "open" : ""}`}
             onClick={() => setIsMobileMenuOpen((prev) => !prev)}
           >
             <span />
             <span />
             <span />
+          </div> */}
+
+          {/* BREADCRUMBS */}
+          <div className="breadcrumbs">
+            <span onClick={() => navigate("/")}>Home</span>
+
+            {breadcrumbs.map((crumb, index) => (
+              <span key={index}>
+                <span className="separator">›</span>
+                <span onClick={() => handleBreadcrumbClick(crumb)}>
+                  {crumb.replace("-", " ")}
+                </span>
+              </span>
+            ))}
           </div>
+
+
 
           {/* DESKTOP NAV */}
           <nav className="nav-links">
@@ -119,10 +114,7 @@ const Header: React.FC = () => {
           {/* DESKTOP CTA */}
           <button
             className="appointment-btn"
-            onClick={() => {
-              const phone = "919300220620";
-              window.open(`https://wa.me/${phone}`, "_blank");
-            }}
+            onClick={() => navigate("/book_appointment")}
           >
             Book Appointment
           </button>

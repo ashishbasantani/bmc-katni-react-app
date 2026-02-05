@@ -10,16 +10,19 @@ import { Services } from "./components/Service/Services";
 import { Doctors } from "./components/Doctor/Doctors";
 import Footer from "./components/Footer/Footer";
 import Facilities from "./components/Facilities/Facilities";
+import TopBar from "./components/TopBar/TopBar";
+import Breadcrumbs from "./components/Breadcrumbs/Breadcrumbs";
 
 import SurgeryLearnMore from "./components/Service/SurgeryLearnMore";
 import OrthopedicsLearnMore from "./components/Service/OrthopedicsLearnMore";
 import MedicineLearnMore from "./components/Service/MedicineLearnMore";
 import DentalCareLearnMore from "./components/Service/DentalCareLearnMore";
 
-
+import AppointmentPage from "./pages/Appointment/AppointmentPage";
 
 function App() {
   const location = useLocation();
+  const isAppointmentPage = location.pathname === "/book_appointment";
 
   // Scroll to section when coming from other pages
   useEffect(() => {
@@ -36,11 +39,15 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <TopBar />
+      {/* Show navbar ONLY if NOT appointment page */}
+      {!isAppointmentPage && <Header />}
+      <Breadcrumbs />
 
       <main>
         <Suspense fallback={<div>Loading...</div>}>
           <Routes location={location} key={location.pathname}>
+            <Route path="/book_appointment" element={<AppointmentPage />} />
           <Route
             path="/"
             element={

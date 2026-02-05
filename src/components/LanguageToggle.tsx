@@ -27,7 +27,8 @@ const LanguageToggle: React.FC = () => {
         borderRadius: "8px",
         border: "1px solid #ccc",
         cursor: "pointer",
-        backgroundColor: isHindi ? "#f0f0f0" : "#d1e7dd",
+        backgroundColor: isHindi ? "#fff" : "#fff",
+        color: "#000",
         transition: "all 0.3s ease",
         fontWeight: 500,
       }}

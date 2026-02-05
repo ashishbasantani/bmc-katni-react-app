@@ -28,7 +28,11 @@ const HeroSection: React.FC = () => {
           </p>
 
           <div className="hero-ctas">
-            <button className="cta primary" onClick={() => navigate("/enquiry")}>Enquiry →</button>
+            <button className="cta primary"
+              onClick={() => {
+              const phone = "919300220620";
+              window.open(`https://wa.me/${phone}`, "_blank");
+            }}>Enquiry →</button>
             <button className="cta secondary" onClick={() => window.location.href = "tel: +91 7622220620"}>📞 Emergency Call</button>
           </div>
 
