@@ -1,0 +1,38 @@
+/* DEPARTMENT SELECTION SECTION */
+.department-section {
+  background: #fff;
+  border-radius: 22px;
+  padding: 36px;
+  margin-bottom: 28px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.04);
+}
+
+.department-container {
+  display: flex;
+  gap: 24px;
+}
+
+.department-field {
+  flex: 1;
+}
+
+.form-label {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.required {
+  color: #8d3bbd;
+  font-size: 15px;
+  margin-left: 2px;
+}
+
+.department-select {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px solid #e1e1e1;
+  font-size: 15px;
+}

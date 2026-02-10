@@ -3,6 +3,8 @@ export interface Doctor {
   name: string;
   degree: string;
   experience: string;
+  department: string;
+  image: string;
 }
 
 export interface AppointmentFormData {

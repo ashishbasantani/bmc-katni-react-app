@@ -1,0 +1,87 @@
+/* PATIENT INFORMATION SECTION */
+.patient-info-section {
+  background: #fff;
+  border-radius: 22px;
+  padding: 36px;
+  margin-bottom: 28px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.04);
+}
+
+.form-label {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.input-label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.required {
+  color: #8d3bbd;
+  font-size: 15px;
+  margin-left: 2px;
+}
+
+.form-row {
+  display: flex;
+  gap: 44px;
+  margin-bottom: 18px;
+  padding-right: 36px;
+}
+
+.form-col {
+  flex: 1;
+}
+
+.form-col.full {
+  flex: 100%;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid #e1e1e1;
+  font-size: 15px;
+  margin-bottom: 0;
+  background: #fff;
+}
+
+.gender-group {
+  display: flex;
+  gap: 12px;
+}
+
+.gender-btn {
+  background: #fff;
+  border: 1.5px solid #e1e1e1;
+  border-radius: 14px;
+  min-width: 80px;
+  height: 44px;
+  font-size: 15px;
+  color: #222;
+  cursor: pointer;
+  margin-right: 8px;
+  transition: border 0.2s, background 0.2s;
+}
+
+.gender-btn.selected {
+  border: 2px solid #6b2fd6;
+  background: #f7f2ff;
+  color: #6b2fd6;
+}
+
+.textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid #e1e1e1;
+  font-size: 15px;
+  resize: none;
+  background: #fff;
+}

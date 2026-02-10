@@ -19,6 +19,7 @@ import MedicineLearnMore from "./components/Service/MedicineLearnMore";
 import DentalCareLearnMore from "./components/Service/DentalCareLearnMore";
 
 import AppointmentPage from "./pages/Appointment/AppointmentPage";
+import AppointmentSuccess from "./pages/Appointment/AppointmentSuccess";
 
 function App() {
   const location = useLocation();
@@ -48,6 +49,10 @@ function App() {
         <Suspense fallback={<div>Loading...</div>}>
           <Routes location={location} key={location.pathname}>
             <Route path="/book_appointment" element={<AppointmentPage />} />
+            <Route
+              path="/appointment/success"
+              element={<AppointmentSuccess />}
+            />            
           <Route
             path="/"
             element={

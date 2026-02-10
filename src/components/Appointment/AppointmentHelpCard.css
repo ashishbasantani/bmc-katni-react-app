@@ -1,0 +1,31 @@
+/* HELP CARD */
+.help-card {
+  background: #fff;
+  border-radius: 22px;
+  padding: 24px 20px;
+  box-shadow: 0 2px 12px rgba(107, 47, 214, 0.08);
+  margin-bottom: 0;
+}
+
+.help-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.help-icon {
+  color: #8d3bbd;
+  font-size: 22px;
+}
+
+.help-content {
+  margin-left: 36px;
+}
+
+.help-item {
+  font-size: 15px;
+  margin-bottom: 8px;
+}

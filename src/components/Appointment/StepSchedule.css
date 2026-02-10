@@ -1,0 +1,105 @@
+/* DATE & TIME SELECTION SECTION */
+.datetime-section {
+  background: #fff;
+  border-radius: 22px;
+  padding: 36px;
+  margin-bottom: 28px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.04);
+}
+
+.form-label {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.required {
+  color: #8d3bbd;
+  font-size: 15px;
+  margin-left: 2px;
+}
+
+.date-picker-container {
+  margin-bottom: 18px;
+}
+
+.picker-label {
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.date-buttons-grid {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.date-btn {
+  background: #fff;
+  border: 1.5px solid #e1e1e1;
+  border-radius: 14px;
+  width: 80px;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  color: #222;
+  cursor: pointer;
+  margin-bottom: 8px;
+  transition: border 0.2s, background 0.2s;
+}
+
+.date-btn.selected {
+  border: 2px solid #6b2fd6;
+  background: #f7f2ff;
+  color: #6b2fd6;
+}
+
+.date-weekday {
+  font-weight: 500;
+}
+
+.date-day {
+  font-size: 18px;
+}
+
+.time-picker-container {
+  /* No additional styles needed */
+}
+
+.time-group {
+  margin-bottom: 8px;
+}
+
+.time-group-label {
+  font-size: 15px;
+  margin-right: 8px;
+}
+
+.time-buttons-grid {
+  display: flex;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.time-btn {
+  background: #fff;
+  border: 1.5px solid #e1e1e1;
+  border-radius: 14px;
+  min-width: 110px;
+  height: 44px;
+  font-size: 15px;
+  color: #222;
+  cursor: pointer;
+  margin-bottom: 8px;
+  transition: border 0.2s, background 0.2s;
+}
+
+.time-btn.selected {
+  border: 2px solid #6b2fd6;
+  background: #f7f2ff;
+  color: #6b2fd6;
+}

@@ -1,0 +1,61 @@
+/* APPOINTMENT SUMMARY */
+.summary-panel {
+  background: #f3ecff;
+  border-radius: 26px;
+  padding: 32px 28px;
+  height: fit-content;
+  box-shadow: 0 2px 12px rgba(107, 47, 214, 0.08);
+}
+
+.summary-content {
+  margin-bottom: 18px;
+}
+
+.summary-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.summary-icon {
+  color: #8d3bbd;
+  font-size: 22px;
+}
+
+.summary-item {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.summary-dot {
+  color: #8d3bbd;
+  margin-right: 6px;
+}
+
+.summary-value {
+  margin-left: 18px;
+}
+
+.confirm-btn {
+  width: 100%;
+  margin-top: 30px;
+  padding: 16px;
+  border-radius: 30px;
+  border: none;
+  background: #6b2fd6;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  box-shadow: 0 2px 12px rgba(107, 47, 214, 0.08);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.confirm-btn:disabled {
+  background: #dcdcdc;
+  color: #fff;
+  cursor: not-allowed;
+}

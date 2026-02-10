@@ -227,9 +227,14 @@
 
 /* SUMMARY SIDE */
 .appointment-summary-side {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+   display: flex;
+   flex-direction: column;
+   gap: 24px;
+   position: -webkit-sticky;
+   position: sticky;
+   top: 120px; /* adjust based on header + stepper height */
+   align-self: flex-start;
+   height: fit-content;
 }
 
 /* SUMMARY PANEL */

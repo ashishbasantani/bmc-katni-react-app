@@ -1,0 +1,85 @@
+/* =========================
+   APPOINTMENT STEPPER
+========================= */
+
+.appointment-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 26px 300px;
+  background: #faf7ff;
+  border-bottom: 1px solid #ececec;
+}
+
+.stepper-item {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  position: relative;
+}
+
+.stepper-item.last-step {
+  flex: unset;          /* 🔥 critical */
+  width: auto;
+}
+
+.step-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid #cfcfcf;
+  background: #fff;
+  color: #9a9a9a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  z-index: 2;
+}
+
+.step-circle.active {
+  border-color: #7a2bd6;
+  color: #7a2bd6;
+}
+
+.step-circle.completed {
+  background: #7a2bd6;
+  border-color: #7a2bd6;
+  color: #fff;
+}
+
+.step-label {
+  margin-left: 10px;
+  font-size: 15px;
+  color: #9a9a9a;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.step-label.active {
+  color: #7a2bd6;
+  font-weight: 600;
+}
+
+.step-line {
+  flex: 1;
+  height: 2px;
+  background: #dcdcdc;
+  margin: 0 16px;
+}
+
+.step-line.filled {
+  background: #7a2bd6;
+}
+
+.stepper-item.last-step .step-line {
+  display: none;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .appointment-stepper {
+    padding: 20px;
+    overflow-x: auto;
+  }
+}
