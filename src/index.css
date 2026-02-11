@@ -1,8 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
-
+@import "./styles/variables.css";
 html {
   font-family: Inter, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -25,4 +24,26 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@layer components {
+  .container-page {
+    @apply
+      w-full
+      max-w-[1440px]
+      mx-auto
+      px-4
+      sm:px-6
+      lg:px-8;
+  }
+
+  .section-padding {
+    @apply
+      pt-8
+      pb-12
+      sm:pt-10
+      sm:pb-16
+      lg:pt-14
+      lg:pb-20;
+  }
 }

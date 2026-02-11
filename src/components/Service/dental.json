@@ -1,0 +1,57 @@
+{
+  "slug": "dental",
+  "badge": "Complete Oral Health Solutions",
+  "title": "Dental Care",
+  "tagline": "Healthy Smiles with Precision & Comfort",
+  "description": "Our Dental Care Department offers accurate diagnosis, advanced treatment, and preventive services for all oral health needs using modern technology and expert care.",
+  "cta": {
+    "whatsappText": "Hello, I would like to book an appointment for Dental Care."
+  },
+  "heroImage": "dental-hero-banner",
+  "whyChoose": {
+    "title": "Why Choose Us",
+    "subtitle": "Trusted dental care with comfort, precision, and care",
+    "items": [
+      {
+        "title": "Advanced Dental Care",
+        "description": "Modern equipment for accurate diagnosis and effective treatment."
+      },
+      {
+        "title": "Experienced Dentists",
+        "description": "Qualified specialists providing care for all age groups."
+      },
+      {
+        "title": "Painless & Preventive Approach",
+        "description": "Comfort-focused treatments with long-term oral health goals."
+      }
+    ]
+  },
+  "conditions": {
+    "subtitle": "Complete dental solutions under one roof",
+    "list": [
+      "Tooth decay & cavities",
+      "Gum diseases (gingivitis, periodontitis)",
+      "Tooth pain & sensitivity",
+      "Dental infections & abscess",
+      "Misaligned teeth & bite issues",
+      "Missing or damaged teeth",
+      "Oral hygiene & preventive care",
+      "Pediatric dental problems"
+    ],
+    "bannerClass": "dental-hero-banner",
+    "image": "dental-side-banner"
+  },
+  "faq": {
+    "subtitle": "Common questions about our dental care services",
+    "items": [
+      {
+        "question": "Is dental treatment painful?",
+        "answer": "We use modern techniques and anesthesia to ensure treatments are safe and as comfortable as possible."
+      },
+      {
+        "question": "Do you treat children?",
+        "answer": "Yes, we offer gentle and specialized dental care for children of all ages."
+      }
+    ]
+  }
+}

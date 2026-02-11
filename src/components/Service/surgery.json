@@ -1,0 +1,54 @@
+{
+  "slug": "surgery",
+  "badge": "Advanced Surgical Care",
+  "title": "Surgery Department",
+  "tagline": "Precision, Safety & Expert Care",
+  "description": "Our Surgery Department provides advanced surgical procedures with experienced surgeons, modern infrastructure, and patient-focused care to ensure safe and successful outcomes.",
+  "cta": {
+    "whatsappText": "Hello, I would like to book an appointment for Surgery."
+  },
+  "heroImage": "surgery-hero-banner",
+  "whyChoose": {
+    "title": "Why Choose Us",
+    "subtitle": "Trusted surgical expertise with modern facilities",
+    "items": [
+      {
+        "title": "Advanced Operation Theatres",
+        "description": "State-of-the-art OT with strict safety protocols."
+      },
+      {
+        "title": "Experienced Surgeons",
+        "description": "Highly qualified surgeons across multiple specialties."
+      },
+      {
+        "title": "Post-Operative Care",
+        "description": "Comprehensive recovery and rehabilitation support."
+      }
+    ]
+  },
+  "conditions": {
+    "subtitle": "Comprehensive surgical solutions under one roof",
+    "list": [
+      "General surgeries",
+      "Laproscopic surgeries",
+      "Minor and major surgical procedures",
+      "Department of obstetrics and gynecology",
+      "Orthopedic surgeries",
+      "Trauma and emergency surgeries"
+    ],
+    "image": "surgery-side-banner"
+  },
+  "faq": {
+    "subtitle": "Common questions about surgical procedures",
+    "items": [
+      {
+        "question": "Is surgery safe?",
+        "answer": "Yes. Our surgeries are performed by experienced surgeons using advanced technology with strict safety protocols."
+      },
+      {
+        "question": "How long is the recovery period?",
+        "answer": "Recovery depends on the procedure, but our team provides full post-operative care and guidance."
+      }
+    ]
+  }
+}

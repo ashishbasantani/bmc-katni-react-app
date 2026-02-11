@@ -36,7 +36,7 @@ const Header = () => {
         className="hidden md:block py-[var(--spacing-sm)] text-[var(--text-inverse)] text-xs"
         style={{ backgroundColor: "var(--primary-purple)" }}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <div className="container-page flex items-center justify-between">
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-2">
               <Mail className="w-[14px] h-[14px]" />
@@ -84,7 +84,7 @@ const Header = () => {
           borderColor: "var(--border-light)",
         }}
       >
-        <div className="max-w-7xl mx-auto px-6 h-[72px] flex items-center justify-between">
+        <div className="container-page h-[72px] flex items-center justify-between">
           <img
             src="/BMC.png"
             alt="BMC"
@@ -98,14 +98,14 @@ const Header = () => {
                 key={id}
                 onClick={() => goTo(id)}
                 className="text-sm font-medium transition-colors"
-                style={{
-                  color: "var(--text-secondary)",
-                }}
+                style={{ color: "var(--text-secondary)" }}
                 onMouseEnter={(e) =>
-                  (e.currentTarget.style.color = "var(--primary-purple)")
+                  (e.currentTarget.style.color =
+                    "var(--primary-purple)")
                 }
                 onMouseLeave={(e) =>
-                  (e.currentTarget.style.color = "var(--text-secondary)")
+                  (e.currentTarget.style.color =
+                    "var(--text-secondary)")
                 }
               >
                 {label}
@@ -117,16 +117,18 @@ const Header = () => {
             onClick={() =>
               window.open("https://wa.me/917012344405", "_blank", "noopener")
             }
-            className="flex items-center justify-center font-['Inter'] font-medium text-sm px-[var(--spacing-lg)] py-[var(--spacing-md)] rounded-[var(--radius-lg)] transition-colors duration-[var(--transition-base)]"
+            className="flex items-center justify-center font-medium text-sm px-[var(--spacing-lg)] py-[var(--spacing-md)] rounded-[var(--radius-lg)] transition-colors duration-[var(--transition-base)]"
             style={{
               backgroundColor: "var(--primary-purple)",
               color: "var(--text-inverse)",
             }}
             onMouseEnter={(e) =>
-              (e.currentTarget.style.backgroundColor = "var(--primary-purple-light)")
+              (e.currentTarget.style.backgroundColor =
+                "var(--primary-purple-light)")
             }
             onMouseLeave={(e) =>
-              (e.currentTarget.style.backgroundColor = "var(--primary-purple)")
+              (e.currentTarget.style.backgroundColor =
+                "var(--primary-purple)")
             }
           >
             Book Appointment

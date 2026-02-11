@@ -8,30 +8,66 @@ const Breadcrumbs = () => {
   if (!pathname.startsWith("/services/")) return null;
 
   return (
-    <nav aria-label="Breadcrumb" className="bg-gray-100 px-4 py-3 text-sm">
-      <ol className="flex items-center gap-2 text-gray-600">
-        <li>
-          <Link to="/" className="font-medium hover:text-purple-700">
-            Home
-          </Link>
-        </li>
+    <nav
+      aria-label="Breadcrumb"
+      className="px-4 py-3 text-sm"
+      style={{ backgroundColor: "var(--bg-section)" }}
+    >
+      <div className="container-page py-3">
+        <ol
+          className="flex items-center gap-2"
+          style={{ color: "var(--text-muted)" }}
+        >
+          {/* Home */}
+          <li>
+            <Link
+              to="/"
+              className="font-medium transition-colors"
+              style={{ color: "var(--text-secondary)" }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color =
+                  "var(--primary-purple)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color =
+                  "var(--text-secondary)")
+              }
+            >
+              Home
+            </Link>
+          </li>
 
-        <li className="before:content-['/'] before:px-2 before:text-gray-400">
-          <Link
-            to="/"
-            state={{ scrollTo: "services" }}
-            className="font-medium hover:text-purple-700"
-          >
-            Services
-          </Link>
-        </li>
+          {/* Services */}
+          <li className="before:content-['/'] before:px-2 before:text-[var(--text-muted)]">
+            <Link
+              to="/"
+              state={{ scrollTo: "services" }}
+              className="font-medium transition-colors"
+              style={{ color: "var(--text-secondary)" }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color =
+                  "var(--primary-purple)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color =
+                  "var(--text-secondary)")
+              }
+            >
+              Services
+            </Link>
+          </li>
 
-        <li className="before:content-['/'] before:px-2 before:text-gray-400">
-          <span className="font-semibold text-purple-700">
-            {breadcrumbMap[pathname]}
-          </span>
-        </li>
-      </ol>
+          {/* Current */}
+          <li className="before:content-['/'] before:px-2 before:text-[var(--text-muted)]">
+            <span
+              className="font-semibold"
+              style={{ color: "var(--primary-purple)" }}
+            >
+              {breadcrumbMap[pathname]}
+            </span>
+          </li>
+        </ol>
+      </div>
     </nav>
   );
 };

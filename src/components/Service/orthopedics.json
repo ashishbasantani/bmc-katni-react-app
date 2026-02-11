@@ -1,0 +1,54 @@
+{
+  "slug": "orthopedics",
+  "badge": "Advanced Orthopaedic Care",
+  "title": "Orthopaedics",
+  "tagline": "Movement, Strength & Pain-Free Living",
+  "description": "Our Orthopaedics Department specializes in diagnosis, treatment, and rehabilitation of bone, joint, and muscle conditions using modern techniques and expert care.",
+  "cta": {
+    "whatsappText": "Hello, I would like to book an appointment for Orthopedics."
+  },
+  "heroImage":"orthopedic-hero-banner",
+  "whyChoose": {
+    "title": "Why Choose Us",
+    "subtitle": "Trusted orthopaedic care with advanced facilities",
+    "items": [
+      {
+        "title": "Advanced Orthopaedic Care",
+        "description": "Modern diagnostics and treatment for bone and joint disorders."
+      },
+      {
+        "title": "Experienced Orthopaedic Surgeons",
+        "description": "Skilled specialists for fractures, joint replacements, and sports injuries."
+      },
+      {
+        "title": "Rehabilitation & Physiotherapy",
+        "description": "Comprehensive recovery programs for mobility and strength."
+      }
+    ]
+  },
+  "conditions": {
+    "subtitle": "Complete orthopaedic solutions under one roof",
+    "list": [
+      "Bone fractures & trauma",
+      "Joint pain & arthritis",
+      "Back & spine problems",
+      "Sports injuries",
+      "Knee & hip replacement",
+      "Ligament & tendon injuries"
+    ],
+    "image": "orthopedic-side-banner"
+  },
+  "faq": {
+    "subtitle": "Common questions about orthopaedic treatments",
+    "items": [
+      {
+        "question": "Do joint pains always require surgery?",
+        "answer": "No. Many joint and bone conditions can be treated with medication, physiotherapy, and lifestyle changes."
+      },
+      {
+        "question": "How long does recovery take after surgery?",
+        "answer": "Recovery depends on the procedure, but our team provides complete rehabilitation support for faster recovery."
+      }
+    ]
+  }
+}

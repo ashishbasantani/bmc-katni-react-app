@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, ReactNode, useEffect } from "react";
+import React, { Suspense, ReactNode, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 
 import Header from "./components/Header/Header";
@@ -10,18 +10,22 @@ import Footer from "./components/Footer/Footer";
 import Facilities from "./components/Facilities/Facilities";
 import Breadcrumbs from "./components/Breadcrumbs/Breadcrumbs";
 
-const SurgeryLearnMore = lazy(() => import("./components/Service/SurgeryLearnMore"));
-const OrthopedicsLearnMore = lazy(() => import("./components/Service/OrthopedicsLearnMore"));
-const MedicineLearnMore = lazy(() => import("./components/Service/MedicineLearnMore"));
-const DentalCareLearnMore = lazy(() => import("./components/Service/DentalCareLearnMore"));
+import ServiceDetail from "./components/Service/ServiceDetail";
 
 interface SectionProps {
   id: string;
   children: ReactNode;
 }
 
+/**
+ * Section wrapper
+ * scroll-mt fixes alignment under fixed header
+ */
 const Section: React.FC<SectionProps> = ({ id, children }) => (
-  <section id={id} className="w-full">
+  <section
+    id={id}
+    className="w-full scroll-mt-[var(--header-height)]"
+  >
     {children}
   </section>
 );
@@ -35,7 +39,9 @@ const HomePage: React.FC = () => {
     if (scrollToId) {
       setTimeout(() => {
         const el = document.getElementById(scrollToId);
-        if (el) el.scrollIntoView({ behavior: "smooth" });
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
       }, 100);
     }
   }, [location]);
@@ -92,11 +98,14 @@ function App() {
           }
         >
           <Routes>
+            {/* Home */}
             <Route path="/" element={<HomePage />} />
-            <Route path="/services/dentalCare" element={<DentalCareLearnMore />} />
-            <Route path="/services/orthopedics" element={<OrthopedicsLearnMore />} />
-            <Route path="/services/medicine" element={<MedicineLearnMore />} />
-            <Route path="/services/surgery" element={<SurgeryLearnMore />} />
+
+            {/* Dynamic Service Page */}
+            <Route
+              path="/services/:serviceType"
+              element={<ServiceDetail />}
+            />
           </Routes>
         </Suspense>
       </main>
