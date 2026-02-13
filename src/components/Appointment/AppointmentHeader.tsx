@@ -25,7 +25,7 @@ const AppointmentHeader: React.FC = () => {
 
 
         {/* RIGHT EMPTY SPACE (keeps center perfectly aligned) */}
-        <div style={{ width: "140px" }} />
+        <div className="navbar-header-right-space" />
       </div>
     </header>
   );

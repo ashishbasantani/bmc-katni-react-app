@@ -312,8 +312,7 @@
     padding: 12px 20px;
   }
 
-  .nav-links,
-  .appointment-btn {
+  .nav-links {
     display: none;
   }
 

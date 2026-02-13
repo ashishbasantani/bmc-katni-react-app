@@ -1,9 +1,60 @@
 const express = require("express");
 const router = express.Router();
+const axios = require("axios");
 
-const Appointment = require("../models/Appointment"); // ✅ IMPORTANT
+const Appointment = require("../models/Appointment");
 const transporter = require("../services/mail.service");
 const generateAppointmentId = require("../utils/generateAppointmentId");
+
+/* =========================
+   WhatsApp Send Function
+========================= */
+
+async function sendWhatsAppMessage(to, message) {
+  try {
+    // Remove + if present
+    const formattedNumber = to.replace(/\D/g, "");
+
+    // If number is 10 digits, assume Indian number and add 91
+    if (formattedNumber.length === 10) {
+      formattedNumber = "91" + formattedNumber;
+    }
+
+    // If number already starts with 91 and is 12 digits, keep it
+    if (formattedNumber.length < 12) {
+      throw new Error("Invalid phone number format");
+    }
+
+    console.log("Sending WhatsApp to:", formattedNumber);    
+
+    await axios.post(
+      `https://graph.facebook.com/v18.0/${process.env.WHATSAPP_PHONE_NUMBER_ID}/messages`,
+      {
+        messaging_product: "whatsapp",
+        to: formattedNumber,
+        type: "text",
+        text: { body: message },
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.WHATSAPP_TOKEN}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    console.log("✅ WhatsApp message sent");
+  } catch (error) {
+    console.error(
+      "❌ WhatsApp Error:",
+      error.response?.data || error.message
+    );
+  }
+}
+
+/* =========================
+   Appointment Confirm Route
+========================= */
 
 router.post("/confirm", async (req, res) => {
   try {
@@ -23,7 +74,6 @@ router.post("/confirm", async (req, res) => {
       allergies,
     } = req.body;
 
-    // ✅ Basic validation
     if (!department || !date || !time || !name || !phone || !email) {
       return res.status(400).json({
         success: false,
@@ -31,11 +81,11 @@ router.post("/confirm", async (req, res) => {
       });
     }
 
-    // ✅ Generate sequential appointment ID
+    // Generate ID
     const appointmentId = await generateAppointmentId();
 
-    // ✅ SAVE TO MONGODB (THIS WAS MISSING)
-    const appointment = await Appointment.create({
+    // Save to DB
+    await Appointment.create({
       appointmentId,
       department,
       appointmentType,
@@ -52,31 +102,22 @@ router.post("/confirm", async (req, res) => {
       allergies,
     });
 
-    // ✅ Email content
+    /* =========================
+       Send Email
+    ========================= */
+
     const emailHTML = `
       <h2>🩺 Appointment Confirmed</h2>
       <p><b>Appointment ID:</b> ${appointmentId}</p>
-
       <hr />
-
       <p><b>Department:</b> ${department}</p>
-      <p><b>Appointment Type:</b> ${appointmentType || "-"}</p>
       <p><b>Doctor:</b> ${doctor || "To be assigned"}</p>
       <p><b>Date:</b> ${date}</p>
       <p><b>Time:</b> ${time}</p>
-
       <hr />
-
       <h3>👤 Patient Details</h3>
       <p><b>Name:</b> ${name}</p>
-      <p><b>Age:</b> ${age || "-"}</p>
-      <p><b>Gender:</b> ${gender || "-"}</p>
       <p><b>Phone:</b> ${phone}</p>
-      <p><b>Email:</b> ${email}</p>
-
-      <p><b>Reason:</b> ${reason || "-"}</p>
-      <p><b>Medications:</b> ${medications || "None"}</p>
-      <p><b>Allergies:</b> ${allergies || "None"}</p>
     `;
 
     await transporter.sendMail({
@@ -86,7 +127,30 @@ router.post("/confirm", async (req, res) => {
       html: emailHTML,
     });
 
-    // ✅ Response to frontend
+    /* =========================
+       Send WhatsApp Message
+    ========================= */
+
+    const whatsappMessage = `
+Appointment Confirmed 🩺
+
+Appointment ID: ${appointmentId}
+
+Doctor: ${doctor || "To be assigned"}
+Date: ${date}
+Time: ${time}
+
+Patient: ${name}
+
+Thank you for choosing BMC Katni.
+`;
+
+    await sendWhatsAppMessage(phone, whatsappMessage);
+
+    /* =========================
+       Send Response
+    ========================= */
+
     res.status(200).json({
       success: true,
       appointmentId,
@@ -95,6 +159,7 @@ router.post("/confirm", async (req, res) => {
       date,
       time,
     });
+
   } catch (error) {
     console.error("❌ Appointment Booking Error:", error);
     res.status(500).json({

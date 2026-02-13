@@ -12,8 +12,6 @@ import HelpCard from "../../components/Appointment/AppointmentHelpCard";
 import VisitCard from "../../components/Appointment/AppointmentVisitCard";
 import "./AppointmentPage.css";
 
-const WHATSAPP_NUMBER = "919300220620";
-
 export default function AppointmentPage() {
   const [form, setForm] = useState<{
     department: string;
@@ -46,6 +44,7 @@ export default function AppointmentPage() {
   });
 
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (location.state?.department) {
@@ -57,20 +56,19 @@ export default function AppointmentPage() {
   }, [location.state]);
 
   // Step logic
-  const canGoStep2 = !!form.department && !!form.appointmentType;
+  const canGoStep2 = !!form.department; // Must select department to choose doctor && !!form.appointmentType
   const canGoStep3 = canGoStep2 && !!form.doctor;
   const canGoStep4 = canGoStep3 && !!form.date && !!form.time;
- const canConfirm =
-  canGoStep4 &&
-  !!form.name &&
-  !!form.email &&
-  !!form.phone &&
-  !!form.age &&
-  !!form.gender &&
-  !!form.reason;
 
+  const canConfirm =
+    canGoStep4 &&
+    !!form.name &&
+    !!form.email &&
+    !!form.phone &&
+    !!form.age &&
+    !!form.gender &&
+    !!form.reason;
 
-  // Step progression
   let currentStep = 1;
   if (canGoStep2) currentStep = 2;
   if (canGoStep3) currentStep = 3;
@@ -80,35 +78,7 @@ export default function AppointmentPage() {
     setForm((prev) => ({ ...prev, [field]: value }));
   }
 
-  const navigate = useNavigate();
   async function handleConfirm() {
-    const message = `
-  🩺 *Appointment Booking Request*
-
-  *Department:* ${form.department}
-  *Appointment Type:* ${form.appointmentType}
-
-  *Doctor:* ${form.doctor?.name || "-"}
-  *Date:* ${form.date}
-  *Time:* ${form.time}
-
-  👤 *Patient Details*
-  *Name:* ${form.name}
-  *Age:* ${form.age}
-  *Gender:* ${form.gender}
-  *Phone:* ${form.phone}
-  *Email:* ${form.email}
-
-  📝 *Reason for Visit:*
-  ${form.reason}
-
-  💊 *Medications:*
-  ${form.medications || "None"}
-
-  ⚠️ *Allergies:*
-  ${form.allergies || "None"}
-  `;
-
     try {
       const response = await fetch(
         "http://localhost:5000/api/appointment/confirm",
@@ -126,7 +96,7 @@ export default function AppointmentPage() {
 
       const data = await response.json();
 
-      // ✅ SUCCESS PAGE NAVIGATION
+      // ✅ Navigate to Success Page
       navigate("/appointment/success", {
         state: {
           appointmentId: data.appointmentId,
@@ -136,28 +106,19 @@ export default function AppointmentPage() {
         },
       });
 
-      // ✅ WHATSAPP MESSAGE
-      const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-        message.trim() + `\n\n🆔 Appointment ID: ${data.appointmentId}`
-      )}`;
-
-      window.open(whatsappUrl, "_blank");
     } catch (error) {
       console.error("❌ Booking Error:", error);
       alert("Something went wrong while booking. Please try again.");
     }
   }
 
-
-
   return (
     <div className="appointment-page">
       <AppointmentHeader />
       <Stepper step={currentStep} />
       <div className="appointment-layout">
-        {/* LEFT FORM */}
         <div className="appointment-form">
-          {/* Step 1: Department & Type */}
+
           <DepartmentSelection
             department={form.department}
             appointmentType={form.appointmentType}
@@ -167,17 +128,14 @@ export default function AppointmentPage() {
             }
           />
 
-          {/* Step 2: Doctor */}
           {canGoStep2 && (
-           <DoctorSelection
-            department={form.department}
-            selectedDoctor={form.doctor}
-            onDoctorSelect={(doctor) => handleChange("doctor", doctor)}
-          />
-
+            <DoctorSelection
+              department={form.department}
+              selectedDoctor={form.doctor}
+              onDoctorSelect={(doctor) => handleChange("doctor", doctor)}
+            />
           )}
 
-          {/* Step 3: Date & Time */}
           {canGoStep3 && (
             <DateTimeSelection
               selectedDate={form.date}
@@ -187,7 +145,6 @@ export default function AppointmentPage() {
             />
           )}
 
-          {/* Step 4: Patient Info */}
           {canGoStep4 && (
             <PatientInformation
               name={form.name}
@@ -203,7 +160,6 @@ export default function AppointmentPage() {
           )}
         </div>
 
-        {/* RIGHT SUMMARY & HELP */}
         <div className="appointment-summary-side">
           <AppointmentSummary
             department={form.department}

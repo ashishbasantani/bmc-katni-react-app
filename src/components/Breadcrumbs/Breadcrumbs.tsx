@@ -19,8 +19,8 @@ const Breadcrumbs = () => {
 
         <li className="breadcrumb-item">
           <Link
-            to="/"
-            state={{ scrollTo: "services" }}
+            to="/#services"
+            // state={{ scrollTo: "services" }}
             className="breadcrumb-link"
           >
             Services

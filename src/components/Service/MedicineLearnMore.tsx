@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./MedicineLearnMore.css";
+import "./LearnMore.css";
 import { useNavigate } from "react-router-dom";
 
 const MedicineLearnMore = () => {
@@ -30,11 +30,11 @@ const MedicineLearnMore = () => {
           <div className="hero-actions">
             <button 
             className="primary-btn" 
-            onClick={() => {
-              const phone = "919300220620";
-              const text = encodeURIComponent("Hello, I would like to book an appointment for Medicine Department.");
-              window.open(`https://wa.me/${phone}?text=${text}`, "_blank");
-            }}>Book Appointment</button>
+            onClick={() =>
+              Navigate("/book_appointment", {
+                state: { department: "General Medicine" },
+              })
+            }>Book Appointment</button>
             <button className="outline-btn" onClick={() => {
     window.location.href = "tel:+919300220620";
   }}>Call Now</button>

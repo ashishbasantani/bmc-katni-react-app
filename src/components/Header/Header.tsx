@@ -83,7 +83,7 @@ const Header: React.FC = () => {
           </div> */}
 
           {/* BREADCRUMBS */}
-          <div className="breadcrumbs">
+          {/* <div className="breadcrumbs">
             <span onClick={() => navigate("/")}>Home</span>
 
             {breadcrumbs.map((crumb, index) => (
@@ -94,7 +94,7 @@ const Header: React.FC = () => {
                 </span>
               </span>
             ))}
-          </div>
+          </div> */}
 
 
 
@@ -145,7 +145,7 @@ const Header: React.FC = () => {
       </header>
 
       {/* FLOATING APPOINTMENT BUTTON (MOBILE) */}
-      <div
+      {/* <div
         className="AppointmentBadge"
         style={{
           position: "fixed",
@@ -159,7 +159,7 @@ const Header: React.FC = () => {
             window.open("https://wa.me/919300220620", "_blank");
           }}
         />
-      </div>
+      </div> */}
     </>
   );
 };

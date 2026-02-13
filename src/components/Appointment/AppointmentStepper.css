@@ -9,6 +9,10 @@
   padding: 26px 300px;
   background: #faf7ff;
   border-bottom: 1px solid #ececec;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 94px;
+  z-index: 1000;
 }
 
 .stepper-item {
@@ -76,10 +80,40 @@
   display: none;
 }
 
-/* Mobile */
+/* =========================
+   MOBILE STEPPER WITH VISIBLE LINE
+========================= */
 @media (max-width: 768px) {
+
   .appointment-stepper {
-    padding: 20px;
+    padding: 18px 16px;
     overflow-x: auto;
+    justify-content: space-between;   /* 🔥 important */
+    position: -webkit-sticky;
+    position: sticky;
+    top: 143px;
+    z-index: 1000;
   }
+
+  .stepper-item {
+    flex: 0 0 auto;                /* 🔥 prevents shrinking */
+  }
+
+  .step-line {
+    min-width: 40px;               /* 🔥 ensures visible connector */
+    margin: 0 12px;
+  }
+
+  .step-circle {
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
+  }
+
+  .step-label {
+    font-size: 13px;
+    margin-left: 6px;
+    white-space: nowrap;
+  }
+
 }
