@@ -17,7 +17,7 @@ export const DOCTORS: Doctor[] = [
   {
     id: 2,
     name: "Dr. Dharmendra Singh Bagri",
-    degree: "MD (Medician)",
+    degree: "MD (Medicine)",
     experience: "15 years",
     department: "General Medicine",
     image: doc2,
