@@ -1,5 +1,4 @@
 import React from "react";
-import "./AppointmentHelpCard.css";
 
 // Contact information - managed internally by this component
 const CONTACT_INFO = {
@@ -9,13 +8,40 @@ const CONTACT_INFO = {
 
 export default function HelpCard() {
   return (
-    <div className="help-card">
-      <div className="help-title">
-        <span className="help-icon">❓</span> Need Help?
+    <div
+      className="
+        bg-white
+        rounded-[22px]
+        px-[20px] py-[24px]
+        shadow-[0_2px_12px_rgba(107,47,214,0.08)]
+      "
+    >
+      <div
+        className="
+          flex items-center gap-[8px]
+          font-semibold
+          text-[17px]
+          mb-[10px]
+        "
+      >
+        <span
+          className="
+            text-[#8d3bbd]
+            text-[22px]
+          "
+        >
+          ❓
+        </span>
+        Need Help?
       </div>
-      <div className="help-content">
-        <div className="help-item">{CONTACT_INFO.phone}</div>
-        <div className="help-item">{CONTACT_INFO.email}</div>
+
+      <div className="ml-[36px]">
+        <div className="text-[15px] mb-[8px]">
+          {CONTACT_INFO.phone}
+        </div>
+        <div className="text-[15px]">
+          {CONTACT_INFO.email}
+        </div>
       </div>
     </div>
   );

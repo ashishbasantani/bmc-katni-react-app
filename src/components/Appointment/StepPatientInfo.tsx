@@ -1,5 +1,4 @@
 import React from "react";
-import "./StepPatientInfo.css";
 
 interface PatientInformationProps {
   name: string;
@@ -10,10 +9,20 @@ interface PatientInformationProps {
   reason: string;
   medications: string;
   allergies: string;
-  onFieldChange: (field: "name" | "email" | "phone" | "age" | "gender" | "reason" | "medications" | "allergies", value: any) => void;
+  onFieldChange: (
+    field:
+      | "name"
+      | "email"
+      | "phone"
+      | "age"
+      | "gender"
+      | "reason"
+      | "medications"
+      | "allergies",
+    value: any
+  ) => void;
 }
 
-// Gender options - managed internally by this component
 const GENDER_OPTIONS = ["Male", "Female", "Other"];
 
 export default function PatientInformation({
@@ -28,117 +37,157 @@ export default function PatientInformation({
   onFieldChange,
 }: PatientInformationProps) {
   return (
-    <section className="patient-info-section">
-      <label className="form-label">
-        Patient Information <span className="required">*</span>
+    <section className="bg-white rounded-[22px] p-9 mb-7 shadow-[0_14px_34px_rgba(0,0,0,0.04)]
+                        max-md:p-5 max-md:rounded-[18px]">
+
+      {/* Title */}
+      <label className="block text-base font-semibold mb-4 max-md:text-[15px]">
+        Patient Information
+        <span className="text-[#8d3bbd] ml-1">*</span>
       </label>
+
       {/* Full Name */}
-      <div className="form-row">
-        <div className="form-col full">
-          <label className="input-label">
-            Full Name <span className="required">*</span>
-          </label>
-          <input
-            className="input"
-            placeholder="Enter your full name"
-            value={name}
-            onChange={(e) => onFieldChange("name", e.target.value)}
-          />
-        </div>
+      <div className="mb-5">
+        <label className="block text-sm font-medium mb-2 max-md:text-[13px]">
+          Full Name <span className="text-[#8d3bbd]">*</span>
+        </label>
+        <input
+          className="w-full px-4 py-3 rounded-xl border border-gray-300 text-[15px]
+                     focus:outline-none focus:ring-2 focus:ring-[#6b2fd6]/40
+                     max-md:text-sm max-md:py-3"
+          placeholder="Enter your full name"
+          value={name}
+          onChange={(e) => onFieldChange("name", e.target.value)}
+        />
       </div>
+
       {/* Email + Phone */}
-      <div className="form-row">
-        <div className="form-col">
-          <label className="input-label">
-            Email <span className="required">*</span>
+      <div className="grid grid-cols-2 gap-11 mb-5 max-md:grid-cols-1 max-md:gap-4">
+        <div>
+          <label className="block text-sm font-medium mb-2 max-md:text-[13px]">
+            Email <span className="text-[#8d3bbd]">*</span>
           </label>
           <input
-            className="input"
+            className="w-full px-4 py-3 rounded-xl border border-gray-300 text-[15px]
+                       focus:outline-none focus:ring-2 focus:ring-[#6b2fd6]/40
+                       max-md:text-sm"
             placeholder="Enter your email"
             value={email}
             onChange={(e) => onFieldChange("email", e.target.value)}
           />
         </div>
-        <div className="form-col">
-          <label className="input-label">
-            Phone <span className="required">*</span>
+
+        <div>
+          <label className="block text-sm font-medium mb-2 max-md:text-[13px]">
+            Phone <span className="text-[#8d3bbd]">*</span>
           </label>
           <input
-            className="input"
+            className="w-full px-4 py-3 rounded-xl border border-gray-300 text-[15px]
+                       focus:outline-none focus:ring-2 focus:ring-[#6b2fd6]/40
+                       max-md:text-sm"
             placeholder="Enter your phone number"
             value={phone}
             onChange={(e) => onFieldChange("phone", e.target.value)}
           />
         </div>
       </div>
+
       {/* Age + Gender */}
-      <div className="form-row">
-        <div className="form-col">
-          <label className="input-label">
-            Age <span className="required">*</span>
+      <div className="grid grid-cols-2 gap-11 mb-5 max-md:grid-cols-1 max-md:gap-4">
+        <div>
+          <label className="block text-sm font-medium mb-2 max-md:text-[13px]">
+            Age <span className="text-[#8d3bbd]">*</span>
           </label>
           <input
-            className="input"
+            className="w-full px-4 py-3 rounded-xl border border-gray-300 text-[15px]
+                       focus:outline-none focus:ring-2 focus:ring-[#6b2fd6]/40
+                       max-md:text-sm"
             placeholder="Enter your age"
             value={age}
             onChange={(e) => onFieldChange("age", e.target.value)}
           />
         </div>
-        <div className="form-col">
-          <label className="input-label">
-            Gender <span className="required">*</span>
+
+        <div>
+          <label className="block text-sm font-medium mb-2 max-md:text-[13px]">
+            Gender <span className="text-[#8d3bbd]">*</span>
           </label>
-          <div className="gender-group">
-            {GENDER_OPTIONS.map((g) => (
-              <button
-                key={g}
-                type="button"
-                className={
-                  gender === g ? "gender-btn selected" : "gender-btn"
-                }
-                onClick={() => onFieldChange("gender", g)}
-              >
-                {g}
-              </button>
-            ))}
+
+          <div className="flex gap-3 max-md:grid max-md:grid-cols-3 max-md:gap-2">
+            {GENDER_OPTIONS.map((g) => {
+              const selected = gender === g;
+
+              return (
+                <button
+                  key={g}
+                  type="button"
+                  onClick={() => onFieldChange("gender", g)}
+                  className={`
+                    h-11 min-w-[80px] rounded-[14px] text-[15px]
+                    border transition-all duration-200
+                    max-md:w-full max-md:min-w-0 max-md:text-sm
+                    ${
+                      selected
+                        ? "border-2 border-[#6b2fd6] bg-[#f7f2ff] text-[#6b2fd6]"
+                        : "border-gray-300 bg-white hover:border-[#6b2fd6]/50"
+                    }
+                  `}
+                >
+                  {g}
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>
+
       {/* Reason */}
-      <div className="form-row">
-        <div className="form-col full">
-          <label className="input-label">
-            Reason for Visit <span className="required">*</span>
-          </label>
-          <textarea
-            className="textarea"
-            rows={4}
-            value={reason}
-            onChange={(e) => onFieldChange("reason", e.target.value)}
-            placeholder="Describe your symptoms or reason for consultation"
-          />
-        </div>
+      <div className="mb-5">
+        <label className="block text-sm font-medium mb-2 max-md:text-[13px]">
+          Reason for Visit <span className="text-[#8d3bbd]">*</span>
+        </label>
+        <textarea
+          rows={4}
+          className="w-full px-4 py-3 rounded-[14px] border border-gray-300 text-[15px]
+                     resize-none focus:outline-none focus:ring-2 focus:ring-[#6b2fd6]/40
+                     max-md:text-sm"
+          value={reason}
+          onChange={(e) => onFieldChange("reason", e.target.value)}
+          placeholder="Describe your symptoms or reason for visit"
+        />
       </div>
+
       {/* Medications + Allergies */}
-      <div className="form-row">
-        <div className="form-col">
-          <label className="input-label">
+      <div className="grid grid-cols-2 gap-11 max-md:grid-cols-1 max-md:gap-4">
+        <div>
+          <label className="block text-sm font-medium mb-2 max-md:text-[13px]">
             Current Medications (Optional)
           </label>
           <input
-            className="input"
+            className="w-full px-4 py-3 rounded-xl border border-gray-300 text-[15px]
+                       focus:outline-none focus:ring-2 focus:ring-[#6b2fd6]/40
+                       max-md:text-sm"
             placeholder="List any current medications"
             value={medications}
-            onChange={(e) => onFieldChange("medications", e.target.value)}
+            onChange={(e) =>
+              onFieldChange("medications", e.target.value)
+            }
           />
         </div>
-        <div className="form-col">
-          <label className="input-label">Allergies (Optional)</label>
+
+        <div>
+          <label className="block text-sm font-medium mb-2 max-md:text-[13px]">
+            Allergies (Optional)
+          </label>
           <input
-            className="input"
+            className="w-full px-4 py-3 rounded-xl border border-gray-300 text-[15px]
+                       focus:outline-none focus:ring-2 focus:ring-[#6b2fd6]/40
+                       max-md:text-sm"
             placeholder="List any allergies"
             value={allergies}
-            onChange={(e) => onFieldChange("allergies", e.target.value)}
+            onChange={(e) =>
+              onFieldChange("allergies", e.target.value)
+            }
           />
         </div>
       </div>

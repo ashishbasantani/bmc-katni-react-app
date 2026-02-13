@@ -1,5 +1,4 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import "./AppointmentSuccess.css";
 
 type SuccessState = {
   appointmentId: string;
@@ -16,10 +15,17 @@ const AppointmentSuccess = () => {
   // Fallback if user refreshes or opens page directly
   if (!state) {
     return (
-      <div className="appointment-success-page">
-        <div className="success-fallback">
-          <h2>No appointment data found</h2>
-          <button onClick={() => navigate("/")}>Go to Home</button>
+      <div className="min-h-[80vh] flex items-center justify-center bg-gradient-to-b from-[#faf7ff] to-white px-4">
+        <div className="flex flex-col items-center gap-4">
+          <h2 className="text-gray-700 text-xl font-semibold">
+            No appointment data found
+          </h2>
+          <button
+            onClick={() => navigate("/")}
+            className="bg-[#5b21b6] text-white px-5 py-2 rounded-lg hover:bg-[#4c1d95] transition"
+          >
+            Go to Home
+          </button>
         </div>
       </div>
     );
@@ -28,64 +34,109 @@ const AppointmentSuccess = () => {
   const { appointmentId, doctor, patient, dateTime } = state;
 
   return (
-    <div className="appointment-success-page">
-      <div className="success-card">
+    <div className="min-h-[80vh] bg-gradient-to-b from-[#faf7ff] to-white 
+                    flex items-center justify-center px-4 py-10">
+
+      <div className="w-full max-w-[760px] bg-white rounded-[18px] 
+                      p-10 max-sm:p-7
+                      shadow-[0_12px_28px_rgba(120,56,160,0.12)]">
+
         {/* Success Icon */}
-        <div className="success-icon">✓</div>
+        <div className="w-[78px] h-[78px] mx-auto mb-5 rounded-full 
+                        bg-[#e6f9ee] flex items-center justify-center 
+                        text-[34px] font-bold text-green-600">
+          ✓
+        </div>
 
         {/* Title */}
-        <h2>Appointment Confirmed!</h2>
-        <p>
+        <h2 className="text-center text-[26px] font-bold text-gray-800 mb-2">
+          Appointment Confirmed!
+        </h2>
+
+        <p className="text-center text-gray-500 text-[15px] mb-7">
           Your appointment has been successfully booked.
           You will receive a confirmation via email and SMS.
         </p>
 
-        {/* Details */}
-        <div className="details-box">
+        {/* Details Box */}
+        <div className="bg-[#f7f1ff] rounded-[14px] p-6 
+                        grid grid-cols-2 gap-5 
+                        max-sm:grid-cols-1 
+                        mb-7 text-left">
+
           <div>
-            <span>Appointment ID</span>
-            <strong>{appointmentId}</strong>
+            <span className="block text-[13px] text-gray-500 mb-1">
+              Appointment ID
+            </span>
+            <strong className="text-[15px] font-semibold text-gray-800">
+              {appointmentId}
+            </strong>
           </div>
 
           <div>
-            <span>Doctor</span>
-            <strong>{doctor}</strong>
+            <span className="block text-[13px] text-gray-500 mb-1">
+              Doctor
+            </span>
+            <strong className="text-[15px] font-semibold text-gray-800">
+              {doctor}
+            </strong>
           </div>
 
           <div>
-            <span>Date & Time</span>
-            <strong>{dateTime}</strong>
+            <span className="block text-[13px] text-gray-500 mb-1">
+              Date & Time
+            </span>
+            <strong className="text-[15px] font-semibold text-gray-800">
+              {dateTime}
+            </strong>
           </div>
 
           <div>
-            <span>Patient</span>
-            <strong>{patient}</strong>
+            <span className="block text-[13px] text-gray-500 mb-1">
+              Patient
+            </span>
+            <strong className="text-[15px] font-semibold text-gray-800">
+              {patient}
+            </strong>
           </div>
         </div>
 
-        {/* Actions */}
-        <div className="actions">
-          <button className="secondary">
+        {/* Action Buttons */}
+        <div className="flex gap-4 mb-7 max-sm:flex-col">
+
+          <button
+            className="flex-1 h-12 rounded-xl text-[15px] font-semibold
+                       bg-white border border-[#d1c4f6] text-[#5b21b6]
+                       hover:bg-[#f3e8ff] transition"
+          >
             Add to Calendar
           </button>
 
           <button
-            className="primary"
             onClick={() => navigate("/")}
+            className="flex-1 h-12 rounded-xl text-[15px] font-semibold
+                       bg-[#5b21b6] text-white
+                       hover:bg-[#4c1d95] transition"
           >
             Done
           </button>
         </div>
 
         {/* Instructions */}
-        <div className="instructions">
-          <h4>Important Instructions:</h4>
-          <ul>
+        <div className="bg-[#faf5ff] border border-[#e9d5ff] 
+                        rounded-[14px] p-5 text-left">
+
+          <h4 className="text-[15px] font-semibold text-[#5b21b6] mb-3">
+            Important Instructions:
+          </h4>
+
+          <ul className="pl-5 space-y-2 list-disc text-[14px] text-[#6b21a8]">
             <li>Please arrive 15 minutes before your appointment time</li>
             <li>Bring a valid ID and insurance card if applicable</li>
             <li>Bring all relevant medical reports and prescriptions</li>
           </ul>
         </div>
+
       </div>
     </div>
   );

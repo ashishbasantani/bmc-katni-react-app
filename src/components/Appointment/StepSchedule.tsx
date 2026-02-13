@@ -1,5 +1,4 @@
 import React from "react";
-import "./StepSchedule.css";
 
 interface DateTimeSelectionProps {
   selectedDate: string;
@@ -9,7 +8,6 @@ interface DateTimeSelectionProps {
 }
 
 /* -------- TIME SLOT GENERATOR -------- */
-
 function generateHourlySlots(
   startHour: number,
   endHour: number
@@ -50,15 +48,14 @@ export default function DateTimeSelection({
   const TIME_SLOTS = [
     {
       label: "Morning",
-      slots: generateHourlySlots(9, 13), // 9 AM – 1 PM
+      slots: generateHourlySlots(9, 13),
     },
     {
       label: "Evening",
-      slots: generateHourlySlots(15, 20), // 3 PM – 8 PM
+      slots: generateHourlySlots(15, 20),
     },
   ];
 
-  /* -------- FILTER PAST TIME SLOTS -------- */
   const isToday =
     selectedDate === today.toDateString();
 
@@ -78,15 +75,24 @@ export default function DateTimeSelection({
   }
 
   return (
-    <section className="datetime-section">
-      <label className="form-label">
-        Select Date & Time <span className="required">*</span>
+    <section className="bg-white rounded-[22px] p-9 mb-7 shadow-[0_14px_34px_rgba(0,0,0,0.04)]
+                        max-md:p-5 max-md:rounded-[18px]">
+
+      {/* Title */}
+      <label className="block text-base font-semibold mb-4 max-md:text-[15px]">
+        Select Date & Time
+        <span className="text-[#8d3bbd] ml-1">*</span>
       </label>
 
-      {/* DATE PICKER */}
-      <div className="date-picker-container">
-        <div className="picker-label">PICK A DATE</div>
-        <div className="date-buttons-grid">
+      {/* ---------------- DATE PICKER ---------------- */}
+      <div className="mb-6">
+        <div className="text-xs mb-3 uppercase tracking-wide text-gray-500">
+          Pick a Date
+        </div>
+
+        <div className="flex flex-wrap gap-3
+                        max-md:grid max-md:grid-cols-3 max-md:gap-2">
+
           {days.map((d, i) => {
             const isSelected =
               selectedDate === d.toDateString();
@@ -94,29 +100,40 @@ export default function DateTimeSelection({
             return (
               <button
                 key={i}
-                className={
-                  isSelected
-                    ? "date-btn selected"
-                    : "date-btn"
-                }
-                onClick={() => onDateSelect(d.toDateString())}
                 type="button"
+                onClick={() => onDateSelect(d.toDateString())}
+                className={`
+                  w-20 h-[70px] rounded-[14px]
+                  flex flex-col items-center justify-center
+                  border transition-all duration-200
+                  text-[15px]
+                  max-md:w-full max-md:h-[65px] max-md:text-sm
+                  ${
+                    isSelected
+                      ? "border-2 border-[#6b2fd6] bg-[#f7f2ff] text-[#6b2fd6]"
+                      : "border-gray-300 bg-white hover:border-[#6b2fd6]/50"
+                  }
+                `}
               >
-                <div className="date-weekday">
+                <div className="font-medium">
                   {d.toLocaleDateString("en-US", {
                     weekday: "short",
                   })}
                 </div>
-                <div className="date-day">{d.getDate()}</div>
+                <div className="text-lg max-md:text-base">
+                  {d.getDate()}
+                </div>
               </button>
             );
           })}
         </div>
       </div>
 
-      {/* TIME PICKER */}
-      <div className="time-picker-container">
-        <div className="picker-label">PICK A TIME</div>
+      {/* ---------------- TIME PICKER ---------------- */}
+      <div>
+        <div className="text-xs mb-3 uppercase tracking-wide text-gray-500">
+          Pick a Time
+        </div>
 
         {TIME_SLOTS.map((group) => {
           const validSlots = group.slots.filter(isFutureTime);
@@ -124,27 +141,40 @@ export default function DateTimeSelection({
           if (validSlots.length === 0) return null;
 
           return (
-            <div key={group.label} className="time-group">
-              <span className="time-group-label">
+            <div key={group.label} className="mb-5">
+
+              <div className="text-[15px] mb-2 max-md:text-sm">
                 {group.label === "Morning" ? "🌞" : "🌤️"}{" "}
                 {group.label} ({validSlots.length})
-              </span>
+              </div>
 
-              <div className="time-buttons-grid">
-                {validSlots.map((slot) => (
-                  <button
-                    key={slot}
-                    className={
-                      selectedTime === slot
-                        ? "time-btn selected"
-                        : "time-btn"
-                    }
-                    onClick={() => onTimeSelect(slot)}
-                    type="button"
-                  >
-                    {slot}
-                  </button>
-                ))}
+              <div className="flex flex-wrap gap-3
+                              max-md:grid max-md:grid-cols-3 max-md:gap-2">
+
+                {validSlots.map((slot) => {
+                  const selected = selectedTime === slot;
+
+                  return (
+                    <button
+                      key={slot}
+                      type="button"
+                      onClick={() => onTimeSelect(slot)}
+                      className={`
+                        min-w-[110px] h-11 rounded-[14px]
+                        border transition-all duration-200
+                        text-[15px]
+                        max-md:w-full max-md:min-w-0 max-md:h-[42px] max-md:text-[13px]
+                        ${
+                          selected
+                            ? "border-2 border-[#6b2fd6] bg-[#f7f2ff] text-[#6b2fd6]"
+                            : "border-gray-300 bg-white hover:border-[#6b2fd6]/50"
+                        }
+                      `}
+                    >
+                      {slot}
+                    </button>
+                  );
+                })}
               </div>
             </div>
           );

@@ -10,7 +10,6 @@ import PatientInformation from "../../components/Appointment/StepPatientInfo";
 import AppointmentSummary from "../../components/Appointment/AppointmentSummary";
 import HelpCard from "../../components/Appointment/AppointmentHelpCard";
 import VisitCard from "../../components/Appointment/AppointmentVisitCard";
-import "./AppointmentPage.css";
 
 export default function AppointmentPage() {
   const [form, setForm] = useState<{
@@ -55,8 +54,7 @@ export default function AppointmentPage() {
     }
   }, [location.state]);
 
-  // Step logic
-  const canGoStep2 = !!form.department; // Must select department to choose doctor && !!form.appointmentType
+  const canGoStep2 = !!form.department;
   const canGoStep3 = canGoStep2 && !!form.doctor;
   const canGoStep4 = canGoStep3 && !!form.date && !!form.time;
 
@@ -96,7 +94,6 @@ export default function AppointmentPage() {
 
       const data = await response.json();
 
-      // ✅ Navigate to Success Page
       navigate("/appointment/success", {
         state: {
           appointmentId: data.appointmentId,
@@ -105,7 +102,6 @@ export default function AppointmentPage() {
           patient: data.patient,
         },
       });
-
     } catch (error) {
       console.error("❌ Booking Error:", error);
       alert("Something went wrong while booking. Please try again.");
@@ -113,12 +109,24 @@ export default function AppointmentPage() {
   }
 
   return (
-    <div className="appointment-page">
+    <div className="min-h-screen bg-gradient-to-b from-[#faf7ff] to-white pb-20">
       <AppointmentHeader />
       <Stepper step={currentStep} />
-      <div className="appointment-layout">
-        <div className="appointment-form">
 
+      {/* MAIN LAYOUT */}
+      <div className="
+        mt-[60px]
+        px-[70px]
+        grid
+        gap-[36px]
+        text-left
+        lg:grid-cols-[1.9fr_1fr]
+        max-[900px]:block
+        max-[900px]:px-[24px]
+      ">
+
+        {/* LEFT FORM */}
+        <div className="flex flex-col gap-[28px]">
           <DepartmentSelection
             department={form.department}
             appointmentType={form.appointmentType}
@@ -160,7 +168,15 @@ export default function AppointmentPage() {
           )}
         </div>
 
-        <div className="appointment-summary-side">
+        {/* RIGHT SUMMARY COLUMN */}
+        <div className="
+          flex flex-col gap-[24px]
+          sticky top-[120px]
+          self-start
+          h-fit
+          max-[900px]:relative
+          max-[900px]:top-auto
+        ">
           <AppointmentSummary
             department={form.department}
             appointmentType={form.appointmentType}

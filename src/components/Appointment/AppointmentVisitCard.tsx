@@ -1,5 +1,4 @@
 import React from "react";
-import "./AppointmentVisitCard.css";
 
 // Hospital address - managed internally by this component
 const HOSPITAL_INFO = {
@@ -9,11 +8,22 @@ const HOSPITAL_INFO = {
 
 export default function VisitCard() {
   return (
-    <div className="visit-card">
-      <div className="visit-title">
-        <span className="visit-icon">📍</span> Visit Us
+    <div
+      className="
+        bg-white
+        rounded-[22px]
+        px-[20px] py-[24px]
+        shadow-[0_2px_12px_rgba(107,47,214,0.08)]
+      "
+    >
+      {/* Title */}
+      <div className="flex items-center gap-[8px] font-semibold text-[17px] mb-[10px]">
+        <span className="text-[#8d3bbd] text-[22px]">📍</span>
+        Visit Us
       </div>
-      <div className="visit-content">
+
+      {/* Content */}
+      <div className="text-[15px] ml-[38px]">
         {HOSPITAL_INFO.name}
         <br />
         {HOSPITAL_INFO.address}
