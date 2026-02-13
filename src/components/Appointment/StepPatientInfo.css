@@ -85,3 +85,62 @@
   resize: none;
   background: #fff;
 }
+
+/* ============================= */
+/* MOBILE RESPONSIVENESS ONLY   */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+  .patient-info-section {
+    padding: 20px;
+    border-radius: 18px;
+  }
+
+  /* Stack form rows vertically */
+  .form-row {
+    flex-direction: column;
+    gap: 14px;
+    padding-right: 0;   /* remove overflow */
+  }
+
+  .form-col {
+    width: 100%;
+  }
+
+  /* Inputs full width already but ensure no overflow */
+  .input {
+    font-size: 14px;
+    padding: 12px 14px;
+  }
+
+  .textarea {
+    font-size: 14px;
+    padding: 12px 14px;
+  }
+
+  /* Gender buttons responsive */
+  .gender-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .gender-btn {
+    width: 100%;
+    min-width: unset;  /* remove fixed width */
+    margin-right: 0;
+    font-size: 14px;
+    height: 42px;
+  }
+
+  /* Slight label size adjustment */
+  .form-label {
+    font-size: 15px;
+  }
+
+  .input-label {
+    font-size: 13px;
+  }
+}
+      

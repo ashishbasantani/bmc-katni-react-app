@@ -1,7 +1,5 @@
-import React, { Suspense, useEffect } from "react";
+import React, { Suspense, ReactNode, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import "./App.css";
-import "./styles/variables.css";
 
 import Header from "./components/Header/Header";
 import Hero from "./components/Hero/Hero";
@@ -13,66 +11,117 @@ import Facilities from "./components/Facilities/Facilities";
 import TopBar from "./components/TopBar/TopBar";
 import Breadcrumbs from "./components/Breadcrumbs/Breadcrumbs";
 
-import SurgeryLearnMore from "./components/Service/SurgeryLearnMore";
-import OrthopedicsLearnMore from "./components/Service/OrthopedicsLearnMore";
-import MedicineLearnMore from "./components/Service/MedicineLearnMore";
-import DentalCareLearnMore from "./components/Service/DentalCareLearnMore";
+import ServiceDetail from "./components/Service/ServiceDetail";
 
 import AppointmentPage from "./pages/Appointment/AppointmentPage";
 import AppointmentSuccess from "./pages/Appointment/AppointmentSuccess";
+interface SectionProps {
+  id: string;
+  children: ReactNode;
+}
+
+/**
+ * Section wrapper
+ * scroll-mt fixes alignment under fixed header
+ */
+const Section: React.FC<SectionProps> = ({ id, children }) => (
+  <section
+    id={id}
+    className="w-full scroll-mt-[var(--header-height)]"
+  >
+    {children}
+  </section>
+);
+
+const HomePage: React.FC = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const scrollToId = location.state?.scrollTo;
+
+    if (scrollToId) {
+      setTimeout(() => {
+        const el = document.getElementById(scrollToId);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
+  }, [location]);
+
+  return (
+     <>
+      <Section id="home">
+        <Hero />
+      </Section>
+
+      <Section id="facilities">
+        <Facilities />
+      </Section>
+
+      <Section id="about-us">
+        <About />
+      </Section>
+
+      <Section id="services">
+        <Services />
+      </Section>
+
+      <Section id="doctors">
+        <Doctors />
+      </Section>
+    </>
+  );
+};
 
 function App() {
   const location = useLocation();
   const isAppointmentPage = location.pathname === "/book_appointment";
-
-  // Scroll to section when coming from other pages
-  useEffect(() => {
-  if (location.hash) {
-    const id = location.hash.replace("#", "");
-    setTimeout(() => {
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    }, 200);
-  } else {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-}, [location.pathname, location.hash]);
-
   return (
-    <div className="App">
+    <div
+      className="App font-sans w-full min-h-screen"
+      style={{
+        color: "var(--text-primary)",
+        backgroundColor: "var(--bg-page)",
+      }}
+    >
       <TopBar />
       {/* Show navbar ONLY if NOT appointment page */}
       {!isAppointmentPage && <Header />}
       <Breadcrumbs />
 
-      <main>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Routes location={location} key={location.pathname}>
+      <main className="flex flex-col w-full">
+        <Suspense
+          fallback={
+            <div className="flex justify-center py-[var(--spacing-3xl)]">
+              <div
+                className="w-10 h-10 border-4 rounded-full animate-spin"
+                style={{
+                  borderColor: "var(--border-light)",
+                  borderTopColor: "var(--accent-blue)",
+                }}
+              />
+            </div>
+          }
+        >
+          <Routes>
+            {/* Home */}
+            <Route path="/" element={<HomePage />} />
             <Route path="/book_appointment" element={<AppointmentPage />} />
             <Route
               path="/appointment/success"
               element={<AppointmentSuccess />}
             />            
-          <Route
-            path="/"
-            element={
-              <>
-                <section id="home"><Hero /></section>
-                <section id="facilities"><Facilities /></section>
-                <section id="about-us"><About /></section>
-                <section id="services"><Services /></section>
-                <section id="doctors"><Doctors /></section>
-              </>
-            }
-          />
-          <Route path="/services/dentalCare" element={<DentalCareLearnMore />}/>
-          <Route path="/services/orthopedics" element={<OrthopedicsLearnMore />} />
-          <Route path="/services/medicine" element={<MedicineLearnMore />} />
-          <Route path="/services/surgery" element={<SurgeryLearnMore />} />
+          {/* Dynamic Service Page */}
+            <Route
+              path="/services/:serviceType"
+              element={<ServiceDetail />}
+            />
         </Routes>
-        <Footer />
         </Suspense>
       </main>
+
+      <Footer />
     </div>
   );
 }

@@ -1,88 +1,88 @@
 import React from "react";
-import heroImage from "../../assets/Bmc_home_page.png";
-import "./Hero.css";
-import { href, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Star, Phone } from "lucide-react";
+import heroVideo from "../../assets/videos/about.mp4";
 
+const STATS = [
+  { value: "41+", label: "Years of Service" },
+  { value: "50K+", label: "Happy Patients" },
+  { value: "24/7", label: "Emergency Care" },
+];
 
 const HeroSection: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="hero-section">
-      <div className="hero-inner">
+    <section className="w-full relative">
+      <div className="container-page section-padding">
+        <div className="flex flex-col lg:flex-row items-stretch gap-10 lg:gap-14">
 
-        {/* LEFT */}
-        <div className="hero-left">
-          <div className="hero-badge">
-            ⭐ Trusted Healthcare Provider Since 1985
-          </div>
-
-          <div className="hero-tagline">
-            <h1>Your Health,</h1>
-            <h1>Our First Priority</h1>
-          </div>
-
-          <p className="hero-desc">
-            Experience world-class healthcare with our team of expert doctors and
-            state-of-the-art facilities. We're here for you 24/7 with compassionate care.
-          </p>
-
-          <div className="hero-ctas">
-            <button className="cta primary"
-              onClick={() => {
-              const phone = "919300220620";
-              window.open(`https://wa.me/${phone}`, "_blank");
-            }}>Enquiry →</button>
-            <button className="cta secondary" onClick={() => window.location.href = "tel: +91 7622220620"}>📞 Emergency Call</button>
-          </div>
-
-          <hr className="hero-divider" />
-
-          <div className="hero-stats">
-            <div>
-              <div className="stat-num">31+</div>
-              <div className="stat-label">Years of Service</div>
+          {/* Left Content */}
+          <div className="flex-1 flex flex-col gap-5 lg:pt-6 relative z-30">
+            <div className="inline-flex items-center gap-2 w-fit px-4 py-1.5 text-sm font-medium rounded-full bg-[var(--badge-bg)] text-[var(--badge-text)]">
+              <Star size={14} />
+              Trusted Healthcare Provider Since 1985
             </div>
-            <div>
-              <div className="stat-num">50K+</div>
-              <div className="stat-label">Happy Patients</div>
+
+            <h1 className="font-bold tracking-tight leading-[1.1] text-4xl sm:text-5xl lg:text-6xl text-[var(--text-primary)]">
+              <span className="block">Your Health,</span>
+              <span className="block">Our First Priority</span>
+            </h1>
+
+            <p className="text-base sm:text-lg max-w-xl text-[var(--text-secondary)]">
+              Experience world-class healthcare with our team of expert doctors
+              and state-of-the-art facilities.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+              <button
+                onClick={() => navigate("/enquiry")}
+                className="h-12 w-full sm:w-auto px-6 rounded-[var(--radius-lg)] font-semibold
+                          bg-[var(--primary-purple)] text-white"
+              >
+                Enquiry →
+              </button>
+
+              <button
+                onClick={() => (window.location.href = 'tel:+917622220620')}
+                className="h-12 w-full sm:w-auto px-6 rounded-[var(--radius-lg)] font-semibold
+                          border-2 border-[var(--primary-purple)]
+                          text-[var(--primary-purple)]
+                          flex items-center justify-center gap-2"
+              >
+                <Phone size={16} />
+                Call Now
+              </button>
             </div>
-            <div>
-              <div className="stat-num">24/7</div>
-              <div className="stat-label">Emergency Care</div>
-            </div>
-          </div>
-        </div>
 
-        {/* RIGHT */}
-        <div className="hero-right">
-          <div className="image-shell">
-
-            <div className="image-mask">
-              <img src={heroImage} alt="Hospital" className="hero-img" />
-
-              {/* 24/7 CARD */}
-              <div className="info-card">
-                <div className="info-icon">🕒</div>
-                <div>
-                  <div className="info-title">24/7 Available</div>
-                  <div className="info-sub">Emergency services always ready</div>
+            <div className="flex gap-8 pt-4 flex-wrap">
+              {STATS.map((stat) => (
+                <div key={stat.label}>
+                  <div className="text-2xl font-bold text-[var(--primary-purple)]">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-[var(--text-secondary)]">
+                    {stat.label}
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
+          </div>
 
-            {/* BOOKING */}
-            <div className="booking-card">
-              <div className="booking-icon">📅</div>
-              <div>
-                <div className="booking-title">Easy Booking</div>
-                <div className="booking-sub">Schedule your visit on chat</div>
-              </div>
-            </div>
-
+         {/* Right Media */}
+        <div className="flex-1 w-full lg:max-w-xl xl:max-w-2xl flex">
+          <div className="relative w-full aspect-video rounded-[28px] overflow-hidden mt-3">
+            <video
+              src={heroVideo}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              className="w-full h-full object-cover relative left-[-2px]"
+            />
           </div>
         </div>
-
+        </div>
       </div>
     </section>
   );

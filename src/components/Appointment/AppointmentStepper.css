@@ -11,7 +11,7 @@
   border-bottom: 1px solid #ececec;
   position: -webkit-sticky;
   position: sticky;
-  top: 94px;
+  top: 81px;
   z-index: 1000;
 }
 
@@ -91,7 +91,7 @@
     justify-content: space-between;   /* 🔥 important */
     position: -webkit-sticky;
     position: sticky;
-    top: 143px;
+    top: 100px;
     z-index: 1000;
   }
 

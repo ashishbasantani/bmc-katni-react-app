@@ -1,0 +1,54 @@
+{
+  "slug": "medicine",
+  "badge": "Premium Healthcare Service",
+  "title": "General Medicine",
+  "tagline": "Comprehensive Healthcare Services",
+  "description": "Our general medicine department offers holistic care for a wide range of health conditions with experienced physicians.",
+  "cta": {
+    "whatsappText": "Hello, I would like to book an appointment for Medicine Department."
+  },
+  "heroImage": "medicine-hero-banner",
+  "whyChoose": {
+    "title": "Why Choose Us",
+    "subtitle": "World-class care with advanced technology and experienced specialists",
+    "items": [
+      {
+        "title": "Quick Diagnosis",
+        "description": "Rapid and accurate diagnosis using advanced medical technology."
+      },
+      {
+        "title": "Expert Doctors",
+        "description": "Highly qualified and experienced physicians providing personalized care."
+      },
+      {
+        "title": "Preventive Care",
+        "description": "Comprehensive health screenings and preventive medical services."
+      }
+    ]
+  },
+  "conditions": {
+    "subtitle": "Comprehensive care for a wide range of conditions",
+    "list": [
+      "Fever and infections",
+      "Hypertension control",
+      "Digestive disorders",
+      "Diabetes management",
+      "Respiratory conditions",
+      "Chronic disease management"
+    ],
+    "image": "medicine-side-banner"
+  },
+  "faq": {
+    "subtitle": "Common questions about our general medicine services",
+    "items": [
+      {
+        "question": "What conditions do you treat?",
+        "answer": "We treat fever, infections, chronic diseases, diabetes, hypertension, and provide preventive care and routine health check-ups."
+      },
+      {
+        "question": "Do I need an appointment?",
+        "answer": "Yes, we recommend booking an appointment for better service. Walk-in patients are also accommodated based on availability."
+      }
+    ]
+  }
+}

@@ -39,6 +39,7 @@
   .appointment-layout {
     grid-template-columns: 1fr;
     padding: 0 24px;
+    display: block;
   }
 
   .appointment-summary-side {

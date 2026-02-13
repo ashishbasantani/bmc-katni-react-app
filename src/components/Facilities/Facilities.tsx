@@ -1,118 +1,124 @@
 import React from "react";
-import "./Facilities.css";
+import { Hospital, Wallet } from "lucide-react";
 import checkup from "../../assets/checkup.jpg";
 import Patientroom from "../../assets/room.png";
 import medicalequipment from "../../assets/equipment.jpg";
 import RotatingCircularText from "./RotatingCircularText";
 
 const Facilities: React.FC = () => {
-  const scrollToNextSection = () => {
-    // Try explicit next section by id (if you add one later), otherwise use sibling
-    const nextById =
-      document.getElementById("services") ||
-      document.getElementById("contact");
-
-    if (nextById) {
-      nextById.scrollIntoView({ behavior: "smooth" });
-      return;
-    }
-
-    const section = document.querySelector(".about");
-    if (section && section.nextElementSibling) {
-      (section.nextElementSibling as HTMLElement).scrollIntoView({
-        behavior: "smooth",
-      });
-      return;
-    }
-
-    // If no next section exists, scroll to bottom of page
-    window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-  };
-
   return (
-    <section className="about">
-      <div className="about-container">
-        {/* Left Column */}
-        <div className="about-left">
-          <div className="about-header">
-            <span className="about-label">OUR FACILITIES</span>
-            <h2 className="about-title">
-             Assisting individuals in accessing quality healthcare facilities.
+    <section className="w-full bg-white">
+       <div className="container-page section-padding">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-14 items-start">
+
+          {/* LEFT CONTENT */}
+          <div>
+            <span className="block mb-2 text-sm tracking-[0.12em] font-semibold text-[var(--primary-purple)]">
+              OUR FACILITIES
+            </span>
+
+            <h2 className="text-3xl lg:!leading-[3.5rem] sm:text-4xl lg:text-[42px] font-bold mb-6 text-[var(--text-primary)]">
+              Assisting individuals in accessing quality healthcare facilities.
             </h2>
+            <p className="text-[15px] sm:text-base leading-relaxed text-[var(--text-secondary)] max-w-[560px] mb-5">
+              At BMC, we are committed to delivering world-class healthcare
+              supported by modern infrastructure, advanced medical technology, and
+              patient-focused services. We ensure comfort, safety, and high
+              standards of medical care. Our 24/7 Emergency and Trauma Care unit is
+              fully equipped to manage medical emergencies, accidents, and
+              critical conditions. Comprehensive inpatient and outpatient services
+              across a wide range of medical specialties are also provided.
+              Whether it is a routine consultation, diagnostic evaluation, or
+              long-term treatment, our services are structured to ensure seamless
+              coordination, efficiency, and compassionate care.
+            </p>
+
+            {/* FEATURE CARDS */}
+            <div className="space-y-6 max-w-[560px]">
+
+              {/* CARD 1 */}
+              <div className="flex items-start gap-4 p-5 rounded-2xl bg-white
+                shadow-[0_12px_40px_rgba(16,24,40,0.08)]
+                hover:shadow-[0_16px_50px_rgba(16,24,40,0.12)]
+                transition-shadow duration-300">
+                
+                <div className="w-10 h-10 rounded-xl bg-[var(--primary-purple-soft)] text-[var(--primary-purple)] flex items-center justify-center shrink-0">
+                  <Hospital size={16} />
+                </div>
+
+                <div>
+                  <h3 className="font-semibold text-[15px] text-[var(--primary-purple)] mb-1">
+                    24×7 Emergency care
+                  </h3>
+                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                    Comprehensive OPD and IPD services across multiple specialties.
+                  </p>
+                </div>
+              </div>
+
+              {/* CARD 2 */}
+              <div className="flex items-start gap-4 p-5 rounded-2xl bg-white
+                shadow-[0_12px_40px_rgba(16,24,40,0.08)]
+                hover:shadow-[0_16px_50px_rgba(16,24,40,0.12)]
+                transition-shadow duration-300">
+
+                <div className="w-10 h-10 rounded-xl bg-[var(--primary-purple-soft)] text-[var(--primary-purple)] flex items-center justify-center shrink-0">
+                  <Wallet size={16} />
+                </div>
+
+                <div>
+                  <h3 className="font-semibold text-[15px] text-[var(--primary-purple)] mb-1">
+                    Cashless treatment available
+                  </h3>
+                  <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                    listed insurance policyholders and Ayushman Bharat cardholders.
+                  </p>
+                </div>
+              </div>
+
+            </div>
           </div>
 
-          <p className="about-description">
-            At BMC, we are committed to delivering world-class healthcare
-            supported by modern infrastructure, advanced medical technology, and
-            patient-focused services. We ensure comfort, safety, and high
-            standards of medical care. Our 24/7 Emergency and Trauma Care unit is
-            fully equipped to manage medical emergencies, accidents, and
-            critical conditions. Comprehensive inpatient and outpatient services
-            across a wide range of medical specialties are also provided.
-            Whether it is a routine consultation, diagnostic evaluation, or
-            long-term treatment, our services are structured to ensure seamless
-            coordination, efficiency, and compassionate care.
-          </p>
+          {/* RIGHT IMAGE SECTION */}
+          <div className="relative">
+            <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-6 items-stretch">
 
-          <div className="about-features">
-            <div className="feature-item">
-              <div className="feature-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-hospital" viewBox="0 0 16 16">
-  <path d="M8.5 5.034v1.1l.953-.55.5.867L9 7l.953.55-.5.866-.953-.55v1.1h-1v-1.1l-.953.55-.5-.866L7 7l-.953-.55.5-.866.953.55v-1.1zM13.25 9a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25zM13 11.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25zm.25 1.75a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25zm-11-4a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5A.25.25 0 0 0 3 9.75v-.5A.25.25 0 0 0 2.75 9zm0 2a.25.25 0 0 0-.25.25v.5c0 .138.112.25.25.25h.5a.25.25 0 0 0 .25-.25v-.5a.25.25 0 0 0-.25-.25zM2 13.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25z"/>
-  <path d="M5 1a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1a1 1 0 0 1 1 1v4h3a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h3V3a1 1 0 0 1 1-1zm2 14h2v-3H7zm3 0h1V3H5v12h1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1zm0-14H6v1h4zm2 7v7h3V8zm-8 7V8H1v7z"/>
-</svg>
+              {/* MAIN IMAGE */}
+              <div className="h-[600px] rounded-3xl overflow-hidden">
+                <img
+                  src={Patientroom}
+                  alt="Patient Room"
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <div className="feature-content">
-                <h3>24×7 Emergency care</h3>
-                <p>
-                 Comprehensive OPD and IPD services across multiple specialties.
-                </p>
+
+              {/* SIDE IMAGES */}
+              <div className="flex flex-col gap-6 h-[600px]">
+
+                {/* TOP IMAGE – slightly smaller */}
+                <div className="flex-[0.45] rounded-3xl overflow-hidden">
+                  <img
+                    src={checkup}
+                    alt="machine"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                {/* BOTTOM IMAGE – slightly larger */}
+                <div className="flex-[0.55] rounded-3xl overflow-hidden">
+                  <img
+                    src={medicalequipment}
+                    alt="Medical Equipment"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
               </div>
             </div>
 
-            <div className="feature-item">
-              <div className="feature-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-wallet2" viewBox="0 0 16 16">
-  <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5z"/>
-</svg>
-              </div>
-              <div className="feature-content">
-                <h3>Cashless treatment available</h3>
-                <p>
-                  listed insurance policyholders and Ayushman Bharat cardholders.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Right Column - Image Gallery */}
-        <div className="about-right">
-          <div className="about-gallery-custom">
-            {/* Left Tall Image */}
-            <div className="gallery-main">
-              <img
-                src={Patientroom}
-                alt="Patient Room"
-                className="gallery-image"
-              />
-            </div>
-            <div className="rotating-text-container">
-            {/* SVG for rotating circular text */}
-            <RotatingCircularText />
-            </div>
-            {/* Right Stacked Images */}
-            <div className="gallery-side">
-              <img
-                src={checkup}
-                alt="machine"
-                className="gallery-image-medium"
-              />
-              <img
-                src={medicalequipment}
-                alt="Medical Equipment"
-                className="gallery-image-small"
-              />
+            {/* ROTATING TEXT */}
+            <div className="absolute top-[18%] left-1/2 -translate-x-[25%] -translate-y-[114%] hidden lg:flex w-[200px] h-[200px] opacity-70 pointer-events-none">
+              <RotatingCircularText />
             </div>
           </div>
         </div>

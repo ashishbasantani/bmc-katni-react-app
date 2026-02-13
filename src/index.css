@@ -1,3 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "./styles/variables.css";
+html {
+  font-family: Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -14,4 +24,26 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@layer components {
+  .container-page {
+    @apply
+      w-full
+      max-w-[1440px]
+      mx-auto
+      px-4
+      sm:px-6
+      lg:px-8;
+  }
+
+  .section-padding {
+    @apply
+      pt-8
+      pb-12
+      sm:pt-10
+      sm:pb-16
+      lg:pt-14
+      lg:pb-20;
+  }
 }
