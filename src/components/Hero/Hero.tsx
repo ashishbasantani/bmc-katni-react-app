@@ -2,6 +2,9 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Star, Phone } from "lucide-react";
 import heroVideo from "../../assets/videos/about.mp4";
+import EnquiryPopup from "../../components/popup/contactpage";
+import { useState } from "react";
+
 
 const STATS = [
   { value: "41+", label: "Years of Service" },
@@ -10,6 +13,7 @@ const STATS = [
 ];
 
 const HeroSection: React.FC = () => {
+  const [openPopup, setOpenPopup] = useState(false);
   const navigate = useNavigate();
 
   return (
@@ -35,11 +39,11 @@ const HeroSection: React.FC = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
               <button
-                onClick={() => navigate("/enquiry")}
+                onClick={() => setOpenPopup(true)}  
                 className="h-12 w-full sm:w-auto px-6 rounded-[var(--radius-lg)] font-semibold
                           bg-[var(--primary-purple)] text-white"
               >
-                Enquiry →
+                Contact Us →
               </button>
 
               <button
@@ -84,6 +88,11 @@ const HeroSection: React.FC = () => {
         </div>
         </div>
       </div>
+      <EnquiryPopup
+        isOpen={openPopup}
+        onClose={() => setOpenPopup(false)}
+      />
+
     </section>
   );
 };
