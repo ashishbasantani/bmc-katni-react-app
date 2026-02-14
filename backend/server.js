@@ -4,6 +4,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 
 const appointmentRoutes = require("./routes/appointment.routes");
+const enquiryRoutes = require("./routes/enquiry.routes");
 
 const app = express();
 
@@ -19,6 +20,8 @@ mongoose
 
 /* ------------------ ROUTES ------------------ */
 app.use("/api/appointment", appointmentRoutes);
+app.use("/api/enquiry", enquiryRoutes);
+
 
 /* ------------------ SERVER ------------------ */
 const PORT = process.env.PORT || 5000;

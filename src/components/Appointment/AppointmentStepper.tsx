@@ -17,7 +17,7 @@ export default function Stepper({ step }: StepperProps) {
         px-[300px] py-[26px]
         bg-[#faf7ff]
         border-b border-[#ececec]
-        sticky top-[81px] z-[1000]
+        sticky top-[70px] z-[1000]
 
         md:px-[300px]
         max-md:px-[16px] max-md:py-[18px]
