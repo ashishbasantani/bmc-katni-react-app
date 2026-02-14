@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 import { Doctor } from "../../types/appointment.types";
 import Stepper from "../../components/Appointment/AppointmentStepper";
 import DepartmentSelection from "../../components/Appointment/StepDepartment";
@@ -110,6 +111,20 @@ export default function AppointmentPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#faf7ff] to-white pb-20">
       <Stepper step={currentStep} />
+      
+      {/* BACK BUTTON */}
+      <div className="mt-[40px] px-[70px] max-[900px]:px-[24px]">
+        <button
+          onClick={() => {
+            if (window.history.length > 1) navigate(-1);
+            else navigate("/");
+          }}
+          className="flex items-center gap-2 text-[var(--primary-purple)] font-medium hover:underline"
+        >
+          <ArrowLeft size={18} />
+          Back
+        </button>
+      </div>
 
       {/* MAIN LAYOUT */}
       <div className="

@@ -12,20 +12,20 @@ const generateAppointmentId = require("../utils/generateAppointmentId");
 
 async function sendWhatsAppMessage(to, message) {
   try {
-    // Remove + if present
-    const formattedNumber = to.replace(/\D/g, "");
-
-    // If number is 10 digits, assume Indian number and add 91
-    if (formattedNumber.length === 10) {
-      formattedNumber = "91" + formattedNumber;
+    if (!to) {
+      console.log("No phone number provided");
+      return;
     }
 
-    // If number already starts with 91 and is 12 digits, keep it
-    if (formattedNumber.length < 12) {
-      throw new Error("Invalid phone number format");
-    }
+    // Remove spaces, +, -, etc
+    const cleanedNumber = to.replace(/\D/g, "");
 
-    console.log("Sending WhatsApp to:", formattedNumber);    
+    // Add India code if missing
+    const formattedNumber = cleanedNumber.startsWith("91")
+      ? cleanedNumber
+      : "91" + cleanedNumber;
+
+    console.log("Sending WhatsApp to:", formattedNumber); 
 
     await axios.post(
       `https://graph.facebook.com/v18.0/${process.env.WHATSAPP_PHONE_NUMBER_ID}/messages`,
@@ -45,11 +45,9 @@ async function sendWhatsAppMessage(to, message) {
 
     console.log("✅ WhatsApp message sent");
   } catch (error) {
-    console.error(
-      "❌ WhatsApp Error:",
-      error.response?.data || error.message
-    );
-  }
+  console.error("❌ FULL ERROR STACK:");
+  console.error(error.stack);
+}
 }
 
 /* =========================

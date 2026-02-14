@@ -28,3 +28,5 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Backend running on port ${PORT}`);
 });
+console.log("TOKEN:", process.env.WHATSAPP_TOKEN ? "Loaded" : "Missing");
+console.log("PHONE ID:", process.env.WHATSAPP_PHONE_NUMBER_ID);
