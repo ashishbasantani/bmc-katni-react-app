@@ -6,6 +6,8 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const isAppointmentPage = location.pathname === "/book_appointment";
+
   const navLinks = [
     { label: "Home", id: "home" },
     { label: "Facilities", id: "facilities" },
@@ -27,30 +29,17 @@ const Header = () => {
     [navigate, location.pathname]
   );
 
-  const breadcrumbs = location.pathname
-    .split("/")
-    .filter(Boolean);
-
-  const handleBreadcrumbClick = (crumb: string) => {
-    if (crumb === "services") {
-      navigate("/#services");
-    } else {
-      navigate(`/${crumb}`);
-    }
-  };
-
-
   return (
     <>
-      {/* Header */}
       <header
-        className="sticky top-0 z-[var(--z-header)] border-b"
+        className="sticky top-0 z-[999] border-b bg-white shadow-lg"
         style={{
-          backgroundColor: "var(--bg-white)",
           borderColor: "var(--border-light)",
         }}
       >
-        <div className="container-page h-[72px] flex items-center justify-between">
+        <div className="container-page h-[72px] flex items-center justify-between relative">
+
+          {/* LOGO */}
           <img
             src="/BMC.png"
             alt="BMC"
@@ -58,45 +47,62 @@ const Header = () => {
             className="h-10 cursor-pointer translate-y-[1px]"
           />
 
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map(({ label, id }) => (
-              <button
-                key={id}
-                onClick={() => goTo(id)}
-                className="text-sm font-medium transition-colors"
-                style={{ color: "var(--text-secondary)" }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.color =
-                    "var(--primary-purple)")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.color =
-                    "var(--text-secondary)")
-                }
-              >
-                {label}
-              </button>
-            ))}
-          </nav>
+          {/* CENTER AREA */}
+          {isAppointmentPage ? (
+            <div className="absolute left-1/2 -translate-x-1/2 text-center">
+              <h1 className="text-[28px] font-bold leading-[1.2] m-0 max-md:text-[22px]">
+                Book an Appointment
+              </h1>
 
-          <button
-            onClick={() => navigate("/book_appointment")}
-            className="flex items-center justify-center font-medium text-sm px-[var(--spacing-lg)] py-[var(--spacing-md)] rounded-[var(--radius-lg)] transition-colors duration-[var(--transition-base)]"
-            style={{
-              backgroundColor: "var(--primary-purple)",
-              color: "var(--text-inverse)",
-            }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.backgroundColor =
-                "var(--primary-purple-light)")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.backgroundColor =
-                "var(--primary-purple)")
-            }
-          >
-            Book Appointment
-          </button>
+              <p className="mt-[4px] text-[15px] opacity-90 max-md:text-[14px]">
+                Fill in your details to schedule your visit
+              </p>
+            </div>
+          ) : (
+            <nav className="hidden md:flex items-center gap-8">
+              {navLinks.map(({ label, id }) => (
+                <button
+                  key={id}
+                  onClick={() => goTo(id)}
+                  className="text-sm font-medium transition-colors"
+                  style={{ color: "var(--text-secondary)" }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.color = "var(--primary-purple)")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.color = "var(--text-secondary)")
+                  }
+                >
+                  {label}
+                </button>
+              ))}
+            </nav>
+          )}
+
+          {/* RIGHT AREA */}
+          {!isAppointmentPage ? (
+            <button
+              onClick={() => navigate("/book_appointment")}
+              className="flex items-center justify-center font-medium text-sm px-[var(--spacing-lg)] py-[var(--spacing-md)] rounded-[var(--radius-lg)] transition-colors duration-[var(--transition-base)]"
+              style={{
+                backgroundColor: "var(--primary-purple)",
+                color: "var(--text-inverse)",
+              }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.backgroundColor =
+                  "var(--primary-purple-light)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.backgroundColor =
+                  "var(--primary-purple)")
+              }
+            >
+              Book Appointment
+            </button>
+          ) : (
+            <div className="w-[140px]" /> // keeps spacing same
+          )}
+
         </div>
       </header>
     </>

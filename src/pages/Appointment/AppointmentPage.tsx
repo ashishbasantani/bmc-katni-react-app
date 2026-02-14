@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Doctor } from "../../types/appointment.types";
 import Stepper from "../../components/Appointment/AppointmentStepper";
-import AppointmentHeader from "../../components/Appointment/AppointmentHeader";
 import DepartmentSelection from "../../components/Appointment/StepDepartment";
 import DoctorSelection from "../../components/Appointment/StepDoctor";
 import DateTimeSelection from "../../components/Appointment/StepSchedule";
@@ -110,7 +109,6 @@ export default function AppointmentPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#faf7ff] to-white pb-20">
-      <AppointmentHeader />
       <Stepper step={currentStep} />
 
       {/* MAIN LAYOUT */}

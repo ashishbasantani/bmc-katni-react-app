@@ -86,8 +86,7 @@ function App() {
       }}
     >
       <TopBar />
-      {/* Show navbar ONLY if NOT appointment page */}
-      {!isAppointmentPage && <Header />}
+      <Header />
       <Breadcrumbs />
 
       <main className="flex flex-col w-full">
