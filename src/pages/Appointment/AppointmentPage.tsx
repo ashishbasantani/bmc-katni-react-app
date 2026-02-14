@@ -113,7 +113,7 @@ export default function AppointmentPage() {
       <Stepper step={currentStep} />
       
       {/* BACK BUTTON */}
-      <div className="mt-[40px] px-[70px] max-[900px]:px-[24px]">
+      <div className="mt-[20px] px-[70px] max-[900px]:px-[24px]">
         <button
           onClick={() => {
             if (window.history.length > 1) navigate(-1);
@@ -128,7 +128,7 @@ export default function AppointmentPage() {
 
       {/* MAIN LAYOUT */}
       <div className="
-        mt-[60px]
+        mt-[30px]
         px-[70px]
         grid
         gap-[36px]

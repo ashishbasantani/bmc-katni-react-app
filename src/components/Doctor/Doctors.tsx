@@ -15,9 +15,9 @@ const doctors = [
   { name: "Dr. Mayank Shrotriye", role: "Orthopedics", image: doctor2 },
   { name: "Dr. Meenakshi Pandey", role: "Obstetrics and Gynaecology", image: doctor3 },
   { name: "Dr. R. Harchandani", role: "Surgical Specialist", image: doctor4 },
-  { name: "Dr. Abhishek Pandey", role: "Neaturopathy", image: doctor5 },
+  { name: "Dr. Abhishek Pandey", role: "Medicine", image: doctor7 },
+  { name: "Dr. Sangeet Mohan Dwivedi", role: "Naturopathy", image: doctor5 },
   { name: "Dr. Kiran Tiwari", role: "Dentist", image: doctor6 },
-  { name: "Dr. Sangeet Mohan Dwivedi", role: "Medicine", image: doctor7 },
 ];
 
 export const Doctors = () => {
