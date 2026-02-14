@@ -65,6 +65,7 @@ const EnquiryPopup: React.FC<Props> = ({ isOpen, onClose }) => {
 
       {/* Close Button */}
       <button
+        title="Close"
         onClick={onClose}
         className="absolute top-5 right-5 text-[var(--text-muted)] hover:text-[var(--text-primary)] transition"
       >
@@ -204,6 +205,7 @@ const EnquiryPopup: React.FC<Props> = ({ isOpen, onClose }) => {
         {/* Terms */}
         <div className="flex items-start gap-2">
           <input
+            title="terms&conditions"
             type="checkbox"
             name="agree"
             checked={form.agree}
