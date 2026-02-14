@@ -6,7 +6,7 @@ const TopBar = () => {
     <>
       {/* Top Bar */}
       <div
-        className="py-[var(--spacing-sm)] text-[var(--text-inverse)] text-xs"
+        className="hidden md:block py-[var(--spacing-sm)] text-[var(--text-inverse)] text-xs"
         style={{ backgroundColor: "var(--primary-purple)" }}
       >
         <div className="container-page flex items-center justify-between">
@@ -17,7 +17,7 @@ const TopBar = () => {
             </span>
             <span className="flex items-center gap-2">
               <Phone className="w-[14px] h-[14px]" />
-              +91 7012344405
+              +91 7622220620
             </span>
           </div>
 

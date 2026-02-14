@@ -31,8 +31,7 @@ const Footer: React.FC = () => {
             <h2 className="text-2xl font-bold mb-4">BMC</h2>
 
             <p className="text-sm leading-relaxed text-[var(--primary-purple-soft)] mb-5">
-              Trusted healthcare provider serving the community with excellence
-              since 1995.
+              Leading healthcare provider in Katni, dedicated to excellence in medical services
             </p>
 
             <div className="flex items-center gap-4">
@@ -114,7 +113,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-3 text-sm text-[var(--primary-purple-soft)]">
               <li className="flex items-start gap-3">
                 <MapPin size={16} className="mt-1 shrink-0" />
-                <span>BMC Hospital, Kerala, India</span>
+                <span>Hospital Line, Madhav Nagar, Katni, MP 483504</span>
               </li>
 
               <li className="flex items-center gap-3">
@@ -123,7 +122,7 @@ const Footer: React.FC = () => {
                   href="tel:+917012344405"
                   className="hover:text-[var(--text-inverse)]"
                 >
-                  +91 7012344405
+                 +91 7622220620
                 </a>
               </li>
 

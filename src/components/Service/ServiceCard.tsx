@@ -44,7 +44,7 @@ export const ServiceCard: React.FC<Props> = ({
       className={`relative overflow-hidden rounded-3xl p-6 sm:p-8 min-h-[260px] sm:min-h-[300px] flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-xl ${theme.card}`}
     >
       {/* Decorative circle */}
-      <div className="absolute -bottom-16 -right-16 w-48 h-48 rounded-full bg-white/30" />
+      {/* <div className="absolute -bottom-16 -right-16 w-48 h-48 rounded-full bg-white/30" /> */}
 
       {/* Icon */}
       <div
