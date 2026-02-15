@@ -13,11 +13,12 @@ app.use(cors());
 app.use(express.json());
 
 /* ------------------ DATABASE ------------------ */
-const mongoURI =
-  process.env.NODE_ENV === "production"
-    ? process.env.MONGO_URI_PROD
-    : process.env.MONGO_URI_LOCAL;
+// const mongoURI =
+//   process.env.NODE_ENV === "production"
+//     ? process.env.MONGO_URI_PROD
+//     : process.env.MONGO_URI_LOCAL;
 
+const mongoURI = process.env.MONGO_URI_PROD;
 mongoose.connect(mongoURI)
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log("MongoDB Error:", err));
@@ -39,3 +40,4 @@ app.listen(PORT, () => {
 });
 console.log("TOKEN:", process.env.WHATSAPP_TOKEN ? "Loaded" : "Missing");
 console.log("PHONE ID:", process.env.WHATSAPP_PHONE_NUMBER_ID);
+console.log("Connected URI:", mongoURI);
