@@ -5,9 +5,9 @@ const Enquiry = require("../models/enquiry");
 /* ------------------ CREATE ENQUIRY ------------------ */
 router.post("/", async (req, res) => {
   try {
-    const { name, email, phone, age, gender, agree } = req.body;
+    const { name, email, phone, enquiry, agree } = req.body;
 
-    if (!name || !email || !phone || !age || !gender || !agree) {
+    if (!name || !email || !phone || !enquiry || !agree) {
       return res.status(400).json({
         success: false,
         message: "All fields are required",
@@ -18,8 +18,7 @@ router.post("/", async (req, res) => {
       name,
       email,
       phone,
-      age,
-      gender,
+      enquiry,
       agree,
     });
 

@@ -37,14 +37,9 @@ const Header = () => {
           borderColor: "var(--border-light)",
         }}
       >
-<<<<<<< HEAD
-        <div className="container-page h-[72px] flex items-center justify-between">
-          {/* Logo */}
-=======
         <div className="container-page h-[72px] flex items-center justify-between relative">
 
           {/* LOGO */}
->>>>>>> def1b7c1cf4b5a35d84e90ef5e53da090be0c2cd
           <img
             src="/BMC.png"
             alt="BMC"
@@ -52,60 +47,6 @@ const Header = () => {
             className="h-10 cursor-pointer translate-y-[1px]"
           />
 
-<<<<<<< HEAD
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map(({ label, id }) => (
-              <button
-                key={id}
-                onClick={() => goTo(id)}
-                className="text-sm font-medium transition-colors"
-                style={{ color: "var(--text-secondary)" }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.color =
-                    "var(--primary-purple)")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.color =
-                    "var(--text-secondary)")
-                }
-              >
-                {label}
-              </button>
-            ))}
-          </nav>
-
-          {/* Right Section */}
-          <div className="flex items-center gap-4">
-            {/* Book Appointment */}
-            <button
-              onClick={() => navigate("/book_appointment")}
-              className="flex items-center justify-center font-medium text-sm px-[var(--spacing-lg)] py-[var(--spacing-md)] rounded-[var(--radius-lg)] transition-colors duration-[var(--transition-base)]"
-              style={{
-                backgroundColor: "var(--primary-purple)",
-                color: "var(--text-inverse)",
-              }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.backgroundColor =
-                  "var(--primary-purple-light)")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.backgroundColor =
-                  "var(--primary-purple)")
-              }
-            >
-              Book Appointment
-            </button>
-
-            {/* Hamburger (Mobile Only) */}
-            <button
-              onClick={() => setOpen(true)}
-              className="md:hidden flex items-center justify-center w-10 h-10 rounded-md hover:bg-gray-100 transition"
-            >
-              ☰
-            </button>
-          </div>
-=======
           {/* CENTER AREA */}
           {isAppointmentPage ? (
             <div className="absolute left-1/2 -translate-x-1/2 text-center">
@@ -162,7 +103,6 @@ const Header = () => {
             <div className="w-[140px]" /> // keeps spacing same
           )}
 
->>>>>>> def1b7c1cf4b5a35d84e90ef5e53da090be0c2cd
         </div>
       </header>
 
