@@ -10,25 +10,18 @@ import Footer from "./components/Footer/Footer";
 import Facilities from "./components/Facilities/Facilities";
 import TopBar from "./components/TopBar/TopBar";
 import Breadcrumbs from "./components/Breadcrumbs/Breadcrumbs";
-
 import ServiceDetail from "./components/Service/ServiceDetail";
 
 import AppointmentPage from "./pages/Appointment/AppointmentPage";
-import AppointmentSuccess from "./pages/Appointment/AppointmentSuccess";
+import AppointmentSuccessModal from "./pages/Appointment/AppointmentSuccess";
+
 interface SectionProps {
   id: string;
   children: ReactNode;
 }
 
-/**
- * Section wrapper
- * scroll-mt fixes alignment under fixed header
- */
 const Section: React.FC<SectionProps> = ({ id, children }) => (
-  <section
-    id={id}
-    className="w-full scroll-mt-[var(--header-height)]"
-  >
+  <section id={id} className="w-full scroll-mt-[var(--header-height)]">
     {children}
   </section>
 );
@@ -50,7 +43,7 @@ const HomePage: React.FC = () => {
   }, [location]);
 
   return (
-     <>
+    <>
       <Section id="home">
         <Hero />
       </Section>
@@ -75,18 +68,41 @@ const HomePage: React.FC = () => {
 };
 
 function App() {
-  const location = useLocation();
-  const isAppointmentPage = location.pathname === "/book_appointment";
+  const [isAppointmentOpen, setIsAppointmentOpen] = React.useState(false);
+  const [isSuccessOpen, setIsSuccessOpen] = React.useState(false);
+
+  const [successData, setSuccessData] = React.useState({
+    appointmentId: "",
+    doctor: "",
+    patient: "",
+    dateTime: "",
+  });
+
+  // 🔹 This will be called from AppointmentPage on successful booking
+  const handleAppointmentSuccess = (data: {
+    appointmentId: string;
+    doctor: string;
+    patient: string;
+    dateTime: string;
+  }) => {
+    setIsAppointmentOpen(false);
+    setSuccessData(data);
+    setIsSuccessOpen(true);
+  };
+
   return (
     <div
-      className="App font-sans w-full min-h-screen"
+      className="App font-sans w-full min-h-screen relative"
       style={{
         color: "var(--text-primary)",
         backgroundColor: "var(--bg-page)",
       }}
     >
       <TopBar />
-      <Header />
+
+      {/* Pass open function to Header */}
+      <Header onBookAppointment={() => setIsAppointmentOpen(true)} />
+
       <Breadcrumbs />
 
       <main className="flex flex-col w-full">
@@ -104,23 +120,32 @@ function App() {
           }
         >
           <Routes>
-            {/* Home */}
             <Route path="/" element={<HomePage />} />
-            <Route path="/book_appointment" element={<AppointmentPage />} />
-            <Route
-              path="/appointment/success"
-              element={<AppointmentSuccess />}
-            />            
-          {/* Dynamic Service Page */}
             <Route
               path="/services/:serviceType"
               element={<ServiceDetail />}
             />
-        </Routes>
+          </Routes>
         </Suspense>
       </main>
 
       <Footer />
+
+      {/* 🔹 Appointment Popup */}
+      {isAppointmentOpen && (
+        <AppointmentPage
+          onClose={() => setIsAppointmentOpen(false)}
+          onSuccess={handleAppointmentSuccess}   // 👈 important
+        />
+      )}
+
+      {/* 🔹 Success Popup */}
+      {isSuccessOpen && (
+        <AppointmentSuccessModal
+          data={successData}
+          onClose={() => setIsSuccessOpen(false)}
+        />
+      )}
     </div>
   );
 }

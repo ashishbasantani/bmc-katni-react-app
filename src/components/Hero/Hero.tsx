@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { Star, Phone } from "lucide-react";
 import heroVideo from "../../assets/videos/about.mp4";
 import EnquiryPopup from "../../components/popup/contactpage";
@@ -14,7 +14,7 @@ const STATS = [
 
 const HeroSection: React.FC = () => {
   const [openPopup, setOpenPopup] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   return (
     <section className="w-full relative">

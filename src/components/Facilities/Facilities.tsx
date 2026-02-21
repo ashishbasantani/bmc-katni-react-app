@@ -132,6 +132,7 @@ const Facilities: React.FC = () => {
             <div className="flex justify-center gap-3 mt-8">
               {images.map((_, index) => (
                 <button
+                title="imageslider"
                   key={index}
                   onClick={() => {
                     const slider = document.getElementById("imageSlider");
