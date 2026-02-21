@@ -3,7 +3,7 @@ const router = express.Router();
 const axios = require("axios");
 
 const Appointment = require("../models/Appointment");
-const transporter = require("../services/mail.service");
+const sendEmail = require("../services/mail.service");
 const generateAppointmentId = require("../utils/generateAppointmentId");
 
 /* =========================
@@ -17,15 +17,13 @@ async function sendWhatsAppMessage(to, message) {
       return;
     }
 
-    // Remove spaces, +, -, etc
     const cleanedNumber = to.replace(/\D/g, "");
 
-    // Add India code if missing
     const formattedNumber = cleanedNumber.startsWith("91")
       ? cleanedNumber
       : "91" + cleanedNumber;
 
-    console.log("Sending WhatsApp to:", formattedNumber); 
+    console.log("Sending WhatsApp to:", formattedNumber);
 
     await axios.post(
       `https://graph.facebook.com/v18.0/${process.env.WHATSAPP_PHONE_NUMBER_ID}/messages`,
@@ -45,9 +43,8 @@ async function sendWhatsAppMessage(to, message) {
 
     console.log("✅ WhatsApp message sent");
   } catch (error) {
-  console.error("❌ FULL ERROR STACK:");
-  console.error(error.stack);
-}
+    console.error("❌ WhatsApp Error:", error.response?.data || error.message);
+  }
 }
 
 /* =========================
@@ -79,10 +76,8 @@ router.post("/confirm", async (req, res) => {
       });
     }
 
-    // Generate ID
     const appointmentId = await generateAppointmentId();
 
-    // Save to DB
     await Appointment.create({
       appointmentId,
       department,
@@ -100,9 +95,7 @@ router.post("/confirm", async (req, res) => {
       allergies,
     });
 
-    /* =========================
-       Send Email
-    ========================= */
+    /* Send Email */
 
     const emailHTML = `
       <h2>🩺 Appointment Confirmed</h2>
@@ -118,22 +111,18 @@ router.post("/confirm", async (req, res) => {
       <p><b>Phone:</b> ${phone}</p>
     `;
 
-    await transporter.sendMail({
-      from: `"BMC Katni" <${process.env.EMAIL_USER}>`,
+    await sendEmail({
       to: email,
       subject: `Appointment Confirmed | ${appointmentId}`,
       html: emailHTML,
     });
 
-    /* =========================
-       Send WhatsApp Message
-    ========================= */
+    /* Send WhatsApp */
 
     const whatsappMessage = `
 Appointment Confirmed 🩺
 
 Appointment ID: ${appointmentId}
-
 Doctor: ${doctor || "To be assigned"}
 Date: ${date}
 Time: ${time}
@@ -145,11 +134,7 @@ Thank you for choosing BMC Katni.
 
     await sendWhatsAppMessage(phone, whatsappMessage);
 
-    /* =========================
-       Send Response
-    ========================= */
-
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       appointmentId,
       doctor,
@@ -160,7 +145,7 @@ Thank you for choosing BMC Katni.
 
   } catch (error) {
     console.error("❌ Appointment Booking Error:", error);
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: "Failed to book appointment",
     });

@@ -122,7 +122,7 @@ export default function AppointmentPage() {
           className="flex items-center gap-2 text-[var(--primary-purple)] font-medium hover:underline"
         >
           <ArrowLeft size={18} />
-          Back
+          Back to previous
         </button>
       </div>
 

@@ -94,7 +94,7 @@ export default function AppointmentSummary({
             mt-[30px]
             py-[16px]
             rounded-[30px]
-            bg-[#6b2fd6]
+            bg-[#602962]
             text-white
             text-[17px]
             font-semibold

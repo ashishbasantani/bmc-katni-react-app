@@ -52,9 +52,9 @@ export default function Stepper({ step }: StepperProps) {
                 transition-all
                 ${
                   isCompleted
-                    ? "bg-[#7a2bd6] border-[#7a2bd6] text-white"
+                    ? "bg-[#602962] border-[#602962] text-white"
                     : isActive
-                    ? "border-[#7a2bd6] text-[#7a2bd6] bg-white"
+                    ? "border-[#602962] text-[#602962] bg-white"
                     : "border-[#cfcfcf] text-[#9a9a9a] bg-white"
                 }
               `}
@@ -70,7 +70,7 @@ export default function Stepper({ step }: StepperProps) {
                 whitespace-nowrap
                 ${
                   isCompleted || isActive
-                    ? "text-[#7a2bd6] font-semibold"
+                    ? "text-[#602962] font-semibold"
                     : "text-[#9a9a9a] font-medium"
                 }
               `}
@@ -88,7 +88,7 @@ export default function Stepper({ step }: StepperProps) {
                   max-md:min-w-[40px]
                   ${
                     step > item.id
-                      ? "bg-[#7a2bd6]"
+                      ? "bg-[#602962]"
                       : "bg-[#dcdcdc]"
                   }
                 `}

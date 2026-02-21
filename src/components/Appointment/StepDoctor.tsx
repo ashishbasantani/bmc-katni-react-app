@@ -40,9 +40,9 @@ export default function DoctorSelection({
                 rounded-[26px] px-8 py-6
                 flex items-center gap-5
                 transition-all duration-200
-                hover:border-[#6b2fd6]/60
+                hover:border-[#602962]/60
                 ${isSelected
-                  ? "border-[#6b2fd6] bg-[#f7f2ff] shadow-[0_2px_12px_rgba(107,47,214,0.08)]"
+                  ? "border-[#602962] bg-[#f7f2ff] shadow-[0_2px_12px_rgba(107,47,214,0.08)]"
                   : ""}
               `}
             >
@@ -69,7 +69,7 @@ export default function DoctorSelection({
 
               {/* Checkmark */}
               <span
-                className={`absolute right-6 text-[22px] text-[#6b2fd6] transition-opacity duration-200 
+                className={`absolute right-6 text-[22px] text-[#602962] transition-opacity duration-200 
                 ${isSelected ? "opacity-100" : "opacity-0"}`}
               >
                 ✔

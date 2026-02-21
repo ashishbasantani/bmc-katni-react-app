@@ -53,7 +53,7 @@ export default function PatientInformation({
         </label>
         <input
           className="w-full px-4 py-3 rounded-xl border border-gray-300 text-[15px]
-                     focus:outline-none focus:ring-2 focus:ring-[#6b2fd6]/40
+                     focus:outline-none focus:ring-2 focus:ring-[#602962]/40
                      max-md:text-sm max-md:py-3"
           placeholder="Enter your full name"
           value={name}
@@ -69,7 +69,7 @@ export default function PatientInformation({
           </label>
           <input
             className="w-full px-4 py-3 rounded-xl border border-gray-300 text-[15px]
-                       focus:outline-none focus:ring-2 focus:ring-[#6b2fd6]/40
+                       focus:outline-none focus:ring-2 focus:ring-[#602962]/40
                        max-md:text-sm"
             placeholder="Enter your email"
             value={email}
@@ -83,7 +83,7 @@ export default function PatientInformation({
           </label>
           <input
             className="w-full px-4 py-3 rounded-xl border border-gray-300 text-[15px]
-                       focus:outline-none focus:ring-2 focus:ring-[#6b2fd6]/40
+                       focus:outline-none focus:ring-2 focus:ring-[#602962]/40
                        max-md:text-sm"
             placeholder="Enter your phone number"
             value={phone}
@@ -100,7 +100,7 @@ export default function PatientInformation({
           </label>
           <input
             className="w-full px-4 py-3 rounded-xl border border-gray-300 text-[15px]
-                       focus:outline-none focus:ring-2 focus:ring-[#6b2fd6]/40
+                       focus:outline-none focus:ring-2 focus:ring-[#602962]/40
                        max-md:text-sm"
             placeholder="Enter your age"
             value={age}
@@ -128,8 +128,8 @@ export default function PatientInformation({
                     max-md:w-full max-md:min-w-0 max-md:text-sm
                     ${
                       selected
-                        ? "border-2 border-[#6b2fd6] bg-[#f7f2ff] text-[#6b2fd6]"
-                        : "border-gray-300 bg-white hover:border-[#6b2fd6]/50"
+                        ? "border-2 border-[#602962] bg-[#f7f2ff] text-[#602962]"
+                        : "border-gray-300 bg-white hover:border-[#602962]/50"
                     }
                   `}
                 >
@@ -149,7 +149,7 @@ export default function PatientInformation({
         <textarea
           rows={4}
           className="w-full px-4 py-3 rounded-[14px] border border-gray-300 text-[15px]
-                     resize-none focus:outline-none focus:ring-2 focus:ring-[#6b2fd6]/40
+                     resize-none focus:outline-none focus:ring-2 focus:ring-[#602962]/40
                      max-md:text-sm"
           value={reason}
           onChange={(e) => onFieldChange("reason", e.target.value)}
@@ -165,7 +165,7 @@ export default function PatientInformation({
           </label>
           <input
             className="w-full px-4 py-3 rounded-xl border border-gray-300 text-[15px]
-                       focus:outline-none focus:ring-2 focus:ring-[#6b2fd6]/40
+                       focus:outline-none focus:ring-2 focus:ring-[#602962]/40
                        max-md:text-sm"
             placeholder="List any current medications"
             value={medications}
@@ -181,7 +181,7 @@ export default function PatientInformation({
           </label>
           <input
             className="w-full px-4 py-3 rounded-xl border border-gray-300 text-[15px]
-                       focus:outline-none focus:ring-2 focus:ring-[#6b2fd6]/40
+                       focus:outline-none focus:ring-2 focus:ring-[#602962]/40
                        max-md:text-sm"
             placeholder="List any allergies"
             value={allergies}

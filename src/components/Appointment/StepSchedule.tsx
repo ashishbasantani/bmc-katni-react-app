@@ -110,8 +110,8 @@ export default function DateTimeSelection({
                   max-md:w-full max-md:h-[65px] max-md:text-sm
                   ${
                     isSelected
-                      ? "border-2 border-[#6b2fd6] bg-[#f7f2ff] text-[#6b2fd6]"
-                      : "border-gray-300 bg-white hover:border-[#6b2fd6]/50"
+                      ? "border-2 border-[#602962] bg-[#f7f2ff] text-[#602962]"
+                      : "border-gray-300 bg-white hover:border-[#602962]/50"
                   }
                 `}
               >
@@ -166,8 +166,8 @@ export default function DateTimeSelection({
                         max-md:w-full max-md:min-w-0 max-md:h-[42px] max-md:text-[13px]
                         ${
                           selected
-                            ? "border-2 border-[#6b2fd6] bg-[#f7f2ff] text-[#6b2fd6]"
-                            : "border-gray-300 bg-white hover:border-[#6b2fd6]/50"
+                            ? "border-2 border-[#602962] bg-[#f7f2ff] text-[#602962]"
+                            : "border-gray-300 bg-white hover:border-[#602962]/50"
                         }
                       `}
                     >
