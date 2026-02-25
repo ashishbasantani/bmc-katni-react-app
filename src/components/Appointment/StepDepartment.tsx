@@ -32,7 +32,7 @@ export default function DepartmentSelection({
 }: DepartmentSelectionProps) {
   return (
     <section className="bg-white rounded-[22px] p-9 mb-7 shadow-[0_14px_34px_rgba(0,0,0,0.04)] 
-                        max-md:px-5 max-md:py-6 max-md:rounded-[18px] max-md:mb-5">
+                        max-md:p-[22px_18px] max-md:rounded-[18px] max-md:mb-5">
       
       <div className="flex gap-6 max-md:flex-col max-md:gap-4">
         
@@ -48,12 +48,10 @@ export default function DepartmentSelection({
             aria-label="Select Department"
             value={department}
             onChange={(e) => onDepartmentChange(e.target.value)}
-            style={{ touchAction: "manipulation" }}
-            className="w-full px-4 py-3 rounded-xl border border-[#e1e1e1] 
+            className="w-full px-[18px] py-[14px] rounded-xl border border-[#e1e1e1] 
                        text-[15px] focus:outline-none focus:ring-2 
                        focus:ring-[#8d3bbd]/30 focus:border-[#8d3bbd]
-                       max-md:px-4 max-md:py-3 max-md:text-sm max-md:rounded-lg
-                       cursor-pointer appearance-none bg-white"
+                       max-md:px-[14px] max-md:py-3 max-md:text-sm max-md:rounded-lg"
           >
             <option value="">Select</option>
             {DEPARTMENTS.map((dep) => (
@@ -75,12 +73,10 @@ export default function DepartmentSelection({
             aria-label="Appointment Type"
             value={appointmentType}
             onChange={(e) => onAppointmentTypeChange(e.target.value)}
-            style={{ touchAction: "manipulation" }}
-            className="w-full px-4 py-3 rounded-xl border border-[#e1e1e1] 
+            className="w-full px-[18px] py-[14px] rounded-xl border border-[#e1e1e1] 
                        text-[15px] focus:outline-none focus:ring-2 
                        focus:ring-[#8d3bbd]/30 focus:border-[#8d3bbd]
-                       max-md:px-4 max-md:py-3 max-md:text-sm max-md:rounded-lg
-                       cursor-pointer appearance-none bg-white"
+                       max-md:px-[14px] max-md:py-3 max-md:text-sm max-md:rounded-lg"
           >
             <option value="">Select</option>
             {APPOINTMENT_TYPES.map((type) => (
