@@ -47,3 +47,32 @@ code {
       lg:pb-20;
   }
 }
+
+/* Ensure input fields have proper touch targets and interaction */
+@supports selector(::-webkit-file-upload-button) {
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}
+
+/* Prevent zoom on input focus on iOS */
+input,
+input::-webkit-autofill,
+input::-webkit-autofill:hover,
+input::-webkit-autofill:focus {
+  -webkit-text-fill-color: inherit !important;
+  font-size: 16px !important;
+}
+
+/* Better button feedback on touch devices */
+button {
+  -webkit-user-select: none;
+  user-select: none;
+  background-color: transparent;
+}
+
+button:active {
+  -webkit-tap-highlight-color: transparent;
+}

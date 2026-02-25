@@ -12,7 +12,7 @@ import orthopedicSideBanner from "../../assets/orthopedic-side-banner.jpg";
 import surgeryHeroBanner from "../../assets/orthopedic-hero-banner.jpg";
 import surgerySideBanner from "../../assets/orthopedic-side-banner.jpg";
 
-import dentalHeroBanner from "../../assets/dental-hero-banner.jpg";
+import dentalHeroBanner from "../../assets/orthopedic-hero-banner.jpg";
 import dentalSideBanner from "../../assets/orthopedic-side-banner.jpg";
 
 /**
