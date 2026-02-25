@@ -9,7 +9,6 @@ const generateAppointmentId = require("../utils/generateAppointmentId");
 /* =========================
    WhatsApp Send Function
 ========================= */
-
 async function sendWhatsAppMessage(to, message) {
   try {
     if (!to) {
@@ -17,15 +16,12 @@ async function sendWhatsAppMessage(to, message) {
       return;
     }
 
-    // Remove spaces, +, -, etc
     const cleanedNumber = to.replace(/\D/g, "");
-
-    // Add India code if missing
     const formattedNumber = cleanedNumber.startsWith("91")
       ? cleanedNumber
       : "91" + cleanedNumber;
 
-    console.log("Sending WhatsApp to:", formattedNumber); 
+    console.log("Sending WhatsApp to:", formattedNumber);
 
     await axios.post(
       `https://graph.facebook.com/v18.0/${process.env.WHATSAPP_PHONE_NUMBER_ID}/messages`,
@@ -45,17 +41,18 @@ async function sendWhatsAppMessage(to, message) {
 
     console.log("✅ WhatsApp message sent");
   } catch (error) {
-  console.error("❌ FULL ERROR STACK:");
-  console.error(error.stack);
-}
+    console.error("❌ FULL ERROR STACK:");
+    console.error(error.stack);
+  }
 }
 
 /* =========================
    Appointment Confirm Route
 ========================= */
-
 router.post("/confirm", async (req, res) => {
   try {
+    console.log("📥 Incoming Appointment Request:", req.body);
+
     const {
       department,
       appointmentType,
@@ -72,18 +69,32 @@ router.post("/confirm", async (req, res) => {
       allergies,
     } = req.body;
 
-    if (!department || !date || !time || !name || !phone || !email) {
+    /* ------------------ Validation ------------------ */
+    if (
+      !department ||
+      !appointmentType ||
+      !doctor ||
+      !date ||
+      !time ||
+      !name ||
+      !age ||
+      !gender ||
+      !phone ||
+      !email
+    ) {
+      console.log("❌ Missing required fields");
       return res.status(400).json({
         success: false,
         message: "Missing required fields",
       });
     }
 
-    // Generate ID
+    /* ------------------ Generate Appointment ID ------------------ */
     const appointmentId = await generateAppointmentId();
+    console.log("Generated Appointment ID:", appointmentId);
 
-    // Save to DB
-    await Appointment.create({
+    /* ------------------ Save to Database ------------------ */
+    const savedAppointment = await Appointment.create({
       appointmentId,
       department,
       appointmentType,
@@ -91,7 +102,7 @@ router.post("/confirm", async (req, res) => {
       date,
       time,
       name,
-      age,
+      age: Number(age),
       gender,
       phone,
       email,
@@ -99,6 +110,8 @@ router.post("/confirm", async (req, res) => {
       medications,
       allergies,
     });
+
+    console.log("✅ Appointment Saved:", savedAppointment._id);
 
     /* =========================
        Send Email
@@ -109,7 +122,7 @@ router.post("/confirm", async (req, res) => {
       <p><b>Appointment ID:</b> ${appointmentId}</p>
       <hr />
       <p><b>Department:</b> ${department}</p>
-      <p><b>Doctor:</b> ${doctor || "To be assigned"}</p>
+      <p><b>Doctor:</b> ${doctor}</p>
       <p><b>Date:</b> ${date}</p>
       <p><b>Time:</b> ${time}</p>
       <hr />
@@ -125,6 +138,8 @@ router.post("/confirm", async (req, res) => {
       html: emailHTML,
     });
 
+    console.log("✅ Confirmation Email Sent");
+
     /* =========================
        Send WhatsApp Message
     ========================= */
@@ -134,7 +149,7 @@ Appointment Confirmed 🩺
 
 Appointment ID: ${appointmentId}
 
-Doctor: ${doctor || "To be assigned"}
+Doctor: ${doctor}
 Date: ${date}
 Time: ${time}
 
@@ -145,9 +160,7 @@ Thank you for choosing BMC Katni.
 
     await sendWhatsAppMessage(phone, whatsappMessage);
 
-    /* =========================
-       Send Response
-    ========================= */
+    /* ------------------ Final Response ------------------ */
 
     res.status(200).json({
       success: true,
@@ -160,9 +173,12 @@ Thank you for choosing BMC Katni.
 
   } catch (error) {
     console.error("❌ Appointment Booking Error:", error);
+    console.error("❌ FULL STACK:", error.stack);
+
     res.status(500).json({
       success: false,
       message: "Failed to book appointment",
+      error: error.message,
     });
   }
 });

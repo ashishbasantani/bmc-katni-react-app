@@ -14,6 +14,7 @@ import ServiceDetail from "./components/Service/ServiceDetail";
 
 import AppointmentPage from "./pages/Appointment/AppointmentPage";
 import AppointmentSuccessModal from "./pages/Appointment/AppointmentSuccess";
+import BlogSection from "./components/Blog/BlogSection";
 
 interface SectionProps {
   id: string;
@@ -58,6 +59,10 @@ const HomePage: React.FC = () => {
 
       <Section id="services">
         <Services />
+      </Section>
+
+      <Section id="blogs">
+        <BlogSection />
       </Section>
 
       <Section id="doctors">

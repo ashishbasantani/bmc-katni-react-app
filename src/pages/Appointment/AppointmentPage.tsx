@@ -90,22 +90,27 @@ export default function AppointmentPage({
   if (canGoStep2) currentStep = 2;
   if (canGoStep3) currentStep = 3;
   if (canGoStep4) currentStep = 4;
+/* ============================= */
+/* AUTO ADVANCE (FIXED) */
+/* ============================= */
 
-  /* ============================= */
-  /* AUTO ADVANCE */
-  /* ============================= */
+useEffect(() => {
+  if (canGoStep2 && activeStep < 2) {
+    setActiveStep(2);
+  }
+}, [canGoStep2, activeStep]);
 
-  useEffect(() => {
-    if (canGoStep2) setActiveStep(2);
-  }, [canGoStep2]);
+useEffect(() => {
+  if (canGoStep3 && activeStep < 3) {
+    setActiveStep(3);
+  }
+}, [canGoStep3, activeStep]);
 
-  useEffect(() => {
-    if (canGoStep3) setActiveStep(3);
-  }, [canGoStep3]);
-
-  useEffect(() => {
-    if (canGoStep4) setActiveStep(4);
-  }, [canGoStep4]);
+useEffect(() => {
+  if (canGoStep4 && activeStep < 4) {
+    setActiveStep(4);
+  }
+}, [canGoStep4, activeStep]);
 
   function handleChange(field: keyof typeof form, value: any) {
     setForm((prev) => ({ ...prev, [field]: value }));
