@@ -67,18 +67,31 @@ export default function AppointmentPage({
     !!form.gender &&
     !!form.reason;
 
-  /* AUTO FORWARD */
-  useEffect(() => {
-    if (canGoStep2 && activeStep === 1) setActiveStep(2);
-  }, [canGoStep2]);
+  let currentStep = 1;
+  if (canGoStep2) currentStep = 2;
+  if (canGoStep3) currentStep = 3;
+  if (canGoStep4) currentStep = 4;
+/* ============================= */
+/* AUTO ADVANCE (FIXED) */
+/* ============================= */
 
-  useEffect(() => {
-    if (canGoStep3 && activeStep === 2) setActiveStep(3);
-  }, [canGoStep3]);
+useEffect(() => {
+  if (canGoStep2 && activeStep < 2) {
+    setActiveStep(2);
+  }
+}, [canGoStep2, activeStep]);
 
-  useEffect(() => {
-    if (canGoStep4 && activeStep === 3) setActiveStep(4);
-  }, [canGoStep4]);
+useEffect(() => {
+  if (canGoStep3 && activeStep < 3) {
+    setActiveStep(3);
+  }
+}, [canGoStep3, activeStep]);
+
+useEffect(() => {
+  if (canGoStep4 && activeStep < 4) {
+    setActiveStep(4);
+  }
+}, [canGoStep4, activeStep]);
 
   async function handleConfirm() {
     try {

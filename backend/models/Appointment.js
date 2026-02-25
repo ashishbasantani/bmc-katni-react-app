@@ -2,20 +2,90 @@ const mongoose = require("mongoose");
 
 const appointmentSchema = new mongoose.Schema(
   {
-    appointmentId: { type: String, unique: true },
-    department: String,
-    appointmentType: String,
-    doctor: String,
-    date: String,
-    time: String,
-    name: String,
-    email: String,
-    phone: String,
-    age: String,
-    gender: String,
-    reason: String,
-    medications: String,
-    allergies: String,
+    appointmentId: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+    },
+
+    department: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    appointmentType: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    doctor: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    date: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    time: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    name: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    email: {
+      type: String,
+      required: true,
+      trim: true,
+      lowercase: true,
+      match: [/^\S+@\S+\.\S+$/, "Invalid email format"],
+    },
+
+    phone: {
+      type: String,
+      required: true,
+      trim: true,
+      match: [/^[0-9]{10,15}$/, "Invalid phone number"],
+    },
+
+    age: {
+      type: Number,
+      required: true,
+      min: 0,
+    },
+
+    gender: {
+      type: String,
+      required: true,
+      enum: ["Male", "Female", "Other"],
+    },
+
+    reason: {
+      type: String,
+      trim: true,
+    },
+
+    medications: {
+      type: String,
+      trim: true,
+    },
+
+    allergies: {
+      type: String,
+      trim: true,
+    },
   },
   { timestamps: true }
 );
