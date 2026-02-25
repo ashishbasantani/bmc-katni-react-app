@@ -102,12 +102,13 @@ export default function DateTimeSelection({
                 key={i}
                 type="button"
                 onClick={() => onDateSelect(d.toDateString())}
+                style={{ touchAction: "manipulation" }}
                 className={`
                   w-20 h-[70px] rounded-[14px]
                   flex flex-col items-center justify-center
                   border transition-all duration-200
                   text-[15px]
-                  max-md:w-full max-md:h-[65px] max-md:text-sm
+                  max-md:w-full max-md:h-auto max-md:py-3 max-md:min-h-[56px] max-md:text-sm
                   ${
                     isSelected
                       ? "border-2 border-[#6b2fd6] bg-[#f7f2ff] text-[#6b2fd6]"
@@ -159,11 +160,12 @@ export default function DateTimeSelection({
                       key={slot}
                       type="button"
                       onClick={() => onTimeSelect(slot)}
+                      style={{ touchAction: "manipulation" }}
                       className={`
                         min-w-[110px] h-11 rounded-[14px]
                         border transition-all duration-200
                         text-[15px]
-                        max-md:w-full max-md:min-w-0 max-md:h-[42px] max-md:text-[13px]
+                        max-md:w-full max-md:min-w-0 max-md:h-auto max-md:min-h-[44px] max-md:py-2 max-md:text-[13px]
                         ${
                           selected
                             ? "border-2 border-[#6b2fd6] bg-[#f7f2ff] text-[#6b2fd6]"

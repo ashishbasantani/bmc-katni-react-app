@@ -2,13 +2,13 @@ import React from "react";
 import { Hospital, Wallet } from "lucide-react";
 import checkup from "../../assets/checkup.jpg";
 import Patientroom from "../../assets/room.png";
-import DentalHeroBanner from "../../assets/dental-hero-banner.jpg";
+// import DentalHeroBanner from "../../assets/dental-hero-banner.jpg";
 import Machine from "../../assets/machine.jpg";
 import Medicine from "../../assets/medicine-side-banner.jpeg";
 
 const Facilities: React.FC = () => {
   const images = [
-    { src: DentalHeroBanner, title: "Dental Care" },
+    //{ src: DentalHeroBanner, title: "Dental Care" },
     { src: checkup, title: "Machine" },
     { src: Medicine, title: "Pharmacy & Medicines" },
     { src: Patientroom, title: "Private Suites" },

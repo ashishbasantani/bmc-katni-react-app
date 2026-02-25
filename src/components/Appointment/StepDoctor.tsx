@@ -34,13 +34,14 @@ export default function DoctorSelection({
             <div
               key={doc.id}
               onClick={() => onDoctorSelect(doc)}
+              style={{ touchAction: "manipulation" }}
               className={`
                 relative cursor-pointer
                 bg-[#f5f0ff] border-2 border-[#d1b6f7]
                 rounded-[26px] px-8 py-6
                 flex items-center gap-5
                 transition-all duration-200
-                hover:border-[#6b2fd6]/60
+                hover:border-[#6b2fd6]/60 active:scale-95
                 ${isSelected
                   ? "border-[#6b2fd6] bg-[#f7f2ff] shadow-[0_2px_12px_rgba(107,47,214,0.08)]"
                   : ""}
