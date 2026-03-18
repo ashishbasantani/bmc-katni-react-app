@@ -22,7 +22,7 @@ const HeroSection: React.FC = () => {
         <div className="flex flex-col lg:flex-row items-stretch gap-10 lg:gap-14">
 
           {/* Left Content */}
-          <div className="flex-1 flex flex-col gap-5 lg:pt-6 relative z-30">
+          <div className="flex-1 flex flex-col gap-5 lg:pt-6">
             <div className="inline-flex items-center gap-2 w-fit px-4 py-1.5 text-sm font-medium rounded-full bg-[var(--badge-bg)] text-[var(--badge-text)]">
               <Star size={14} />
               Trusted Healthcare Provider Since 1985

@@ -7,7 +7,8 @@ import blog3 from "../assets/research.jpg";
 export const BLOGS: Blog[] = [
   {
     id: 1,
-    category: "Health Tips",
+    slug: "regular-checkups",
+    category: "Health-Tips",
     image: blog1,
     date: "Feb 18, 2026",
     readTime: "5 min read",
@@ -17,6 +18,7 @@ export const BLOGS: Blog[] = [
   },
   {
     id: 2,
+    slug: "nutrition-basics",
     category: "Nutrition",
     image: blog2,
     date: "Feb 15, 2026",
@@ -27,6 +29,7 @@ export const BLOGS: Blog[] = [
   },
   {
     id: 3,
+    slug: "mental-health-matters",
     category: "Research",
     image: blog3,
     date: "Feb 10, 2026",

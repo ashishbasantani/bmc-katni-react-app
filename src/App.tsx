@@ -15,6 +15,7 @@ import ServiceDetail from "./components/Service/ServiceDetail";
 import AppointmentPage from "./pages/Appointment/AppointmentPage";
 import AppointmentSuccessModal from "./pages/Appointment/AppointmentSuccess";
 import BlogSection from "./components/Blog/BlogSection";
+import BlogDetail from "./components/Blog/BlogDetail";
 
 interface SectionProps {
   id: string;
@@ -129,6 +130,10 @@ function App() {
             <Route
               path="/services/:serviceType"
               element={<ServiceDetail />}
+            />
+            <Route
+              path="/blog/:slug"
+              element={<BlogDetail />}
             />
           </Routes>
         </Suspense>

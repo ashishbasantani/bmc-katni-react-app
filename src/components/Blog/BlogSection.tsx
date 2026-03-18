@@ -1,6 +1,8 @@
 import { BLOGS } from "../../data/blogs";
+import { useNavigate } from "react-router-dom"
 
 const BlogSection = () => {
+  const navigate = useNavigate()
   return (
     <section className="bg-white">
       <div className="container-page section-padding">
@@ -51,9 +53,15 @@ const BlogSection = () => {
                 {blog.description}
                 </p>
 
-                <button className="text-[var(--primary-purple)] font-semibold text-sm hover:underline">
+               <button
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: "smooth" })
+                  navigate(`/blog/${blog.slug}`)
+                }}
+                className="text-[var(--primary-purple)] font-semibold text-sm hover:underline"
+              >
                 Read More →
-                </button>
+              </button>
             </div>
             </div>
         ))}

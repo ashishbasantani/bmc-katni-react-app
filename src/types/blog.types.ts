@@ -1,5 +1,6 @@
 export interface Blog {
   id: number;
+  slug: string;
   category: string;
   image: string;
   date: string;
