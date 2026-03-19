@@ -12,22 +12,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-/* ------------------ DATABASE ------------------ */
+/* ------------------ ENV CHECK ------------------ */
 const mongoURI = process.env.MONGO_URI_PROD;
 
 if (!mongoURI) {
   console.error("❌ MONGO_URI_PROD is missing in .env file");
   process.exit(1);
 }
-
-mongoose
-  .connect(mongoURI)
-  .then(() => {
-    console.log("✅ MongoDB Connected Successfully");
-  })
-  .catch((err) => {
-    console.error("❌ MongoDB Connection Error:", err);
-  });
 
 /* ------------------ ROUTES ------------------ */
 app.use("/api/appointment", appointmentRoutes);
@@ -49,11 +40,24 @@ app.use((err, req, res, next) => {
   });
 });
 
-/* ------------------ SERVER ------------------ */
+/* ------------------ DATABASE + SERVER ------------------ */
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`🚀 Backend running on port ${PORT}`);
-});
+
+// OPTIONAL: Disable buffering (helps avoid timeout issues)
+mongoose.set("bufferCommands", false);
+
+mongoose
+  .connect(mongoURI)
+  .then(() => {
+    console.log("✅ MongoDB Connected Successfully");
+
+    app.listen(PORT, () => {
+      console.log(`🚀 Backend running on port ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error("❌ MongoDB Connection Error:", err);
+  });
 
 /* ------------------ ENV DEBUG LOGS ------------------ */
 console.log("TOKEN:", process.env.WHATSAPP_TOKEN ? "Loaded" : "Missing");
