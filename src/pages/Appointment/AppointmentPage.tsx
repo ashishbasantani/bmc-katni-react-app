@@ -97,7 +97,7 @@ useEffect(() => {
   async function handleConfirm() {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/appointment/confirm",
+        "https://bmc-katni-react-app-i2d0.onrender.com/api/appointment/confirm",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

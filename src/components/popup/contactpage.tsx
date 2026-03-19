@@ -29,7 +29,7 @@ const EnquiryPopup: React.FC<Props> = ({ isOpen, onClose }) => {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:5000/api/enquiry", {
+      const res = await fetch("https://bmc-katni-react-app-i2d0.onrender.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

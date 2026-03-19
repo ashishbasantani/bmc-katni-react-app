@@ -90,7 +90,8 @@ router.post("/confirm", async (req, res) => {
     }
 
     /* ------------------ Generate Appointment ID ------------------ */
-    const appointmentId = await generateAppointmentId();
+    // const appointmentId = await generateAppointmentId();
+    const appointmentId = "APT-" + Date.now();
     console.log("Generated Appointment ID:", appointmentId);
 
     /* ------------------ Save to Database ------------------ */
