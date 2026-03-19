@@ -3,7 +3,8 @@ const router = express.Router();
 const axios = require("axios");
 
 const Appointment = require("../models/Appointment");
-const transporter = require("../services/mail.service");
+// const transporter = require("../services/mail.service");
+const sendEmail = require("../services/resend.service");
 const generateAppointmentId = require("../utils/generateAppointmentId");
 
 /* =========================
@@ -132,12 +133,11 @@ router.post("/confirm", async (req, res) => {
       <p><b>Phone:</b> ${phone}</p>
     `;
 
-    await transporter.sendMail({
-      from: `"BMC Katni" <${process.env.EMAIL_USER}>`,
-      to: email,
-      subject: `Appointment Confirmed | ${appointmentId}`,
-      html: emailHTML,
-    });
+    await sendEmail(
+      email,
+      `Appointment Confirmed | ${appointmentId}`,
+      emailHTML
+    );
 
     console.log("✅ Confirmation Email Sent");
 
