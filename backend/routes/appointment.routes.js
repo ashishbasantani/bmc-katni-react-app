@@ -146,18 +146,18 @@ router.post("/confirm", async (req, res) => {
     ========================= */
 
     const whatsappMessage = `
-Appointment Confirmed 🩺
+      Appointment Confirmed 🩺
 
-Appointment ID: ${appointmentId}
+      Appointment ID: ${appointmentId}
 
-Doctor: ${doctor}
-Date: ${date}
-Time: ${time}
+      Doctor: ${doctor}
+      Date: ${date}
+      Time: ${time}
 
-Patient: ${name}
+      Patient: ${name}
 
-Thank you for choosing BMC Katni.
-`;
+      Thank you for choosing BMC Katni.
+      `;
 
     await sendWhatsAppMessage(phone, whatsappMessage);
 
@@ -173,15 +173,9 @@ Thank you for choosing BMC Katni.
     });
 
   } catch (error) {
-    console.error("❌ Appointment Booking Error:", error);
-    console.error("❌ FULL STACK:", error.stack);
-
-    res.status(500).json({
-      success: false,
-      message: "Failed to book appointment",
-      error: error.message,
-    });
-  }
+  console.error("❌ WhatsApp Error FULL:");
+  console.error(error.response?.data || error.message);
+}
 });
 
 module.exports = router;
